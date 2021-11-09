@@ -1,22 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
 
+import PexelsPhotos from './components/PexelsPhotos'
+
 function App() {
+
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <p>Well... here we go, let's do this!</p>
+      {/* <UnsplashPhotos /> */}
+      <PexelsPhotos />
       </header>
     </div>
   );
