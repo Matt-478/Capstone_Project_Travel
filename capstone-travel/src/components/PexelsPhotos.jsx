@@ -27,11 +27,11 @@ function PexelsPhotos () {
     <>
       <p>It works</p>
       {
-        <>
+        <div className="flex-layout"> 
         { 
-          pexelsPhotos.map((data, boop = data.id) => <img src={data.src.tiny} alt="generic pic" key={boop}/>)
+          pexelsPhotos.map((data, boop = data.id) => <img src={data.src.tiny} alt="generic pic" key={boop} className="grid-item"/>)
         }
-        </>
+        </div>
       }
 
     </>
