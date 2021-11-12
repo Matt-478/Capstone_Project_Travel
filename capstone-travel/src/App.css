@@ -10,6 +10,7 @@ body {
 h1, h2, h3, h4, h5, h6, p{
   font-family: 'Sarabun', sans-serif;
   font-weight: 500;
+  margin: 0;
 }
 
 h1 {
@@ -50,22 +51,48 @@ input[type="text"]{
   text-align: left;
 }
 
-.w-100 {
-  width: 100%;
+.d-inline {
+  display: inline-block;
+}
+
+.d-flex-space {
+  display: flex;
+  justify-content: space-between;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.left-side {
+  justify-items: left;
+  width: 60%;
+}
+
+.right-side {
+  justify-items: right;
 }
 
 
 .wrapper {
   width: 100%;
-  /* max-width: 31.25rem; */
   margin: 6rem auto;
+  margin-bottom: 60px;
 }
 
 .searchBar {
   width: 100%;
   display: flex;
-  /* flex-direction: row; */
   align-items: flex-end;
+  justify-content: space-between;
 }
 
 #searchQueryInput {
@@ -118,4 +145,56 @@ li {
   min-width: 100%;
   object-fit: cover;
   vertical-align: bottom;
+}
+
+
+
+.snapDiv {
+  width: 336px;
+  height: 600px; 
+  border-top-left-radius: 16px; 
+  border-top-right-radius: 16px; 
+  border-bottom-right-radius: 16px; 
+  border-bottom-left-radius: 16px; 
+  overflow: hidden; 
+  border: 1px solid rgb(223, 227, 231); 
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+.book-a-trip-btn {
+  width: 60%;
+  background-color: cornflowerblue;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 22px;
+  margin: 4px 2px;
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  margin: 40px auto 30px;
+}
+
+.pill-btn {
+  border-radius: 10px;
+}
+
+
+
+
+
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
