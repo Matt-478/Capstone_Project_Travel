@@ -1,33 +1,32 @@
 import { useState, useEffect } from 'react'
-import ImageCard from './ImageCard'
+import VideoCard from './VideoCard'
 
-function PexelsPhotos ( {query} ) {
-  const [pexelsPhotos, setPexelsPhotos] = useState([])
+function PexelsVideos ( {query} ) {
+  const [pexelsVideos, setPexelsVideos] = useState([])
 
   useEffect(() => {
-    fetchPexelsData() 
+    fetchPexelsVideos() 
     console.log(query)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query])
 
-  async function fetchPexelsData () {
+  async function fetchPexelsVideos () {
     try {
-      const response = await fetch("https://api.pexels.com/v1/search?query=" + query + "&per_page=60", {
-        // &size=large
+      const response = await fetch("https://api.pexels.com/videos/search?query=" + query + "&size=small&per_page=5", {
         "method":"GET",
         "headers": {          
         "Authorization": "563492ad6f91700001000001d99276bcb4d4402fbf7f8f502c81c2ba"}
       })
-      const {photos} = await response.json()
+      const {videos} = await response.json()
 
-      setPexelsPhotos(photos)
-      console.log(pexelsPhotos)
+      setPexelsVideos(videos)
+      console.log(pexelsVideos)
     } catch (error) {
       console.log(error)
     }
   }
 
-
+  
 
   return (
     <>
@@ -35,8 +34,9 @@ function PexelsPhotos ( {query} ) {
         {/* how to randomise all the img's and videos? */}
           <ul>
               { 
-                pexelsPhotos && pexelsPhotos.map((data, boop = data.id) => (
-                  <ImageCard src={data.src.medium} key={boop}/>
+                pexelsVideos && pexelsVideos.map((data, boop = data.id) => (
+                  <VideoCard src={data.video_files} key={boop}/>
+                  // <p>o</p>
                 ))
               }
             <li></li> {/* do not remove, neccesary for layout */}
@@ -46,4 +46,4 @@ function PexelsPhotos ( {query} ) {
   )
 }
 
-export default PexelsPhotos
+export default PexelsVideos
