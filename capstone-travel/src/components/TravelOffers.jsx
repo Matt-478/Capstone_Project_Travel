@@ -9,6 +9,8 @@ const TravelOffers = () => {
   )
 }
 
+export default TravelOffers
+
 // AMADEUS
 //  bearer   Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6
 //  secret   BzObmAeMp1ClNDtn
