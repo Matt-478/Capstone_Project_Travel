@@ -198,3 +198,20 @@ li {
   width: 100%;
   position: absolute;
 }
+
+
+
+
+.single-flight-option {
+  width: 100%;
+  border: 2px solid cornflowerblue;
+  margin: 10px 15px;
+  padding: 10px 20px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.solo-flight-box p {
+  color: rgb(148, 148, 148);
+}
