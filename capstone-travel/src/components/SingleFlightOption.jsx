@@ -4,24 +4,28 @@ const SingleFlightOption = ( {info} ) => {
   return (
     <div className="single-flight-option">
 
+      <p key={info.id}>works</p>
+
       {/* origin */}
       <div className="solo-flight-box">
         <p>FROM:</p>
-        <h3>{info.origin}</h3>
+        {
+        //  info.itineraries.segments.map((info) => 
+        //   <h3>{info.arrival.at}</h3>) 
+          // console.log(info)
+        }
       </div>
 
-      {/* destination */}
-      <div className="solo-flight-box">
-        <p>TO:</p>
-        <h3>{info.destination}</h3>
-      </div>
+      /* destination */
+    //   <div className="solo-flight-box">
+    //     <p>TO:</p>
+    //   </div>
 
-      {/* price */}
-      <div className="solo-flight-box">
-        <p>PRICE:</p>
-        <h3>{info.price.total}</h3>
-      </div>
-    </div>
+    //   {/* price */}
+    //   <div className="solo-flight-box">
+    //     <p>PRICE:</p>
+    //   </div> 
+    // </div>
   )
 }
 

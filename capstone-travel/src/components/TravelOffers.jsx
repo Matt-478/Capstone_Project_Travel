@@ -3,30 +3,58 @@ import { useState, useEffect } from 'react'
 import SingleFlightOption from './SingleFlightOption'
 
 
-const TravelOffers = ({ realState }) => {
+const TravelOffers = ({ query, history }) => {
 
+  const[IATACode, setIATACode] = useState([])
   const[flightInfo, setFlightInfo] = useState([])
+  const[isLoading, setIsLoading] = useState(false)
+  const[error, setError] = useState(false)
 
-  let token
+  let token = '8XfsAXxSIbQrQfmaso1lhaRw2SB8'
 
+  // on Query change, I call new IATA code
   useEffect(() => {
-    fetchFlights(realState)
+    cityCode(query)
+    console.log(query)
+
     // newTokenRequest()
-    console.log(flightInfo.data)
-  },[realState])
+  },[query])
+
+// on a IATA code change I call fetchFlights
+  useEffect(() => {
+    fetchFlights(IATACode)
+  },[IATACode])
   
-  // eventually add query back
-  const fetchFlights = async() => {
-    const response = await fetch('https://test.api.amadeus.com/v1/shopping/flight-destinations?origin=MAD&oneWay=false&nonStop=false', {
-      headers: {
-          'Authorization': 'Bearer Rorvfr9kJG9XTtMybvDC4VWJWAY9'
-        }
-      });
-    const data = await response.json()
-    setFlightInfo(data)
-    console.log(flightInfo)
+
+  const fetchFlights = async(IATACode) => {
+    try{
+      const response = await fetch('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=LON&departureDate=2021-11-24&adults=1', {
+        headers: {
+            'Authorization': 'Bearer ' + token
+          }
+        });
+      const data = await response.json()
+      setFlightInfo(data)
+      // flightInfo && setIsLoading(true)
+
+      if(!response.ok) {
+        setError(true)
+      } else {
+        setIsLoading(true)
+      }
+
+      console.log("returned data")
+      console.log(data)
+      // console.log(IATACode)
+
+      console.log("flight info")
+      console.log(flightInfo)
+
+    } catch(err) {
+      console.log(err.message)
+      // setError(true)
+    }
   }
-  // OG link https://test.api.amadeus.com/v1/shopping/flight-destinations?origin=PAR&maxPrice=200
 
   function newTokenRequest () {
     fetch('https://test.api.amadeus.com/v1/security/oauth2/token', {
@@ -40,18 +68,52 @@ const TravelOffers = ({ realState }) => {
   .then(data => console.log(data.access_token))
   }
 
+  async function cityCode(query) {
+    try{
+      if(query.length > 2) {
+      const response = await fetch("https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=" + query + "&view=LIGHT&page%5Boffset%5D=0&page%5Blimit%5D=10", {
+        headers: {
+            'Authorization': 'Bearer ' + token
+          }
+        })
+      const { data } = await response.json()
+      const firstItem = await data[0].iataCode
+      setIATACode(firstItem)
+
+      // console.log("city code data: " + data)
+      // console.log("firstItem: " + firstItem)
+      // console.log("IATACode: " + IATACode)
+      }
+    } catch(err) {
+      console.log(err)
+    }
+
+    // why can't I set the state to be the first array element?
+    // setIATACode(data[0].iataCode)
+
+  //  after each reload I need to remove all the values from the array
+  }
+
   return(
     <>
       <p>Here we'll display all of our info about flights to cool and great places</p>
-      {/* <SingleFlightOption info={flightInfo}/> */}
-    {
-      // console.log(flightInfo.data)
-      flightInfo.data.map((d) => (
-         <SingleFlightOption info={d} />
-        // <p>works</p>
-      ))
-    }
-    {/* key could be index of arr */}
+      {
+       isLoading ? 
+        (
+          "works" 
+        ) :
+        (
+          flightInfo.error 
+          ? setError(true)            
+          : (
+              <div className="loader">Loading...</div>
+            )
+        )
+      }
+      { error && (
+        // "error"
+        history.push('/404')
+        ) }
     </>
   )
 }

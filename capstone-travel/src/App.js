@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import TravelOffers from './components/TravelOffers'
 import HomePage from './components/HomePage'
+import ErrorPage from './components/ErrorPage'
 
 function App() {
 
@@ -37,8 +38,9 @@ function App() {
 
 
         <Route path="/home" exact render={(props) => <HomePage realState={realState} query={query} {...props}/>} ></Route>
-        <Route path="/flight" exact render={(props) => <TravelOffers realState={realState} {...props}/>}/>
+        <Route path="/flight" exact render={(props) => <TravelOffers query={realState} {...props}/>}/>
     {/* <Route path="/" exact render={(props) => <Home title="Strive" {...props} />} /> */}
+        <Route path="/404" exact component={ErrorPage} /> 
       </Router>
     </div>
   );
