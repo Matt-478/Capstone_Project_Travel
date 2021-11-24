@@ -7,10 +7,11 @@ const TravelOffers = ({ query, history }) => {
 
   const[IATACode, setIATACode] = useState([])
   const[flightInfo, setFlightInfo] = useState([])
+  const[dictionaries, setDictionaries] = useState([])
   const[isLoading, setIsLoading] = useState(false)
   const[error, setError] = useState(false)
 
-  let token = 'gAf8cnqUXNoLDl9dwJlqhkOFGQnj'
+  let token = 'LPfbBGRyHA6IyQli30eZYLVzrEBN'
 
   // on Query change, I call new IATA code
   useEffect(() => {
@@ -98,30 +99,22 @@ const TravelOffers = ({ query, history }) => {
     <>
       <p>Here we'll display all of our info about flights to cool and great places</p>
       {/* {
-       isLoading ? 
-        (
-          // <div className="loader">Loading...</div>
-          // display stuff bc it's set to true in the fetch
-          fetchFlights.data ? fetchFlights.data[0][0].id : "not happening"
-        //  "works, but still fetching i guess"
-
-        ) :
-        (
-          flightInfo.error 
-          ? setError(true)            
-          : (
-              <div className="loader">Loading...</div>
-            )
-        )
-      }
       { error && (
         // "error"
         history.push('/404')
-        ) } */}
+        ) } */
+      }
 
         {isLoading ? flightInfo.data.map((item) => (
-          <p className="flight-demo">pretend that this is what I needed to show + {item.id}</p>
-        )) :  <div className="loader">Loading...</div>}
+          <SingleFlightOption data={item} key={item.id}/>
+        )) :  <div className="loader">Loading...</div>
+        }
+
+
+      {/* flightInfo.map((item) => (
+        setData(item.data)
+        setDictionaries(item.dictionaries)
+      )) */}
     </>
   )
 }
@@ -133,8 +126,5 @@ export default TravelOffers
 //  secret   BzObmAeMp1ClNDtn
 
 // id Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6
-// token As589KUv5n42o2DYBneJzdQdafmZ - valid for 30 mins
-
-
 
 // return the token right into the token thing
