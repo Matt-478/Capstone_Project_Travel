@@ -10,7 +10,7 @@ const TravelOffers = ({ query, history }) => {
   const[isLoading, setIsLoading] = useState(false)
   const[error, setError] = useState(false)
 
-  let token = '8XfsAXxSIbQrQfmaso1lhaRw2SB8'
+  let token = 'gAf8cnqUXNoLDl9dwJlqhkOFGQnj'
 
   // on Query change, I call new IATA code
   useEffect(() => {
@@ -28,7 +28,7 @@ const TravelOffers = ({ query, history }) => {
 
   const fetchFlights = async(IATACode) => {
     try{
-      const response = await fetch('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=LON&departureDate=2021-11-24&adults=1', {
+      const response = await fetch('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=LON&departureDate=2021-11-24&adults=1&max=15', {
         headers: {
             'Authorization': 'Bearer ' + token
           }
@@ -97,10 +97,14 @@ const TravelOffers = ({ query, history }) => {
   return(
     <>
       <p>Here we'll display all of our info about flights to cool and great places</p>
-      {
+      {/* {
        isLoading ? 
         (
-          "works" 
+          // <div className="loader">Loading...</div>
+          // display stuff bc it's set to true in the fetch
+          fetchFlights.data ? fetchFlights.data[0][0].id : "not happening"
+        //  "works, but still fetching i guess"
+
         ) :
         (
           flightInfo.error 
@@ -113,7 +117,11 @@ const TravelOffers = ({ query, history }) => {
       { error && (
         // "error"
         history.push('/404')
-        ) }
+        ) } */}
+
+        {isLoading ? flightInfo.data.map((item) => (
+          <p className="flight-demo">pretend that this is what I needed to show + {item.id}</p>
+        )) :  <div className="loader">Loading...</div>}
     </>
   )
 }
