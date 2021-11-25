@@ -7,11 +7,14 @@ const TravelOffers = ({ query, history }) => {
 
   const[IATACode, setIATACode] = useState([])
   const[flightInfo, setFlightInfo] = useState([])
-  const[dictionaries, setDictionaries] = useState([])
   const[isLoading, setIsLoading] = useState(false)
   const[error, setError] = useState(false)
 
-  let token = 'LPfbBGRyHA6IyQli30eZYLVzrEBN'
+
+  const[data, setData] = useState([])
+  const[dictionaries ,setDictionaries] = useState([])
+
+  let token = 'vABuPfdUVPyeYuFU7Jo3Y1zmeNqf'
 
   // on Query change, I call new IATA code
   useEffect(() => {
@@ -29,14 +32,13 @@ const TravelOffers = ({ query, history }) => {
 
   const fetchFlights = async(IATACode) => {
     try{
-      const response = await fetch('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=LON&departureDate=2021-11-24&adults=1&max=15', {
+      const response = await fetch('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=LON&departureDate=2021-11-28&adults=1&max=15', {
         headers: {
             'Authorization': 'Bearer ' + token
           }
         });
       const data = await response.json()
       setFlightInfo(data)
-      // flightInfo && setIsLoading(true)
 
       if(!response.ok) {
         setError(true)
@@ -46,14 +48,12 @@ const TravelOffers = ({ query, history }) => {
 
       console.log("returned data")
       console.log(data)
-      // console.log(IATACode)
 
       console.log("flight info")
       console.log(flightInfo)
 
     } catch(err) {
       console.log(err.message)
-      // setError(true)
     }
   }
 
@@ -104,17 +104,11 @@ const TravelOffers = ({ query, history }) => {
         history.push('/404')
         ) } */
       }
-
+{/* 
         {isLoading ? flightInfo.data.map((item) => (
           <SingleFlightOption data={item} key={item.id}/>
         )) :  <div className="loader">Loading...</div>
-        }
-
-
-      {/* flightInfo.map((item) => (
-        setData(item.data)
-        setDictionaries(item.dictionaries)
-      )) */}
+        } */}
     </>
   )
 }
@@ -128,3 +122,18 @@ export default TravelOffers
 // id Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6
 
 // return the token right into the token thing
+
+
+
+
+
+{/* SETTING THESE AS STATES DIDN'T WORK
+        {isLoading ? flightInfo.data.map((item) => (
+          setData(item)
+        )) : "setting data failed"
+        }
+
+        {isLoading ? flightInfo.dictionaries.map((item) => (
+          setDictionaries(item)
+        )) : "setting dictionaries failed"
+        } */}

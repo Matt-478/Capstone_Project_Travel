@@ -5,7 +5,7 @@
 body {
   /* margin: 0 auto; */
   padding: 0 10%;
-  background-color: rgb(187, 165, 119);
+  background-color: rgb(195 190 179);
 }
 
 h1, h2, h3, h4, h5, h6, p{
@@ -293,14 +293,14 @@ li {
   /* box-shadow: 2px 2px 5px #4c4949; */
 
 
-  border: 5px solid rgb(20, 63, 143);
+  /* border: 5px solid rgb(20, 63, 143); */
   margin: 15px 15px;
   padding: 10px 20px;
   border-radius: 30px;
   margin-top: 15px;
 
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .flight-demo:hover {
