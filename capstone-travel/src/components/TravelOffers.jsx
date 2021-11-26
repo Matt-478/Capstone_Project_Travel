@@ -14,7 +14,7 @@ const TravelOffers = ({ query, history }) => {
   const[data, setData] = useState([])
   const[dictionaries ,setDictionaries] = useState([])
 
-  let token = 'vABuPfdUVPyeYuFU7Jo3Y1zmeNqf'
+  let token = 'ML4R9bDKCp3Baav6F7AzEwhLEfMR'
 
   // on Query change, I call new IATA code
   useEffect(() => {
@@ -39,6 +39,12 @@ const TravelOffers = ({ query, history }) => {
         });
       const data = await response.json()
       setFlightInfo(data)
+      // also doesn't work
+      // data.map((info) => (
+      //   setDictionaries(info.dictionaries),
+      //   setData(info.data)
+      // ))
+
 
       if(!response.ok) {
         setError(true)
@@ -104,11 +110,11 @@ const TravelOffers = ({ query, history }) => {
         history.push('/404')
         ) } */
       }
-{/* 
+
         {isLoading ? flightInfo.data.map((item) => (
-          <SingleFlightOption data={item} key={item.id}/>
+          <SingleFlightOption info={item} key={item.id}/>
         )) :  <div className="loader">Loading...</div>
-        } */}
+        }
     </>
   )
 }

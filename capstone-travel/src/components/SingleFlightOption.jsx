@@ -25,27 +25,24 @@ const SingleFlightOption = ( {info} ) => {
     }
 
   return (
-    <div>
-
-      {/* origin */}
-      <div className="solo-flight-box" key={info.id}>
+    <div class="custom-big-seperate">
 
         {
-        // FROM; TO;
-        // info.itineraries.map((i) => (
-        //   i.segments.map((j) => (
-        //     <div className="flight-demo" key={j.id}>
-        //       <p>FROM: {j.arrival.iataCode}</p>
-        //       <p>TO: {j.departure.iataCode}</p>
-        //     </div>
-        //     ))
-        //   ))
+           info.itineraries.map((i) => (
+            <div className="seperate" >
+                {
+                  i.segments.map((j) => (
+                    <div className="flight-demo" >
+                      <p>FROM: {j.arrival.iataCode}</p>
+                      <p>TO: {j.departure.iataCode}</p>
+                    </div>
+                  ))
+                }
+              </div>
+            ))
         }
-
-
-      {/* <p>PRICE: {data.price.total}</p> */}
       </div>
-    </div>
+    // </div>
   )
 }
 
@@ -80,3 +77,46 @@ export default SingleFlightOption
       <div className="solo-flight-box">
         <p>Company: </p>
       </div>  */}
+
+
+
+      {
+        //  FROM; TO;
+        // info.data.map((i) => (
+        //    i.segments.map((j) => (
+        //      <div className="flight-demo" key={j.id}>
+        //        <p>FROM: {j.arrival.iataCode}</p>
+        //        <p>TO: {j.departure.iataCode}</p>
+        //      </div>
+        //      ))
+        //    ))
+        }
+
+
+             {/* {info.map((item) => (
+
+      ))} */}
+
+      {/* origin */}
+      {/* <div className="solo-flight-box" key={info.id}>
+      </div> */}
+      
+
+      {/* <p>PRICE: {data.price.total}</p> */}
+
+
+
+              {/* {
+          info.itineraries.map((itin) => (
+            <div className="left-align">
+              {
+              itin.map((segm) => (
+                <>
+                  <p>FROM: {segm.arrival.iataCode}</p>
+                  <p>TO: {segm.departure.iataCode} </p>
+                </>
+              ))
+              }
+            </div>
+          ))
+        } */}
