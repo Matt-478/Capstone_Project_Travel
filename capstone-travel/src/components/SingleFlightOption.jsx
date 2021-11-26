@@ -25,9 +25,10 @@ const SingleFlightOption = ( {info} ) => {
     }
 
   return (
+    <>
     <div class="custom-big-seperate">
 
-        {
+        {/* {
            info.itineraries.map((i) => (
             <div className="seperate" >
                 {
@@ -35,13 +36,47 @@ const SingleFlightOption = ( {info} ) => {
                     <div className="flight-demo" >
                       <p>FROM: {j.arrival.iataCode}</p>
                       <p>TO: {j.departure.iataCode}</p>
+                      
+                      {/* OPT #1 */}
+                      {/* <div id="content"> 
+                        <a href="#nav"><span>Click Here</span></a>
+                        <div className="expandable" id="nav">
+                          <p>Cum enim magna parturient</p>
+                        </div>
+                      </div> */}
+
+
+
+                      {/* OPT #2  - USE THIS ONE*/}
+                      {/* <div>
+                        <input type="checkbox" name="toggle" id="toggle" />
+                        <label for="toggle"></label>
+                          <div className="container"></div>
+                        <div className="message"><h1> hello, I'm a hidden message. You found it.</h1>                                               
+                        </div>
+                      </div> */}
+
+{/* 
                     </div>
                   ))
                 }
               </div>
             ))
-        }
+        } */}
       </div>
+
+{/* 
+    <div id="content"> 
+      <a href="#nav"><span>Click Here</span></a>
+      <div className="expandable" id="nav">
+        <p>Cum enim magna parturient</p>
+      </div>
+      <a href="#nav2"><span>Click Here</span></a>
+      <div className="expandable" id="nav2">
+        <p>Cum enim magna parturient</p>
+      </div>
+    </div>  */}
+  </>
     // </div>
   )
 }

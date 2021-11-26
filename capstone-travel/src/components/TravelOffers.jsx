@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import DisplayFLights from './DisplayFLights'
 
 import SingleFlightOption from './SingleFlightOption'
 
@@ -14,14 +15,14 @@ const TravelOffers = ({ query, history }) => {
   const[data, setData] = useState([])
   const[dictionaries ,setDictionaries] = useState([])
 
-  let token = 'ML4R9bDKCp3Baav6F7AzEwhLEfMR'
+  let token = 'lWEpmK9DhU5oGGjBVtWV9gfKTu8d'
 
   // on Query change, I call new IATA code
   useEffect(() => {
     cityCode(query)
     console.log(query)
 
-    // newTokenRequest()
+    // newTokenRequest() 
   },[query])
 
 // on a IATA code change I call fetchFlights
@@ -103,7 +104,6 @@ const TravelOffers = ({ query, history }) => {
 
   return(
     <>
-      <p>Here we'll display all of our info about flights to cool and great places</p>
       {/* {
       { error && (
         // "error"
@@ -111,10 +111,13 @@ const TravelOffers = ({ query, history }) => {
         ) } */
       }
 
-        {isLoading ? flightInfo.data.map((item) => (
+{/* THIS SHOULD BE UN COMMENTED LATER */}
+        {/* {isLoading ? flightInfo.data.map((item) => (
           <SingleFlightOption info={item} key={item.id}/>
         )) :  <div className="loader">Loading...</div>
-        }
+        } */}
+
+        {isLoading ? <DisplayFLights info={flightInfo.data}/> : "nope"}
     </>
   )
 }
