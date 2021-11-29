@@ -1,0 +1,28 @@
+.collapsible .toggle {
+  background: rgb(72, 133, 72);
+  border: unset;
+  cursor: pointer;
+
+  padding: 0.3rem;
+  /* border-radius: whatever I had for the others - I think it's 30px ;*/
+  color: rgb(243 238 227);
+  margin-bottom: 0.5rem; /* not a clue how much is this */
+}
+
+.collapsible .content {
+  border: 1px solid #afafaf;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.collapsible .content-parent {
+  /* For animation */
+  height: 0px;
+  overflow: hidden;
+  transition: height ease 0.4s;
+}
+
+.content {
+  text-align: left;
+}

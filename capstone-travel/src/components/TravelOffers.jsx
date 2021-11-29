@@ -122,8 +122,21 @@ const TravelOffers = ({ query, history }) => {
         {/* {isLoading ? <DisplayFLights info={flightInfo.data}/> : "nope"} */}
 
         {/* V2 OF DISPLAYING FLIGHTS */}
-        <DisplayFLights label="Flight 1"/>
-        <DisplayFLights label="Flight 2"/>
+        <DisplayFLights label="Flight 1"> 
+          <h1>Best flights</h1>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui dolores magni nihil saepe fuga nisi, dignissimos neque itaque hic esse perspiciatis quisquam aut unde vero suscipit eaque, adipisci aliquam consequatur.
+          Similique a libero maxime accusantium ex sequi vitae possimus pariatur quam veritatis obcaecati quasi labore corporis, recusandae quas! Omnis porro, cupiditate tenetur corrupti cumque nulla? Dolor pariatur cupiditate quae aperiam.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium esse reprehenderit, harum voluptatibus sequi assumenda, error aspernatur velit cum ullam molestiae saepe odit et minima ut officiis magnam quis ex deleniti minus.</p>
+        </DisplayFLights>
+        <DisplayFLights label="Flight 2">
+          <ol>
+            <li>Boop</li>
+            <li>Boop</li>
+            <li>Boop</li>
+            <li>Boop</li>
+            <li>Boop</li>
+          </ol>
+        </DisplayFLights>
         <DisplayFLights label="Flight 3"/>
 
     </>
