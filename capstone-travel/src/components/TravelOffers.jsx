@@ -15,7 +15,7 @@ const TravelOffers = ({ query, history }) => {
   const[data, setData] = useState([])
   const[dictionaries ,setDictionaries] = useState([])
 
-  let token = 'lWEpmK9DhU5oGGjBVtWV9gfKTu8d'
+  let token = 'eNLC2yfic501vJF3YLxJ5FCWgVa5'
 
   // on Query change, I call new IATA code
   useEffect(() => {
@@ -104,7 +104,7 @@ const TravelOffers = ({ query, history }) => {
 
   return(
     <>
-      {/* {
+      {/* ERROR HANDLING {
       { error && (
         // "error"
         history.push('/404')
@@ -117,7 +117,15 @@ const TravelOffers = ({ query, history }) => {
         )) :  <div className="loader">Loading...</div>
         } */}
 
-        {isLoading ? <DisplayFLights info={flightInfo.data}/> : "nope"}
+
+        {/* V1 OF DISPLAYING FLIGHTS */}
+        {/* {isLoading ? <DisplayFLights info={flightInfo.data}/> : "nope"} */}
+
+        {/* V2 OF DISPLAYING FLIGHTS */}
+        <DisplayFLights label="Flight 1"/>
+        <DisplayFLights label="Flight 2"/>
+        <DisplayFLights label="Flight 3"/>
+
     </>
   )
 }

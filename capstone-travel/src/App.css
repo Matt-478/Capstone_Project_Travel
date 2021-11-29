@@ -453,7 +453,7 @@ a { text-decoration: none; }
   margin: 15px 0;
 }
 
-.solo-ticket .expandable{
+/* .solo-ticket .expandable{
 
   overflow: hidden;
   color: #000;   
@@ -465,4 +465,4 @@ a { text-decoration: none; }
 
 .solo-ticket .expandable:target {
   height: 50px;
-}
+} */
