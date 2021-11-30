@@ -11,11 +11,29 @@ const TravelOffers = ({ query, history }) => {
   const[isLoading, setIsLoading] = useState(false)
   const[error, setError] = useState(false)
 
+  const [selectedData, setSelectedData] = useState([])
+
+  let fakeArr = [{
+    title: 1,
+    from: "LON",
+    to: "DUB"
+  },
+  {
+    title: 2,
+    from: "ORG",
+    to: "NYX"
+  }, 
+  {
+    title: 3,
+    from: "GAT",
+    to: "POR"
+  }]
+
 
   const[data, setData] = useState([])
   const[dictionaries ,setDictionaries] = useState([])
 
-  let token = 'eNLC2yfic501vJF3YLxJ5FCWgVa5'
+  let token = 'M2I56bIXKs33G6zjdHlG1VwK2082'
 
   // on Query change, I call new IATA code
   useEffect(() => {
@@ -25,27 +43,25 @@ const TravelOffers = ({ query, history }) => {
     // newTokenRequest() 
   },[query])
 
-// on a IATA code change I call fetchFlights
   useEffect(() => {
     fetchFlights(IATACode)
   },[IATACode])
-  
+
+  useEffect(() => {
+    extractedData(flightInfo)
+  },[flightInfo])
+
+
 
   const fetchFlights = async(IATACode) => {
     try{
-      const response = await fetch('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=LON&departureDate=2021-11-28&adults=1&max=15', {
+      const response = await fetch('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=LON&departureDate=2021-12-14&adults=1&max=15', {
         headers: {
             'Authorization': 'Bearer ' + token
           }
         });
       const data = await response.json()
       setFlightInfo(data)
-      // also doesn't work
-      // data.map((info) => (
-      //   setDictionaries(info.dictionaries),
-      //   setData(info.data)
-      // ))
-
 
       if(!response.ok) {
         setError(true)
@@ -61,6 +77,51 @@ const TravelOffers = ({ query, history }) => {
 
     } catch(err) {
       console.log(err.message)
+    }
+  }
+
+  const extractedData = async(arr) => {
+    try {
+      let extrudedData = arr.data.map((element) => ({
+        departure: element.itineraries[0].segments.map((itin) => (
+            itin.departure
+        )),
+        arrival:  element.itineraries[0].segments.map((itin) => (
+            itin.arrival
+        )),
+        carrierCode: element.itineraries[0].segments.map((itin) => (
+            itin.carrierCode
+        )),
+        aircraftCode: element.itineraries[0].segments.map((itin) => (
+          itin.aircraft.code
+        )),
+        priceCurrency: element.price.currency,
+        priceTotal: element.price.total,
+        priceBase: element.price.base,
+        priceFees: element.price.fees,
+        fareOption: element.travelerPricings[0].fareOption,
+        fareDetailsBySegment: element.travelerPricings[0].fareDetailsBySegment,
+        cabin: element.travelerPricings[0].fareDetailsBySegment[0].cabin,
+        weight: element.travelerPricings[0].fareDetailsBySegment.map((i) => (
+          i.includedCheckedBags
+        )),
+        // weightUnit: element.travelerPricings[0].fareDetailsBySegment.map((i) => (
+          // i.includedCheckedBags.weightUnit
+          // props will have includedCheckedBags.weightUnit once we give it the parameters for it
+          // since now we're working on their link. We're not using our custom
+        // )),
+      }))
+
+      if(extrudedData)  {
+        console.log("the new arr")
+        console.log(extrudedData)
+        setSelectedData(extrudedData)
+      } else {
+        console.log("no data in the new arr")
+      }
+      
+    } catch (error) {
+      console.log( error.message)
     }
   }
 
@@ -104,6 +165,7 @@ const TravelOffers = ({ query, history }) => {
 
   return(
     <>
+
       {/* ERROR HANDLING {
       { error && (
         // "error"
@@ -111,34 +173,26 @@ const TravelOffers = ({ query, history }) => {
         ) } */
       }
 
-{/* THIS SHOULD BE UN COMMENTED LATER */}
-        {/* {isLoading ? flightInfo.data.map((item) => (
-          <SingleFlightOption info={item} key={item.id}/>
+        {isLoading ? flightInfo.data.map((item) => (
+          // <SingleFlightOption info={item} key={item.id}/>
+          ""
         )) :  <div className="loader">Loading...</div>
-        } */}
+        }
 
 
         {/* V1 OF DISPLAYING FLIGHTS */}
         {/* {isLoading ? <DisplayFLights info={flightInfo.data}/> : "nope"} */}
 
-        {/* V2 OF DISPLAYING FLIGHTS */}
-        <DisplayFLights label="Flight 1"> 
-          <h1>Best flights</h1>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui dolores magni nihil saepe fuga nisi, dignissimos neque itaque hic esse perspiciatis quisquam aut unde vero suscipit eaque, adipisci aliquam consequatur.
-          Similique a libero maxime accusantium ex sequi vitae possimus pariatur quam veritatis obcaecati quasi labore corporis, recusandae quas! Omnis porro, cupiditate tenetur corrupti cumque nulla? Dolor pariatur cupiditate quae aperiam.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium esse reprehenderit, harum voluptatibus sequi assumenda, error aspernatur velit cum ullam molestiae saepe odit et minima ut officiis magnam quis ex deleniti minus.</p>
-        </DisplayFLights>
-        <DisplayFLights label="Flight 2">
-          <ol>
-            <li>Boop</li>
-            <li>Boop</li>
-            <li>Boop</li>
-            <li>Boop</li>
-            <li>Boop</li>
-          </ol>
-        </DisplayFLights>
-        <DisplayFLights label="Flight 3"/>
 
+        {
+          selectedData && selectedData.map((thing) => (
+            <DisplayFLights from={thing.departure.map((item) => item.iataCode)} to={thing.arrival.map((i) => i.iataCode)} price={thing.priceTotal} />
+          ))
+        }
+        {/* USE THIS AFTER I GET DATA BACK & (add the actual data)*/}
+        {/* {fakeArr.map((thing) => (
+          <DisplayFLights label={thing.title} from={thing.from} to={thing.to} />
+        ))} */}
     </>
   )
 }
@@ -155,15 +209,23 @@ export default TravelOffers
 
 
 
-
-
-{/* SETTING THESE AS STATES DIDN'T WORK
-        {isLoading ? flightInfo.data.map((item) => (
-          setData(item)
-        )) : "setting data failed"
-        }
-
-        {isLoading ? flightInfo.dictionaries.map((item) => (
-          setDictionaries(item)
-        )) : "setting dictionaries failed"
-        } */}
+        // let selectedData = theWholeArray.map((element) => ({
+        //   departure: element.itineraries[0].segments[0].departure,
+        //   arrival: element.itineraries[0].segments[0].arrival,
+        //   carrierCode: element.itineraries[0].segments[0].carrierCode,
+        //   aircraftCode: element.itineraries[0].segments[0].aircraft.code,
+        //   priceCurrency: element.price.currency,
+        //   priceTotal: element.price.total,
+        //   priceBase: element.price.base,
+        //   priceFees: element.price.fees,
+        //   fareOption: element.travelerPricings[0].fareOption,
+        //   fareDetailsBySegment: element.travelerPricings[0].fareDetailsBySegment,
+        //   cabin: element.travelerPricings[0].fareDetailsBySegment[0].cabin,
+        //   weight:
+        //     element.travelerPricings[0].fareDetailsBySegment[0].includedCheckedBags
+        //       .weight,
+        //   weightUnit:
+        //     element.travelerPricings[0].fareDetailsBySegment[0].includedCheckedBags
+        //       .weightUnit,
+        // }))
+        

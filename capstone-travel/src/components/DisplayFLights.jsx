@@ -1,19 +1,22 @@
 import { useState, useRef } from 'react'
 import './Styles/Collapsible.css'
 
-const DisplayFLights = (props) => {
-  // let arr = [1,2,3,4,5]
-
+const DisplayFLights = ({ from, to, price }) => {
   const[isOpen, setIsOpen] = useState(false)
   const parentRef = useRef()
 
   return (
     <>
-    {/* "does it even work?" */}
-
+    {/* all the info is passed as a prop
+    styling will be in this component, but
+    the actual info should be in the parent component */}
     <div className="collapsible">
       <button className="toggle" onClick={() => setIsOpen(!isOpen)}>
-        {props.label}
+        <div className="flex-align-center p-10-20">
+          <h2>FROM: {from}</h2>
+          <h2>TO: {to}</h2>
+          <h2>PRICE: {price}</h2>
+        </div>
       </button>
       <div 
         className="content-parent" 
@@ -24,8 +27,13 @@ const DisplayFLights = (props) => {
           height: "0px",
         }}
         >
+
         <div className="content">
-          {props.children}
+          {/* {props.children} */}
+          <p>FROM: </p>
+          <p>TO: </p>
+
+
         </div>
       </div>
     </div>
