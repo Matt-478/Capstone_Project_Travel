@@ -6,10 +6,10 @@ h2 {
   border: unset;
   cursor: pointer;
   width: 100%;
-  padding: 0.3rem;
   color: #ddd !important;
   /* margin-bottom: 0.5rem; not a clue how much is this */
   border-radius: 30px 30px 0 0;
+  padding: 10px 20px 0 20px;
 }
 
 .collapsible .content {

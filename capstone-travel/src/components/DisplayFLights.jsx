@@ -1,21 +1,30 @@
 import { useState, useRef } from 'react'
 import './Styles/Collapsible.css'
 
-const DisplayFLights = ({ from, to, price }) => {
+const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, arrivalCode, arrivalTerminal, arrivalTime, carrierCode, aircraftCode, priceCurrency, priceTotal, priceBase, priceFees, fareOption, cabin, weightOfIncludedCHeckedBags}) => {
   const[isOpen, setIsOpen] = useState(false)
   const parentRef = useRef()
-
+// { id, carrierCode, aircraftCode, priceCurrency, priceTotal, priceBase, priceFees, fareOption, fareDetailsBySegment, cabin, weightInfo }
   return (
     <>
     {/* all the info is passed as a prop
     styling will be in this component, but
     the actual info should be in the parent component */}
-    <div className="collapsible">
-      <button className="toggle" onClick={() => setIsOpen(!isOpen)}>
-        <div className="flex-align-center p-10-20">
-          <h2>FROM: {from}</h2>
-          <h2>TO: {to}</h2>
-          <h2>PRICE: {price}</h2>
+    <div className="collapsible" key={id}>
+      <button
+       className="toggle" 
+       onClick={() => setIsOpen(!isOpen)}
+       style={ isOpen ?{
+        borderRadius: "30px 30px 0 0",
+       } : {
+        borderRadius: "30px 30px 30px 30px",
+        padding: "10px 20px"
+       }}>
+
+        <div className="flex-align-center">
+          <h2>FROM: {departureCode}</h2>
+          <h2>TO: {arrivalCode}</h2>
+          <h2>PRICE: {priceTotal}</h2> 
         </div>
       </button>
       <div 
@@ -23,17 +32,31 @@ const DisplayFLights = ({ from, to, price }) => {
         ref={parentRef} 
         style={ isOpen ? {
           height: parentRef.current.scrollHeight + "px",
+          borderRadius: "0 0 30px 30px",
         } : {
           height: "0px",
+          // borderRadius: "0 0 30px 30px"
         }}
         >
 
         <div className="content">
           {/* {props.children} */}
-          <p>FROM: </p>
-          <p>TO: </p>
-
-
+           {/* id={id} */}
+          <div>from: {departureCode}</div>
+          <div>terminal: {departureTerminal}</div>
+          <div>leaving at: {departureTime}</div>
+          <div>to: {arrivalCode}</div>
+          <div>terminal: {arrivalTerminal}</div>          
+          <div>arriving at: {arrivalTime}</div>          
+          <div>carrierCode: {carrierCode}</div>
+          <div>aircraftCode: {aircraftCode}</div>
+          <div>priceCurrency: {priceCurrency}</div>
+          <div>priceTotal: {priceTotal}</div>
+          <div>priceBase: {priceBase}</div>
+          <div>priceFees: {priceFees}</div>
+          <div>fareOption: {fareOption}</div>
+          <div>cabin: {cabin}</div>
+          <div>weightInfo: {weightOfIncludedCHeckedBags}</div> 
         </div>
       </div>
     </div>
@@ -42,3 +65,19 @@ const DisplayFLights = ({ from, to, price }) => {
 }
 
 export default DisplayFLights
+
+
+          {/* id={thing.id}
+          from={thing.departure.map((item) => item.iataCode)}
+          to={thing.arrival.map((i) => i.iataCode)}
+          carrierCode={thing.carrierCode}
+          aircraftCode={thing.aircraftCode}
+          priceCurrency={thing.priceCurrency}
+          priceTotal={thing.priceTotal}
+          priceBase={thing.priceTotal}
+          priceFees={thing.priceFees}
+          fareOption={thing.fareOption}
+          price={thing.priceTotal}
+          fareDetailsBySegment={thing.fareDetailsBySegment}
+          cabin={thing.cabin}
+          weightInfo={thing.weight} */}
