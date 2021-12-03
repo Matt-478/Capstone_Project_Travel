@@ -47,3 +47,11 @@ h2 {
 .p-10-20 {
   padding: 10px 20px;
 }
+
+.pseudo-fill {
+  content: "";
+  position: relative;
+  top: 0;
+  width: inherit;
+  background-color: khaki;
+}

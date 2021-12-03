@@ -31,7 +31,7 @@ function PexelsPhotos ( {query} ) {
 
   return (
     <>
-        <div className="image-display"> 
+        <div className="image-display mt-5perc"> 
         {/* how to randomise all the img's and videos? */}
           <ul>
               { 

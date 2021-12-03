@@ -6,44 +6,91 @@ import SingleFlightOption from './SingleFlightOption'
 
 const TravelOffers = ({ query, history }) => {
 
-  const[IATACode, setIATACode] = useState([])
-  const[flightInfo, setFlightInfo] = useState([])
+  // const[IATACode, setIATACode] = useState([])
+
+
   const[isLoading, setIsLoading] = useState(false)
   const[error, setError] = useState(false)
+  const[selectedOptions, setSelectedOptions] = useState({
+    destinationLocationCode: "LON",
+    departureDate: "2021-12-14",
+    returnDate: "0",
+    adults: "1",
+    kids: "0",
+    travelClass: "ECONOMY",
+    nonStop: "true",
+    maxPrice: "250",
+    max: "30",
+  })
+  const[flightInfo, setFlightInfo] = useState([])
+  const[selectedData, setSelectedData] = useState([])
+  const[token, setToken] = useState("")
 
-  const [selectedData, setSelectedData] = useState([])
-  const[data, setData] = useState([])
-  const[dictionaries ,setDictionaries] = useState([])
+  // for updating the token
+  useEffect(() => {
+    newTokenRequest()
+    let timer = setInterval(function() {
+      newTokenRequest()
+  }, 600000);
+    return () => clearTimeout(timer);
+  }, []);
 
-  let token = 'SaP0iCiiiqmAPB8inXIOTMmAeBRH'
-
-  // on Query change, I call new IATA code
   useEffect(() => {
     cityCode(query)
-    console.log(query)
-
-    // newTokenRequest() 
-  },[query])
+    // console.log(query)
+  },[query, token])
 
   useEffect(() => {
-    fetchFlights(IATACode)
-  },[IATACode])
+    fetchFlights(
+      selectedOptions.destinationLocationCode,
+      selectedOptions.adults,
+      selectedOptions.travelClass,
+      selectedOptions.nonStop,
+      )
+  },[selectedOptions])
 
   useEffect(() => {
     extractedData(flightInfo)
   },[flightInfo])
 
+  // if value === null/0 = skip value(?)
 
-
-  const fetchFlights = async(IATACode) => {
+  async function cityCode(query = "LON") {
     try{
-      const response = await fetch('https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=LON&departureDate=2021-12-14&adults=1&max=15', {
+    if(query && query.length > 2) {
+    const response = await fetch("https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=" + query + "&view=LIGHT&page%5Boffset%5D=0&page%5Blimit%5D=10", {
+      headers: {
+          'Authorization': 'Bearer ' + token
+        }
+      })
+    const { data } = await response.json()
+    // console.log('!!!', data)
+    const firstItem = await data[0].iataCode
+    setSelectedOptions({
+      ...selectedOptions,
+      destinationLocationCode: firstItem
+    })}
+    } catch(err) {
+      console.log(err)
+    }
+
+    // why can't I set the state to be the first array element?
+    // setIATACode(data[0].iataCode)
+
+  //  after each reload I need to remove all the values from the array
+  }
+
+  const fetchFlights = async(location="LON", adults = 1, travelClass = "economy", nonStop) => {
+    try{
+      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=2021-12-14&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=15`, {
         headers: {
             'Authorization': 'Bearer ' + token
           }
         });
       const data = await response.json()
       setFlightInfo(data)
+      // console.log("here's the data")
+      // console.log(data )
 
       if(!response.ok) {
         setError(true)
@@ -51,15 +98,12 @@ const TravelOffers = ({ query, history }) => {
         setIsLoading(true)
       }
 
-      console.log("returned data")
-      console.log(data)
-
-      console.log("flight info")
-      console.log(flightInfo)
-
     } catch(err) {
       console.log(err.message)
     }
+
+      // console.log("flight info")
+      // console.log(flightInfo)
   }
 
   const extractedData = async(arr) => {
@@ -112,15 +156,13 @@ const TravelOffers = ({ query, history }) => {
       }))
 
       if(extrudedData)  {
-        console.log("the new arr")
-        console.log(extrudedData)
         setSelectedData(extrudedData)
       } else {
         console.log("no data in the new arr")
       }
       
     } catch (error) {
-      console.log( error.message)
+      console.log(error.message)
     }
   }
 
@@ -133,44 +175,63 @@ const TravelOffers = ({ query, history }) => {
       body: 'grant_type=client_credentials&client_id=Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6&client_secret=BzObmAeMp1ClNDtn'
   })
   .then(response => response.json())
-  .then(data => console.log(data.access_token))
-  }
-
-  async function cityCode(query) {
-    try{
-      if(query.length > 2) {
-      const response = await fetch("https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=" + query + "&view=LIGHT&page%5Boffset%5D=0&page%5Blimit%5D=10", {
-        headers: {
-            'Authorization': 'Bearer ' + token
-          }
-        })
-      const { data } = await response.json()
-      const firstItem = await data[0].iataCode
-      setIATACode(firstItem)
-
-      // console.log("city code data: " + data)
-      // console.log("firstItem: " + firstItem)
-      // console.log("IATACode: " + IATACode)
-      }
-    } catch(err) {
-      console.log(err)
-    }
-
-    // why can't I set the state to be the first array element?
-    // setIATACode(data[0].iataCode)
-
-  //  after each reload I need to remove all the values from the array
+  .then(data => {
+    console.log(data.access_token)
+    setToken(data.access_token)
+  })
   }
 
   return(
     <>
+    <div className="p-page">
+    <div className="inline-flex">
+        <div className="wrapper" >
+          <form className="inline-b">
+           <div className="searchBar" >
+            <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="FROM:" />
+           </div>
+          </form>
 
-    {isLoading ? flightInfo.data.map((item) => (
-        ""
-      )) :  <div className="loader">Loading...</div>
-    }
+          <form className="inline-b" style={{paddingRight: "15px"}}>
+           <div className="searchBar" >
+            <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="TO:" />
+           </div>
+          </form>
+        </div>
+    </div>
+    <div className="options-input-box">
+      <p>Non-Stop: </p>
+      <form>
+        <div className="human-amount">
+          <div className="d-inline-flex">
+            <p>Adults(12+):</p>
+            <input type="number" min="12"/>
+          </div>
 
-    {
+          <div className="d-inline-flex">
+            <p>Kids(2 - 11): </p>
+            <input type="number" min="2" max="11" />
+          </div>
+
+          <div className="d-inline-flex">
+            <p>Infants(under 2): </p>
+            <input type="number" max="2" min="0.1" step="0.1"/>
+          </div>
+        </div>
+
+        <div className="display-inline-flex">
+          <p>Travel Class: </p>
+          <select >
+            <option>
+
+            </option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+
+    { isLoading ?
       selectedData.length > 1 && selectedData.map((array) => (
         <DisplayFLights
           departureCode={array.departureCode}
@@ -188,8 +249,9 @@ const TravelOffers = ({ query, history }) => {
           fareOption={array.fareOption}
           cabin={array.cabin}
           weightOfIncludedCHeckedBags={array.weightOfIncludedCHeckedBags}
+          key={array.id}
            />
-      ))
+      )) :  <div className="loader">Loading...</div>
     }
 
       {/* ERROR HANDLING {
@@ -198,9 +260,7 @@ const TravelOffers = ({ query, history }) => {
         history.push('/404')
         ) } */
       }
-
-        {/* V1 OF DISPLAYING FLIGHTS */}
-        {/* {isLoading ? <DisplayFLights info={flightInfo.data}/> : "nope"} */}
+    </div>
     </>
   )
 }

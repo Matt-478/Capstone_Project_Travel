@@ -4,7 +4,8 @@
 
 body {
   /* margin: 0 auto; */
-  padding: 0 10%;
+  /* padding: 0 10%; */
+  padding: 0;
   background-color: rgb(195 190 179);
 }
 
@@ -30,6 +31,17 @@ body p {
   font-size: 1.3em;
 }
 
+.p-page {
+  padding: 0 10%;
+}
+
+.mt-5perc {
+  margin-top: 2.5%;
+}
+
+.inline-b{
+  display: inline-block;
+}
 
 
 .flex-layout {
@@ -87,10 +99,13 @@ input[type="text"]{
   width: 100%;
   margin: 6rem auto ;
   margin-bottom: 30px;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .searchBar {
-  width: 100%;
+  max-width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -181,6 +196,7 @@ li {
   outline: none;
   border: none;
   margin: 40px auto 30px;
+  cursor: pointer;
 }
 
 .pill-btn {
@@ -314,36 +330,9 @@ li {
   margin-left: -15px;
 } */
 
-.flight-demo:hover {
-  /* box-shadow: 0px 0px 2px 0px 5px #4c4949; */
+.flight-demo:hover { 
+  box-shadow: 0px 0px 2px 0px 5px #4c4949;
 }
-
-
-/* .solo-flight-box p {
-  color: rgb(148, 148, 148);
-} */
-
-
-/* Flight-demo ANIMATION #1 */
-/* #content { margin: 50px; } 
-a { text-decoration: none; }  
- 
-.expandable {
-  /* background: rgb(173, 115, 115); */
-  /* overflow: hidden;
-  color: #000;   
-  line-height: 50px;
-
-  transition: all .5s ease-in-out;
-  height: 0;
- } */
- 
-
- /* what does :target do? 
- .expandable:target {
-
-  height: 50px;
-} */
 
 
 
@@ -466,3 +455,32 @@ a { text-decoration: none; }
 .solo-ticket .expandable:target {
   height: 50px;
 } */
+
+
+
+
+/* FLIGHT OPTION INPUTS */
+.options-input-box {
+  width: 100%;
+  height: 200px;
+  border-radius: 30px;
+  background-color: rgb(129 128 112);
+}
+
+input[type="number"] {
+  background-color: rgb(183 182 171);
+  border: unset;
+  border-radius: 4px;
+}
+
+.human-amount {
+  display: flex;
+  justify-content: space-around;
+
+  margin: 10px 0;
+}
+
+
+.d-inline-flex {
+  display: inline-flex;
+}

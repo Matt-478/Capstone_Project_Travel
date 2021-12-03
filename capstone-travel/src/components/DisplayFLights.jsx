@@ -4,13 +4,13 @@ import './Styles/Collapsible.css'
 const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, arrivalCode, arrivalTerminal, arrivalTime, carrierCode, aircraftCode, priceCurrency, priceTotal, priceBase, priceFees, fareOption, cabin, weightOfIncludedCHeckedBags}) => {
   const[isOpen, setIsOpen] = useState(false)
   const parentRef = useRef()
-// { id, carrierCode, aircraftCode, priceCurrency, priceTotal, priceBase, priceFees, fareOption, fareDetailsBySegment, cabin, weightInfo }
+
   return (
     <>
     {/* all the info is passed as a prop
     styling will be in this component, but
     the actual info should be in the parent component */}
-    <div className="collapsible" key={id}>
+    <div className="collapsible">
       <button
        className="toggle" 
        onClick={() => setIsOpen(!isOpen)}
@@ -31,17 +31,18 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
         className="content-parent" 
         ref={parentRef} 
         style={ isOpen ? {
-          height: parentRef.current.scrollHeight + "px",
+          height: parentRef.current.scrollHeight + "px" ,
           borderRadius: "0 0 30px 30px",
         } : {
           height: "0px",
           // borderRadius: "0 0 30px 30px"
         }}
+
+        
         >
 
         <div className="content">
           {/* {props.children} */}
-           {/* id={id} */}
           <div>from: {departureCode}</div>
           <div>terminal: {departureTerminal}</div>
           <div>leaving at: {departureTime}</div>
@@ -65,19 +66,3 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
 }
 
 export default DisplayFLights
-
-
-          {/* id={thing.id}
-          from={thing.departure.map((item) => item.iataCode)}
-          to={thing.arrival.map((i) => i.iataCode)}
-          carrierCode={thing.carrierCode}
-          aircraftCode={thing.aircraftCode}
-          priceCurrency={thing.priceCurrency}
-          priceTotal={thing.priceTotal}
-          priceBase={thing.priceTotal}
-          priceFees={thing.priceFees}
-          fareOption={thing.fareOption}
-          price={thing.priceTotal}
-          fareDetailsBySegment={thing.fareDetailsBySegment}
-          cabin={thing.cabin}
-          weightInfo={thing.weight} */}
