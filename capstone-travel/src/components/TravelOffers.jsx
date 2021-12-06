@@ -4,10 +4,9 @@ import DisplayFLights from './DisplayFLights'
 import SingleFlightOption from './SingleFlightOption'
 
 
-const TravelOffers = ({ query, history }) => {
+const TravelOffers = ({ history }) => {
 
   // const[IATACode, setIATACode] = useState([])
-
 
   const[isLoading, setIsLoading] = useState(false)
   const[error, setError] = useState(false)
@@ -24,7 +23,9 @@ const TravelOffers = ({ query, history }) => {
   })
   const[flightInfo, setFlightInfo] = useState([])
   const[selectedData, setSelectedData] = useState([])
-  const[token, setToken] = useState("")
+
+  const[token, setToken] = useState("RWvCQwWYTHkyLvvO7fDupPApKfeC")
+  const[cityQuery, setCityQuery] = useState("")
 
   // for updating the token
   useEffect(() => {
@@ -35,10 +36,15 @@ const TravelOffers = ({ query, history }) => {
     return () => clearTimeout(timer);
   }, []);
 
+  // on page load we set the cityQuery param to be the actual query we'll go by
   useEffect(() => {
-    cityCode(query)
+    urlFunction()
+  }, [])
+
+  useEffect(() => {
+    cityCode(cityQuery)
     // console.log(query)
-  },[query, token])
+  },[cityQuery, token])
 
   useEffect(() => {
     fetchFlights(
@@ -53,9 +59,19 @@ const TravelOffers = ({ query, history }) => {
     extractedData(flightInfo)
   },[flightInfo])
 
+  const urlFunction = () => {
+    // access url
+    const urlQueryString = window.location.search;
+
+    // extract query from params in the 'flight' page
+    const urlParams = new URLSearchParams(urlQueryString);
+    const city = urlParams.get('cityQuery')
+    setCityQuery(city)
+  }
+
   // if value === null/0 = skip value(?)
 
-  async function cityCode(query = "LON") {
+  async function cityCode(query = "LONDON") {
     try{
     if(query && query.length > 2) {
     const response = await fetch("https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=" + query + "&view=LIGHT&page%5Boffset%5D=0&page%5Blimit%5D=10", {
@@ -219,14 +235,22 @@ const TravelOffers = ({ query, history }) => {
           </div>
         </div>
 
+      {/* CLASS OPTIONS V1 */}
         <div className="display-inline-flex">
           <p>Travel Class: </p>
           <select >
-            <option>
-
-            </option>
+            <option>Economy</option>
+            <option>Premium Economy</option>
+            <option>Business</option>
+            <option>First</option>
           </select>
         </div>
+
+      {/* CLASS OPTIONS V2 */}
+      <div className="display-inline-flex">
+        <p>Travel Class</p>
+
+      </div>
       </form>
     </div>
 

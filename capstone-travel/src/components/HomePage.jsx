@@ -18,7 +18,18 @@ const HomePage = ({history}) => {
 
   useEffect(() => {
     fetchWikipediaCitySummary(realState)
+    urlFunction(realState)
   },[realState])
+
+  const urlFunction = (realState) => {
+    const _myURL = new URL(window.location.href)
+    console.log(_myURL)
+    
+    // access url
+    // set it's parameter to be the query
+    // pass it down with the history.push
+    // extract it from params in the 'flight' page
+  }
 
 
   function toTitleCase (str) {
@@ -50,8 +61,10 @@ const HomePage = ({history}) => {
   }
 
   const handleBookTrip = () => {
-    history.push("/flight")
-    // can i pass props to trvael offers with this function?
+    history.push({
+      pathname: '/flight',
+      search: '?cityQuery=' + realState.toLowerCase()
+    })
   }
 
   return (
