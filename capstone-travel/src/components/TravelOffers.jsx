@@ -11,7 +11,7 @@ const TravelOffers = ({ history }) => {
   const[isLoading, setIsLoading] = useState(false)
   const[error, setError] = useState(false)
   const[selectedOptions, setSelectedOptions] = useState({
-    destinationLocationCode: "LON",
+    destinationLocationCode: "",
     departureDate: "2021-12-14",
     returnDate: "0",
     adults: "1",
@@ -23,41 +23,57 @@ const TravelOffers = ({ history }) => {
   })
   const[flightInfo, setFlightInfo] = useState([])
   const[selectedData, setSelectedData] = useState([])
-
-  const[token, setToken] = useState("RWvCQwWYTHkyLvvO7fDupPApKfeC")
+  // const[token, setToken] = useState("")
   const[cityQuery, setCityQuery] = useState("")
 
   // for updating the token
-  useEffect(() => {
-    newTokenRequest()
-    let timer = setInterval(function() {
-      newTokenRequest()
-  }, 600000);
-    return () => clearTimeout(timer);
-  }, []);
+  //useEffect(() => {
+  //  newTokenRequest()
+  //  let timer = setInterval(function() {
+  //    newTokenRequest()
+  //}, 600000);
+  //  return () => clearTimeout(timer);
+  //}, []);
 
   // on page load we set the cityQuery param to be the actual query we'll go by
-  useEffect(() => {
-    urlFunction()
-  }, [])
+  //useEffect(() => {
+  //  urlFunction()
+  //}, [])
 
   useEffect(() => {
-    cityCode(cityQuery)
-    // console.log(query)
-  },[cityQuery, token])
+    //cityCode(cityQuery)
+    //console.log("city query: " + cityQuery)
+    getData()
+  },[cityQuery])
+  // used to update on token as well - might be useful
 
-  useEffect(() => {
-    fetchFlights(
-      selectedOptions.destinationLocationCode,
-      selectedOptions.adults,
-      selectedOptions.travelClass,
-      selectedOptions.nonStop,
-      )
-  },[selectedOptions])
+  // useEffect(() => {
+  //   fetchFlights(
+  //     selectedOptions.destinationLocationCode,
+  //     selectedOptions.adults,
+  //     selectedOptions.travelClass,
+  //     selectedOptions.nonStop,
+  //     )
+  // },[selectedOptions.destinationLocationCode])
 
-  useEffect(() => {
-    extractedData(flightInfo)
-  },[flightInfo])
+  // useEffect(() => {
+  //   extractedData(flightInfo)
+  // },[flightInfo])
+
+  const getData = async () => {
+    urlFunction() // getting the query string parameter
+    let t = await newTokenRequest() // we're getting a token and not saving it anymore in the state, but just in a local variable because this is sync
+    console.log('!!!', t)
+    await cityCode(t, cityQuery)
+    await fetchFlights(
+           t,
+           selectedOptions.destinationLocationCode,
+           selectedOptions.adults,
+           selectedOptions.travelClass,
+           selectedOptions.nonStop,
+           )
+  } 
+
 
   const urlFunction = () => {
     // access url
@@ -71,24 +87,63 @@ const TravelOffers = ({ history }) => {
 
   // if value === null/0 = skip value(?)
 
-  async function cityCode(query = "LONDON") {
-    try{
-    if(query && query.length > 2) {
-    const response = await fetch("https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=" + query + "&view=LIGHT&page%5Boffset%5D=0&page%5Blimit%5D=10", {
-      headers: {
-          'Authorization': 'Bearer ' + token
-        }
-      })
-    const { data } = await response.json()
-    // console.log('!!!', data)
-    const firstItem = await data[0].iataCode
-    setSelectedOptions({
-      ...selectedOptions,
-      destinationLocationCode: firstItem
-    })}
-    } catch(err) {
-      console.log(err)
+  const newTokenRequest = async() => {
+    try {
+      const response = await fetch('https://test.api.amadeus.com/v1/security/oauth2/token', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'grant_type=client_credentials&client_id=Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6&client_secret=BzObmAeMp1ClNDtn',
+    })
+      const data = await response.json()
+      let tokenToSet = await data
+
+      console.log("pre-receieivng")
+
+
+      console.log("what we received")
+      console.log(tokenToSet.access_token)
+
+      console.log("pre-setting")
+      console.log(tokenToSet.access_token)
+
+      // setToken(tokenToSet.access_token)
+      return tokenToSet.access_token
+
+      console.log("post-setting")
+
+    } catch (error) {
+      console.log(error)
+      return ''
     }
+    // const tokenData =  await data.access_token
+    // data.access_token && setToken(tokenData)
+
+    // console.log("!!!")
+  }
+
+  async function cityCode(token, query) {
+    try{
+      if(query.length > 2) {
+      const response = await fetch("https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=" + query + "&sort=analytics.travelers.score&view=LIGHT&page%5Boffset%5D=0&page%5Blimit%5D=10", {
+        headers: {
+            'Authorization': 'Bearer ' + token,
+          }
+        })
+      const { data }  = await response.json()
+      // console.log('!!!', data)
+      const firstItem = await data && data[0].iataCode
+      setSelectedOptions({
+        ...selectedOptions,
+        destinationLocationCode: firstItem
+      })
+      } else {
+      console.log("oops")
+      }
+      }catch(err) {
+        console.log(err)
+      }
 
     // why can't I set the state to be the first array element?
     // setIATACode(data[0].iataCode)
@@ -96,7 +151,7 @@ const TravelOffers = ({ history }) => {
   //  after each reload I need to remove all the values from the array
   }
 
-  const fetchFlights = async(location="LON", adults = 1, travelClass = "economy", nonStop) => {
+  const fetchFlights = async(token = '', location="LON", adults = 1, travelClass = "economy", nonStop) => {
     try{
       const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=2021-12-14&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=15`, {
         headers: {
@@ -105,8 +160,8 @@ const TravelOffers = ({ history }) => {
         });
       const data = await response.json()
       setFlightInfo(data)
-      // console.log("here's the data")
-      // console.log(data )
+      console.log("here's the data")
+      console.log(data)
 
       if(!response.ok) {
         setError(true)
@@ -147,11 +202,11 @@ const TravelOffers = ({ history }) => {
           segm.arrival.at
          )),
 
-        carrierCode: element.itineraries[0].segments.map((itin) => (
-            itin.carrierCode
+        carrierCode: element.itineraries[0].segments.map((segm) => (
+          segm.carrierCode
         )),
-        aircraftCode: element.itineraries[0].segments.map((itin) => (
-          itin.aircraft.code
+        aircraftCode: element.itineraries[0].segments.map((segm) => (
+          segm.aircraft.code
         )),
         priceCurrency: element.price.currency,
         priceTotal: element.price.total,
@@ -180,21 +235,6 @@ const TravelOffers = ({ history }) => {
     } catch (error) {
       console.log(error.message)
     }
-  }
-
-  function newTokenRequest () {
-    fetch('https://test.api.amadeus.com/v1/security/oauth2/token', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: 'grant_type=client_credentials&client_id=Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6&client_secret=BzObmAeMp1ClNDtn'
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data.access_token)
-    setToken(data.access_token)
-  })
   }
 
   return(
@@ -308,3 +348,21 @@ export default TravelOffers
 // nonStop      true/false      boolean
 // maxPrice       1-100000        integer
 // max 1-10000  integer     for me
+
+
+
+  // function newTokenRequest () {
+  //   fetch('https://test.api.amadeus.com/v1/security/oauth2/token', {
+  //     method: 'POST',
+  //     headers: {
+  //         'Content-Type': 'application/x-www-form-urlencoded'
+  //     },
+  //     body: 'grant_type=client_credentials&client_id=Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6&client_secret=BzObmAeMp1ClNDtn'
+  // })
+  // .then(response => response.json())
+  // .then(data => {
+  //   console.log("!!!")
+  //   console.log(data.access_token)
+  //   setToken(data.access_token)
+  // })
+  // }
