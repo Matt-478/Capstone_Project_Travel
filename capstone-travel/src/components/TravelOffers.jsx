@@ -6,7 +6,6 @@ import SingleFlightOption from './SingleFlightOption'
 
 const TravelOffers = ({ history }) => {
 
-  // const[IATACode, setIATACode] = useState([])
 
   const[isLoading, setIsLoading] = useState(false)
   const[error, setError] = useState(false)
@@ -23,42 +22,14 @@ const TravelOffers = ({ history }) => {
   })
   const[flightInfo, setFlightInfo] = useState([])
   const[selectedData, setSelectedData] = useState([])
-  // const[token, setToken] = useState("")
   const[cityQuery, setCityQuery] = useState("")
 
-  // for updating the token
-  //useEffect(() => {
-  //  newTokenRequest()
-  //  let timer = setInterval(function() {
-  //    newTokenRequest()
-  //}, 600000);
-  //  return () => clearTimeout(timer);
-  //}, []);
-
-  // on page load we set the cityQuery param to be the actual query we'll go by
-  //useEffect(() => {
-  //  urlFunction()
-  //}, [])
 
   useEffect(() => {
     //cityCode(cityQuery)
     //console.log("city query: " + cityQuery)
     getData()
-  },[cityQuery])
-  // used to update on token as well - might be useful
-
-  // useEffect(() => {
-  //   fetchFlights(
-  //     selectedOptions.destinationLocationCode,
-  //     selectedOptions.adults,
-  //     selectedOptions.travelClass,
-  //     selectedOptions.nonStop,
-  //     )
-  // },[selectedOptions.destinationLocationCode])
-
-  // useEffect(() => {
-  //   extractedData(flightInfo)
-  // },[flightInfo])
+  },[])
 
   const getData = async () => {
     urlFunction() // getting the query string parameter
@@ -98,17 +69,6 @@ const TravelOffers = ({ history }) => {
     })
       const data = await response.json()
       let tokenToSet = await data
-
-      console.log("pre-receieivng")
-
-
-      console.log("what we received")
-      console.log(tokenToSet.access_token)
-
-      console.log("pre-setting")
-      console.log(tokenToSet.access_token)
-
-      // setToken(tokenToSet.access_token)
       return tokenToSet.access_token
 
       console.log("post-setting")
@@ -117,10 +77,6 @@ const TravelOffers = ({ history }) => {
       console.log(error)
       return ''
     }
-    // const tokenData =  await data.access_token
-    // data.access_token && setToken(tokenData)
-
-    // console.log("!!!")
   }
 
   async function cityCode(token, query) {
@@ -133,7 +89,7 @@ const TravelOffers = ({ history }) => {
         })
       const { data }  = await response.json()
       // console.log('!!!', data)
-      const firstItem = await data && data[0].iataCode
+      const firstItem = await data[0].iataCode
       setSelectedOptions({
         ...selectedOptions,
         destinationLocationCode: firstItem
