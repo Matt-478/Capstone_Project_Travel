@@ -1,17 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display&family=Readex+Pro:wght@300;400;500;700&display=swap');
+
 .App {
   text-align: center;
 }
 
 body {
-  /* margin: 0 auto; */
-  /* padding: 0 10%; */
   padding: 0;
-  background-color: rgb(195 190 179);
+  /* cold grey*/
+  background-color: #e5e5e5;
+
+      /* warm grey */
+      /* background-color: #dbd8d1; */
 }
 
 h1, h2, h3, h4, h5, h6, p{
-  font-family: 'Sarabun', sans-serif;
-  font-weight: 500;
+  /* font-family: 'Sarabun', sans-serif; */
+  /* font-family: 'Bebas Neue', cursive; */
+  /* font-weight: 700; */
   margin: 0;
 }
 
@@ -30,6 +35,27 @@ h4, h5, h6 {
 body p {
   font-size: 1.3em;
 }
+
+
+/* NAV area */
+.navbar {
+  height: 10%;
+  width: 100%;
+  margin: 30px;
+  margin-bottom: 80px;
+  /* background-color: #dbd8d1; */
+  text-align: left;
+}
+
+.navbar h2 {
+  font-size: 48px;
+  color: #a8a5a1 !important;
+  font-family: 'DM Serif Display' !important;
+  font-weight: 400;
+}
+
+
+/* main content on App.js */
 
 .p-page {
   padding: 0 10%;
@@ -97,7 +123,7 @@ input[type="text"]{
 
 .wrapper {
   width: 100%;
-  margin: 6rem auto ;
+  /* margin: 6rem auto ;  */
   margin-bottom: 30px;
 
   display: flex;

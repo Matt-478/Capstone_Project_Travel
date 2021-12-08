@@ -10,6 +10,9 @@ function App() {
   return(
     <div className="App">
       <Router>
+        <div className="navbar"> 
+          <h2>Trocap*</h2>
+        </div>
         <Route path="/home" exact render={(props) => <HomePage {...props} />} />
         <Route path="/flight" exact render={(props) => <TravelOffers {...props} />} />
         {/* <Route path="/" exact render={(props) => <Home title="Strive" {...props} />} /> */}

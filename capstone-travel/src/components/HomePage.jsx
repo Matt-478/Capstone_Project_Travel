@@ -3,6 +3,7 @@ import PexelsVideos from './PexelsVideos';
 import SnapMap from './SnapMap'
 
 import { useState, useEffect } from 'react';
+import { Navbar } from 'react-bootstrap';
 
 const HomePage = ({history}) => {
 
@@ -71,6 +72,7 @@ const HomePage = ({history}) => {
     <>
 
     <div className="App">
+
       <div className="p-page">
         <div className="wrapper" >
           <form onSubmit={handleSubmit}>

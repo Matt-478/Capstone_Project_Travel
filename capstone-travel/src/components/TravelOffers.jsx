@@ -291,8 +291,32 @@ const TravelOffers = ({ history }) => {
   }
   </div>
 
-  <p>HERE WILL COME THE ANIMATION TRAINING</p>
-<hr/>
+  <p>HERE WILL COME THE COLOR COMBOS</p>
+      {/* <span className="circle c-1"></span>
+      <span className="circle c-2"></span>
+      <span className="circle c-2-1"></span>
+      <span className="circle c-2-2"></span>
+
+  <br></br>
+
+    <div className="circle  c-3"></div>
+    <div className="circle  c-4"></div>
+    <div className="circle  c-4-1"></div>
+    <div className="circle  c-4-2"></div>
+
+  <br></br>
+
+    <div className="circle  c-5"></div>
+    <div className="circle  c-6"></div>
+    <div className="circle  c-6-1"></div>
+    <div className="circle  c-6-2"></div>
+
+  <br></br> */}
+
+    <div className="circle  c-7"></div>
+    <div className="circle  c-8"></div>
+    <div className="circle  c-8-1"></div>
+    <div className="circle  c-8-2"></div>
 
 
 
