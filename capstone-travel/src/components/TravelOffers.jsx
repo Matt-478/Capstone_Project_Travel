@@ -20,31 +20,32 @@ const TravelOffers = ({ history }) => {
     maxPrice: "250",
     max: "30",
   })
-  const[flightInfo, setFlightInfo] = useState([])
   const[selectedData, setSelectedData] = useState([])
-  const[cityQuery, setCityQuery] = useState("")
+  // const[flightInfo, setFlightInfo] = useState([])
+  // const[cityQuery, setCityQuery] = useState("")
 
 
   useEffect(() => {
-    //cityCode(cityQuery)
-    //console.log("city query: " + cityQuery)
     getData()
   },[])
 
   const getData = async () => {
-    urlFunction() // getting the query string parameter
+    let ci = urlFunction() // getting the query string parameter
+    console.log("!!!!", ci)
     let t = await newTokenRequest() // we're getting a token and not saving it anymore in the state, but just in a local variable because this is sync
-    console.log('!!!', t)
-    await cityCode(t, cityQuery)
-    await fetchFlights(
-           t,
-           selectedOptions.destinationLocationCode,
-           selectedOptions.adults,
-           selectedOptions.travelClass,
-           selectedOptions.nonStop,
-           )
+    // console.log('!!!', t)
+    let iataCi = await cityCode(t, ci)
+    let flightInfoToExtract = await fetchFlights(
+      t,
+      iataCi,
+      selectedOptions.adults,
+      selectedOptions.travelClass,
+      selectedOptions.nonStop,
+      )
+      console.log('bam here: ',flightInfoToExtract)
+    await extractedData(flightInfoToExtract)
+    // setSelectedData(extrudedAllTheWays)
   } 
-
 
   const urlFunction = () => {
     // access url
@@ -53,7 +54,8 @@ const TravelOffers = ({ history }) => {
     // extract query from params in the 'flight' page
     const urlParams = new URLSearchParams(urlQueryString);
     const city = urlParams.get('cityQuery')
-    setCityQuery(city)
+    return city
+    // setCityQuery(city)
   }
 
   // if value === null/0 = skip value(?)
@@ -70,10 +72,7 @@ const TravelOffers = ({ history }) => {
       const data = await response.json()
       let tokenToSet = await data
       return tokenToSet.access_token
-
-      console.log("post-setting")
-
-    } catch (error) {
+    }catch (error) {
       console.log(error)
       return ''
     }
@@ -88,12 +87,15 @@ const TravelOffers = ({ history }) => {
           }
         })
       const { data }  = await response.json()
-      // console.log('!!!', data)
+      console.log('!!!', data)
       const firstItem = await data[0].iataCode
-      setSelectedOptions({
-        ...selectedOptions,
-        destinationLocationCode: firstItem
-      })
+      console.log(firstItem)
+      let iataCity = firstItem
+      return iataCity
+      // setSelectedOptions({
+      //   ...selectedOptions,
+      //   destinationLocationCode: "" + firstItem + ""
+      // })
       } else {
       console.log("oops")
       }
@@ -107,7 +109,7 @@ const TravelOffers = ({ history }) => {
   //  after each reload I need to remove all the values from the array
   }
 
-  const fetchFlights = async(token = '', location="LON", adults = 1, travelClass = "economy", nonStop) => {
+  const fetchFlights = async(token = '', location = "LON", adults = 1, travelClass = "economy", nonStop) => {
     try{
       const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=2021-12-14&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=15`, {
         headers: {
@@ -115,25 +117,25 @@ const TravelOffers = ({ history }) => {
           }
         });
       const data = await response.json()
-      setFlightInfo(data)
-      console.log("here's the data")
-      console.log(data)
+        console.log("here's the data", data)
+      // return data
+      // setFlightInfo(data)
+      // console.log("here's the data")
+      // console.log(data)
 
       if(!response.ok) {
         setError(true)
       } else {
         setIsLoading(true)
       }
+      return data
 
     } catch(err) {
       console.log(err.message)
     }
-
-      // console.log("flight info")
-      // console.log(flightInfo)
   }
 
-  const extractedData = async(arr) => {
+  const extractedData = (arr) => {
     try {
       let extrudedData = arr.data.map((element) => ({
         id: element.itineraries[0].segments.map((seg) => (
@@ -174,16 +176,22 @@ const TravelOffers = ({ history }) => {
         cabin: element.travelerPricings[0].fareDetailsBySegment[0].cabin,
         weightOfIncludedCHeckedBags: element.travelerPricings[0].fareDetailsBySegment.map((arr) => (
           arr.includedCheckedBags.weight + "   " + arr.includedCheckedBags.weightUnit
-        )),
+        ))
         // weightUnit: element.travelerPricings[0].fareDetailsBySegment.map((i) => (
           // i.includedCheckedBags.weightUnit
           // props will have includedCheckedBags.weightUnit once we give it the parameters for it
           // since now we're working on their link. We're not using our custom
         // )),
-      }))
+      }
+      ))
+
+      console.log("extruded", extrudedData)
+      // setSelectedData(extrudedData)
+      // return extrudedData
 
       if(extrudedData)  {
         setSelectedData(extrudedData)
+        console.log("selected data should be set =>   ", selectedData)
       } else {
         console.log("no data in the new arr")
       }
@@ -195,8 +203,9 @@ const TravelOffers = ({ history }) => {
 
   return(
     <>
+
     <div className="p-page">
-    <div className="inline-flex">
+    {/* <div className="inline-flex">
         <div className="wrapper" >
           <form className="inline-b">
            <div className="searchBar" >
@@ -230,9 +239,10 @@ const TravelOffers = ({ history }) => {
             <input type="number" max="2" min="0.1" step="0.1"/>
           </div>
         </div>
+      </form> */}
 
       {/* CLASS OPTIONS V1 */}
-        <div className="display-inline-flex">
+        {/* <div className="display-inline-flex">
           <p>Travel Class: </p>
           <select >
             <option>Economy</option>
@@ -240,19 +250,23 @@ const TravelOffers = ({ history }) => {
             <option>Business</option>
             <option>First</option>
           </select>
-        </div>
+        </div> */}
 
       {/* CLASS OPTIONS V2 */}
-      <div className="display-inline-flex">
+      {/* <div className="display-inline-flex">
         <p>Travel Class</p>
 
       </div>
       </form>
-    </div>
+    </div> */}
 
-
-    { isLoading ?
-      selectedData.length > 1 && selectedData.map((array) => (
+{
+  isLoading ?
+    selectedData ? (
+      "yuh, it's",
+      // GIVES BACK ALL OF THE FUNCTION I JUST NEED THE OBJEXT -DEAL W THAT 
+      selectedData.map((array) => (
+        // <p>yuh</p>
         <DisplayFLights
           departureCode={array.departureCode}
           departureTerminal={array.departureTerminal}
@@ -271,8 +285,40 @@ const TravelOffers = ({ history }) => {
           weightOfIncludedCHeckedBags={array.weightOfIncludedCHeckedBags}
           key={array.id}
            />
-      )) :  <div className="loader">Loading...</div>
-    }
+      ))
+      ) : "nah, bruh"
+  : "still, none"
+  }
+  </div>
+
+  <p>HERE WILL COME THE ANIMATION TRAINING</p>
+<hr/>
+
+
+
+    {/* { isLoading ? 
+      extractedData.length > 1 && extractedData.map((array) => (
+        <DisplayFLights
+          departureCode={array.departureCode}
+          departureTerminal={array.departureTerminal}
+          departureTime={array.departureTime}
+          arrivalCode={array.arrivalCode}
+          arrivalTerminal={array.arrivalTerminal}
+          arrivalTime={array.arrivalTime}
+          carrierCode={array.carrierCode}
+          aircraftCode={array.aircraftCode}
+          priceCurrency={array.priceCurrency}
+          priceTotal={array.priceTotal}
+          priceBase={array.priceBase}
+          priceFees={array.priceFees}
+          fareOption={array.fareOption}
+          cabin={array.cabin}
+          weightOfIncludedCHeckedBags={array.weightOfIncludedCHeckedBags}
+          key={array.id}
+           />
+      )) :  <div className="loader">Loading...</div> 
+      */}
+    {/* } */}
 
       {/* ERROR HANDLING {
       { error && (
@@ -280,7 +326,8 @@ const TravelOffers = ({ history }) => {
         history.push('/404')
         ) } */
       }
-    </div>
+    {/* </div> */}
+    {/* </div> */}
     </>
   )
 }
@@ -307,18 +354,8 @@ export default TravelOffers
 
 
 
-  // function newTokenRequest () {
-  //   fetch('https://test.api.amadeus.com/v1/security/oauth2/token', {
-  //     method: 'POST',
-  //     headers: {
-  //         'Content-Type': 'application/x-www-form-urlencoded'
-  //     },
-  //     body: 'grant_type=client_credentials&client_id=Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6&client_secret=BzObmAeMp1ClNDtn'
-  // })
-  // .then(response => response.json())
-  // .then(data => {
-  //   console.log("!!!")
-  //   console.log(data.access_token)
-  //   setToken(data.access_token)
-  // })
-  // }
+// ecxtracted from inside arr => {
+//   try {
+//     let extrudedData = arr.data.map(element => ({
+//       id: element.itineraries[0].segments.map(seg => seg.id),
+//       departureCode: element.itineraries[0].segments.map(segm …
