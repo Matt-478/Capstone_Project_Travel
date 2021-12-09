@@ -9,8 +9,8 @@ body {
   /* cold grey*/
   background-color: #e5e5e5;
 
-      /* warm grey */
-      /* background-color: #dbd8d1; */
+    /* warm grey */
+    /* background-color: #dbd8d1; */
 }
 
 h1, h2, h3, h4, h5, h6, p{
@@ -40,10 +40,8 @@ body p {
 /* NAV area */
 .navbar {
   height: 10%;
-  width: 100%;
-  /* margin: 30px; */
+  /* width: 100%; */
   margin-bottom: 40px;
-  /* background-color: #dbd8d1; */
   text-align: left;
 }
 
@@ -83,7 +81,9 @@ input[type="text"]{
   border: none;
   border-radius: 1.625rem;
   padding: 0 3.5rem 0 1.5rem;
+  /* took this off bc messing w searc query input on main home page
   margin-top: 2%;
+  */
 }
 
 .left-area-top {
@@ -121,6 +121,8 @@ input[type="text"]{
 }
 
 
+/* INPUT - SEARCH BOX */
+
 .wrapper {
   width: 100%;
   /* margin: 6rem auto ;  */
@@ -133,8 +135,10 @@ input[type="text"]{
 .searchBar {
   /* max-width: 100%; */
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
+
+  position: relative;
 }
 
 #searchQueryInput {
@@ -144,16 +148,19 @@ input[type="text"]{
   outline: none;
   border: none;
   border-radius: 1.625rem;
-  padding: 0 3.5rem 0 1.5rem;
+  padding: 0 15px;
   font-size: 1rem;
 }
 
 #searchQuerySubmit {
-  width: 50px;
+  width: 45px;
   margin-left: -3.5rem;
   background: none;
   border: none;
   outline: none;
+
+  position: absolute;
+  right: 10px;
 }
 
 #searchQuerySubmit:hover {
@@ -161,89 +168,36 @@ input[type="text"]{
 }
 
 
-
-.image-display ul {
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 0;
-}
-
-li {
-  list-style-type: none;
-}
-
-.image-display li {
-  height: 40vh;
-  flex-grow: 1;
-}
-
-.image-display li:last-child {
-  flex-grow: 10;
-}
-
-.image-display img {
-  max-height: 100%;
-  min-width: 100%;
-  object-fit: cover;
-  vertical-align: bottom;
-}
-
-
-
-.snapDiv {
-  width: 336px;
-  height: 600px; 
-  border-top-left-radius: 16px; 
-  border-top-right-radius: 16px; 
-  border-bottom-right-radius: 16px; 
-  border-bottom-left-radius: 16px; 
-  overflow: hidden; 
-  border: 1px solid rgb(223, 227, 231); 
-  position: relative;
-  z-index: 1;
-}
-
-
-
-
-.book-a-trip-btn {
-  width: 60%;
-  background-color: cornflowerblue;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  font-size: 22px;
-  margin: 4px 2px;
-  display: block;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  outline: none;
-  border: none;
-  margin: 40px auto 30px;
-  cursor: pointer;
-}
-
-.pill-btn {
-  border-radius: 10px;
-}
-
-
-
-
-
-
-.video-responsive iframe {
-  left: 0;
-  top: 0;
-  height: 100%;
+/* travel-options-box */
+.travel-options-box-container {
   width: 100%;
-  position: absolute;
+  max-height: 60vh;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 20px 0;
 }
 
+.travel-options-box {
+  min-width: 45%;
+  height: 149px;
+  background-color: rgb(177, 85, 48);
+  border-radius: 20px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.travel-options-box h2 {
+  font-size: 52px;
+  font-weight: 600;
+}
 
 
 /* LOADER  */
+
 .loader {
   color: #c5601d;
   font-size: 90px;
@@ -506,6 +460,34 @@ input[type="number"] {
 }
 
 
-.d-inline-flex {
+/* .d-inline-flex {
   display: inline-flex;
 }
+
+
+
+.image-display ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.image-display li {
+  height: 40vh;
+  flex-grow: 1;
+}
+
+.image-display li:last-child {
+  flex-grow: 10;
+}
+
+.image-display img {
+  max-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+} */

@@ -87,10 +87,25 @@ const HomePage = ({history}) => {
           </form>
         </div>
       </div>
-    </div>
+
+
 
 
     <div className="p-page">
+
+            {/* area for travel-options */}
+      <div className="travel-options-box-container">
+        <div className="travel-options-box"><h2>London</h2></div>
+        <div className="travel-options-box"><h2>Paris</h2></div>
+        <div className="travel-options-box"><h2>Tokyo</h2></div>
+        <div className="travel-options-box"><h2>Berlin</h2></div>
+      </div>
+
+      <div className="circle  c-7"></div>
+    <div className="circle  c-8"></div>
+    <div className="circle  c-8-1"></div>
+    <div className="circle  c-8-2"></div>
+
     <div className="left-area-top">
 
     {/* area name */}
@@ -113,8 +128,15 @@ const HomePage = ({history}) => {
 
     </div>
 
+
+
+
+    </div>
+
+
     {/* padding div */}
     </div>
+
 
     {/* photos here (based on the search bar query) */}
     {/* <UnsplashPhotos /> */}
