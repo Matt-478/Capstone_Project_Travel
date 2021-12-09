@@ -10,7 +10,7 @@ function App() {
   return(
     <div className="App">
       <Router>
-        <div className="navbar"> 
+        <div className="navbar p-page"> 
           <h2>Trocap*</h2>
         </div>
         <Route path="/home" exact render={(props) => <HomePage {...props} />} />

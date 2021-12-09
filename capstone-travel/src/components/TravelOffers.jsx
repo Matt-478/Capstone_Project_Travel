@@ -203,7 +203,6 @@ const TravelOffers = ({ history }) => {
 
   return(
     <>
-
     <div className="p-page">
     {/* <div className="inline-flex">
         <div className="wrapper" >
