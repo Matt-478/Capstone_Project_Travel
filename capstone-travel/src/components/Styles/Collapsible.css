@@ -1,6 +1,6 @@
-h2 {
+/* h2 {
   color: #ddd !important;
-}
+} */
 .collapsible .toggle {
   background: rgb(91 110 91);
   border: unset;
@@ -101,19 +101,28 @@ h2 {
 }
 
 .c-7 {
-  background-color: #7b8cdeff;
+  background-color: var(--corn-blue);
 }
 
 .c-8 {
-  background-color: #baff29ff;
+  background-color: var(--corn-green-bright);
 }
 
 .c-8-1 {
-  background-color: #c3beb3ff;
+  background-color: var(--corn-grey-beige);
 }
 
 .c-8-2 {
-  background-color: #091205ff;
+  background-color: var(--corn-black);
+}
+
+.c-8-3 {
+  background-color: var(--corn-grey-bg);
+  /* border: 1px solid black; */
+}
+
+.c-8-4 {
+  background-color: var(--corn-grey-dark);
 }
 
 /* 1 - blue, green */

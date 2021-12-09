@@ -1,16 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display&family=Readex+Pro:wght@300;400;500;700&display=swap');
 
+/* BRAND COLORS */
+body{
+  --corn-blue: #7b8cde;
+  --corn-green-bright: #baff29;
+  --corn-grey-light: #d8e4e5;
+  --corn-grey-bg: #e5e5e5;
+  --corn-grey-beige: #dbd8d1;
+  --corn-grey-dark: #d1cbcb;
+  --corn-black: #091205ff;
+}
+
 .App {
   text-align: center;
 }
 
 body {
   padding: 0;
+  margin:0; 
   /* cold grey*/
   background-color: #e5e5e5;
 
-    /* warm grey */
-    /* background-color: #dbd8d1; */
+  /* warm grey */
+  /* background-color: #dbd8d1; */
 }
 
 h1, h2, h3, h4, h5, h6, p{
@@ -36,6 +48,9 @@ body p {
   font-size: 1.3em;
 }
 
+a { text-decoration: none; }  
+
+
 
 /* NAV area */
 .navbar {
@@ -50,6 +65,13 @@ body p {
   color: #a8a5a1 !important;
   font-family: 'DM Serif Display' !important;
   font-weight: 400;
+}
+
+/* HEAD LINE */
+.head-line h2{
+  font-family: 'DM Serif Display', serif;
+  font-size: 57px;
+  color: #7b8bde;
 }
 
 
@@ -121,8 +143,8 @@ input[type="text"]{
 }
 
 
-/* INPUT - SEARCH BOX */
 
+/* INPUT - SEARCH BOX */
 .wrapper {
   width: 100%;
   /* margin: 6rem auto ;  */
@@ -168,7 +190,7 @@ input[type="text"]{
 }
 
 
-/* travel-options-box */
+/* TRAVEL-OPTIONS-BOX */
 .travel-options-box-container {
   width: 100%;
   max-height: 60vh;
@@ -177,12 +199,15 @@ input[type="text"]{
   flex-wrap: wrap;
   flex-direction: row;
   gap: 20px 0;
+
+  margin-bottom: 250px;
 }
 
 .travel-options-box {
   min-width: 45%;
   height: 149px;
-  background-color: rgb(177, 85, 48);
+  /* background-color: rgb(177, 85, 48); */
+  background-color: var(--corn-black);
   border-radius: 20px;
   padding: 10px 15px;
   display: flex;
@@ -193,6 +218,7 @@ input[type="text"]{
 .travel-options-box h2 {
   font-size: 52px;
   font-weight: 600;
+  color: var(--corn-green-bright);
 }
 
 
@@ -407,10 +433,7 @@ transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
 
 
 /* FLIGHT TICKET */
-* { margin:0; padding:0; }
-body { font-family: sans-serif;} 
 #content { margin: 50px; } 
-a { text-decoration: none; }  
  
 
  
@@ -460,7 +483,32 @@ input[type="number"] {
 }
 
 
-/* .d-inline-flex {
+ /* FOOTER */
+footer {
+  background-color: #d1cbcb;
+  height: 20vh;
+}
+
+footer h2 {
+  font-size: 52px;
+  font-weight: 500;
+  font-family: 'Readex Pro', sans-serif;
+  color: #7e7c7c;
+}
+
+footer .text-centre {
+  text-align: center;
+}
+
+footer .text-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer .text-space-between h4 {
+  color: #7e7c7c;
+}
+.d-inline-flex {
   display: inline-flex;
 }
 
@@ -490,4 +538,4 @@ li {
   min-width: 100%;
   object-fit: cover;
   vertical-align: bottom;
-} */
+}

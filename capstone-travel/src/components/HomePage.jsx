@@ -73,6 +73,10 @@ const HomePage = ({history}) => {
 
     <div className="App">
 
+    <div className="head-line">
+      <h2>"Fuck it, let's go somewhere"</h2>
+    </div>
+
       <div className="p-page">
         <div className="wrapper" >
           <form onSubmit={handleSubmit}>
@@ -89,11 +93,8 @@ const HomePage = ({history}) => {
       </div>
 
 
-
-
     <div className="p-page">
-
-            {/* area for travel-options */}
+      <h2></h2>
       <div className="travel-options-box-container">
         <div className="travel-options-box"><h2>London</h2></div>
         <div className="travel-options-box"><h2>Paris</h2></div>
@@ -101,10 +102,12 @@ const HomePage = ({history}) => {
         <div className="travel-options-box"><h2>Berlin</h2></div>
       </div>
 
-      <div className="circle  c-7"></div>
+    {/* <div className="circle  c-7"></div>
     <div className="circle  c-8"></div>
+    <div className="circle  c-8-3"></div>
     <div className="circle  c-8-1"></div>
-    <div className="circle  c-8-2"></div>
+    <div className="circle  c-8-4"></div>
+    <div className="circle  c-8-2"></div> */}
 
     <div className="left-area-top">
 
@@ -125,15 +128,8 @@ const HomePage = ({history}) => {
         {/* <SnapMap /> */}
       </div>
     </div>
-
     </div>
-
-
-
-
     </div>
-
-
     {/* padding div */}
     </div>
 
@@ -150,6 +146,28 @@ const HomePage = ({history}) => {
       {/* book a trip */}
       <button className="pill-btn book-a-trip-btn" onClick={handleBookTrip}>Book a trip now!</button>
     </div>
+
+
+    <footer className="p-page">
+      <h2 className="text-centre">FOOTER AREA</h2>
+      <div className="text-space-between">
+        <div>
+          <h4>FAQ</h4>
+          <h4>FAQ</h4>
+          <h4>FAQ</h4>
+        </div>
+        <div>
+          <h4>FAQ</h4>
+          <h4>FAQ</h4>
+          <h4>FAQ</h4>
+        </div>
+        <div>
+          <h4>FAQ</h4>
+          <h4>FAQ</h4>
+          <h4>FAQ</h4>
+        </div>
+      </div>
+    </footer>
   </>
   )
 }
