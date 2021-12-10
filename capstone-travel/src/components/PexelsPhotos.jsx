@@ -31,12 +31,16 @@ function PexelsPhotos ( {query} ) {
 
   return (
     <>
-        <div className="image-display mt-5perc"> 
+        <div className="image-display"> 
         {/* how to randomise all the img's and videos? */}
           <ul>
               { 
                 pexelsPhotos && pexelsPhotos.map((data, boop = data.id) => (
-                  <ImageCard src={data.src.medium} key={boop}/>
+                  <ImageCard
+                    src={data.src.medium}
+                    key={boop}
+                    query={query}
+                  />
                 ))
               }
             <li></li> {/* do not remove, neccesary for layout */}

@@ -7,8 +7,9 @@ body{
   --corn-grey-light: #d8e4e5;
   --corn-grey-bg: #e5e5e5;
   --corn-grey-beige: #dbd8d1;
-  --corn-grey-dark: #d1cbcb;
+  /* --corn-grey-dark: #d1cbcb; */
   --corn-black: #091205ff;
+  --main-grey: #f1f1f1;
 }
 
 .App {
@@ -19,7 +20,7 @@ body {
   padding: 0;
   margin:0; 
   /* cold grey*/
-  background-color: #e5e5e5;
+  background-color: var(--main-grey);
 
   /* warm grey */
   /* background-color: #dbd8d1; */
@@ -57,7 +58,7 @@ a { text-decoration: none; }
 .navbar {
   height: 10%;
   text-align: left;
-  background-color: #f1f1f1;
+  background-color: var(--main-grey);
 }
 
 .navbar h2 {
@@ -560,8 +561,6 @@ li {
 .image-display li {
   height: 40vh;
   flex-grow: 1;
-  border: 22px solid #081405;
-  outline: 8px dashed #bbff27;
 }
 
 .image-display li:last-child {
@@ -578,7 +577,7 @@ li {
 
  /* FOOTER */
 footer {
-  background-color: #d1cbcb;
+  background-color: #f1f1f1;
   height: 20vh;
 }
 
@@ -586,7 +585,7 @@ footer h2 {
   font-size: 52px;
   font-weight: 500;
   font-family: 'Readex Pro', sans-serif;
-  color: #7e7c7c;
+  color: #c9c7c1;
 }
 
 footer .text-centre {
