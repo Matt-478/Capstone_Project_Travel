@@ -106,15 +106,15 @@ const HomePage = ({history}) => {
       </div>
 
       <div className="left-area-top">
-        <h1>{query && toTitleCase(query)}</h1>
+        {/* <h2>{query && toTitleCase(query)}</h2> */}
+        <h3>{query && toTitleCase(query)}</h3>
+        {/* <h4>{query && toTitleCase(query)}</h4> */}
           <div className="d-flex-space">
           <div className="left-side">
-    
             {/* brief description */}
             <p>
               {cityInfo.extract}
             </p>
-    
           </div>
           <div className="right-side">
             {/* map based on location */}
