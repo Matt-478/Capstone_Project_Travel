@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Router>
         <div className="navbar p-page"> 
-          <h2>Trocap*</h2>
+          <h2>RapidPack*</h2>
         </div>
         <Route path="/home" exact render={(props) => <HomePage {...props} />} />
         <Route path="/flight" exact render={(props) => <TravelOffers {...props} />} />

@@ -58,25 +58,44 @@ a { text-decoration: none; }
   /* width: 100%; */
   margin-bottom: 40px;
   text-align: left;
+  background-color: #f1f1f1;
 }
 
 .navbar h2 {
   font-size: 42px;
-  color: #a8a5a1 !important;
+  color: var(--corn-black);
   font-family: 'DM Serif Display' !important;
   font-weight: 400;
+}
+
+/* HEADER_BG */
+.header-bg { 
+  background-color: var(--corn-blue);
+  margin-bottom: 30px;
+  box-shadow: 0px 0px 20px 20px rgb(123 139 222);
+  height: 346px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-bg-dark{
+  background-color: #091305;
+  margin-bottom: 30px;
+  box-shadow: 0px 1px 20px 20px rgb(9 19 5);
+  height: 100vh;
+  padding-top: 36px;
 }
 
 /* HEAD LINE */
 .head-line h2{
   font-family: 'DM Serif Display', serif;
-  font-size: 57px;
-  color: #7b8bde;
+  font-size: 50px;
+  color: var(--corn-grey-bg);
 }
 
 
 /* main content on App.js */
-
 .p-page {
   padding: 0 10%;
 }
@@ -199,13 +218,20 @@ input[type="text"]{
   flex-wrap: wrap;
   flex-direction: row;
   gap: 20px 0;
+  margin-bottom: 50px;
+}
 
-  margin-bottom: 250px;
+.relative {
+  position: relative;
+}
+
+.travel-options-buttons-box {
+
 }
 
 .travel-options-box {
-  min-width: 45%;
-  height: 149px;
+  min-width: 36vw;
+  height: 28vh;
   /* background-color: rgb(177, 85, 48); */
   background-color: var(--corn-black);
   border-radius: 20px;
@@ -213,6 +239,32 @@ input[type="text"]{
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+  border: 1px solid var(--corn-blue);
+
+
+  transition: transform 0.3s ease;
+}
+
+.travel-options-box::after, .travel-options-box::before {
+  content: "";
+  position: absolute;
+  opacity: 0.3;
+  background: var(--corn-black);
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.travel-options-box:hover {
+  transform: translate(-25px, -9px);
+}
+
+.travel-options-box:hover::after {
+  transform: translate(12px, 12px);
 }
 
 .travel-options-box h2 {
