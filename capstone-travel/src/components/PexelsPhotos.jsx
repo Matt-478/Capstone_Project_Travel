@@ -33,7 +33,9 @@ function PexelsPhotos ( {query} ) {
     <>
         <div className="image-display"> 
         {/* how to randomise all the img's and videos? */}
-          <ul>
+          <ul style={{
+            paddingBottom: query.length > 4 ? "39px" : "none"
+          }}>
               { 
                 pexelsPhotos && pexelsPhotos.map((data, boop = data.id) => (
                   <ImageCard

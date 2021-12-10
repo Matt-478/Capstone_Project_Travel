@@ -130,8 +130,7 @@ const HomePage = ({history}) => {
       </div>
       </div>
     </div>
-    {/* padding div */}
-    </div>
+    </div> {/* padding div */}
 
         <PexelsPhotos query={realState}/>
     {/* videos based on location */}
@@ -144,7 +143,7 @@ const HomePage = ({history}) => {
 
 
     <footer className="p-page">
-      <h2 className="text-centre">FOOTER AREA</h2>
+      {/* <h2 className="text-centre">FOOTER AREA</h2> */}
       <div className="text-space-between">
         <div>
           <h4>FAQ</h4>
@@ -161,13 +160,17 @@ const HomePage = ({history}) => {
           <h4>FAQ</h4>
           <h4>FAQ</h4>
         </div>
+        <div>
 
         <div className="circle  c-7"></div>
-        <div className="circle  c-8"></div>
-        <div className="circle  c-8-3"></div>
-        <div className="circle  c-8-1"></div>
-        <div className="circle  c-8-4"></div>
-        <div className="circle  c-8-2"></div>
+          <div className="circle  c-8"></div>
+          <div className="circle  c-8-3"></div>
+        </div>
+        <div>
+          <div className="circle  c-8-1"></div>
+          <div className="circle  c-8-4"></div>
+          <div className="circle  c-8-2"></div>
+        </div>
       </div>
     </footer>
   </>
