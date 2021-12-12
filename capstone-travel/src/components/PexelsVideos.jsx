@@ -3,12 +3,8 @@ import VideoCard from './VideoCard'
 
 function PexelsVideos ( {query} ) {
   const [pexelsVideos, setPexelsVideos] = useState()
-  // const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    // let arrayOfVideos = await fetchPexelsVideos
-    // displayVideos(arrayOfVideos)
-    // displayVideos would ...?
     // query.length <=  3  ? setIsLoading(!isLoading) : setIsLoading(isLoading)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchPexelsVideos() 
@@ -38,15 +34,10 @@ function PexelsVideos ( {query} ) {
   return (
     <>
       {
-        //  pexelsVideos.map((data, id = data.id) => {
-          // <VideoCard src={data.video_files} key={id}/>
-        // })
-        // console.log("just loaded pexels videos")
-
         pexelsVideos.length > 0 ?
           pexelsVideos.map((item) => {
             // console.log("yeah, it's been a rough day");
-            return <p>all</p>
+            return  <VideoCard />
           })
           : console.log("something not happening in render of Pexels Videos ",pexelsVideos)
         }
