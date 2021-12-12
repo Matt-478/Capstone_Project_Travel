@@ -1,12 +1,15 @@
 
 const VideoCard = ({src}) => {
   return(
-    <video controls>
-       {/* <source src={src.map((item) => {
-         item
-         return firstVideo
-       })} type="video/mp4"></source> */}
-    </video>
+    // <video controls>
+    //    {/* <source src={src.map((item) => {
+    //      item
+    //      return firstVideo
+    //    })} type="video/mp4"></source> */}
+    // </video>
+
+
+    <p>yay, we work</p>
 
     // <iframe src={src}
     //     frameborder='0'

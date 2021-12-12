@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react'
 import VideoCard from './VideoCard'
 
 function PexelsVideos ( {query} ) {
-  const [pexelsVideos, setPexelsVideos] = useState(["nothing yet",])
+  const [pexelsVideos, setPexelsVideos] = useState()
   // const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     // let arrayOfVideos = await fetchPexelsVideos
     // displayVideos(arrayOfVideos)
     // displayVideos would ...?
-    // fetchPexelsVideos() 
     // query.length <=  3  ? setIsLoading(!isLoading) : setIsLoading(isLoading)
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchPexelsVideos() 
   }, [query])
 
   async function fetchPexelsVideos () {
@@ -24,7 +24,6 @@ function PexelsVideos ( {query} ) {
       })
       let data = await response.json()
       setPexelsVideos(data.videos)
-      console.log("trying to make this work from under component")
 
       // return data.videos
 
@@ -42,14 +41,15 @@ function PexelsVideos ( {query} ) {
         //  pexelsVideos.map((data, id = data.id) => {
           // <VideoCard src={data.video_files} key={id}/>
         // })
-        console.log("just loaded pexels videos")
+        // console.log("just loaded pexels videos")
 
-        // pexelsVideos ?
-        //   pexelsVideos.map((item) => {
-        //     <p>{item.id}</p>
-        //   })
-        // : console.log("something not happening in render of Pexels Videos ",pexelsVideos)
-      }
+        pexelsVideos.length > 0 ?
+          pexelsVideos.map((item) => {
+            // console.log("yeah, it's been a rough day");
+            return <p>all</p>
+          })
+          : console.log("something not happening in render of Pexels Videos ",pexelsVideos)
+        }
 
         <li></li> {/* do not remove, neccesary for layout */}
     </>

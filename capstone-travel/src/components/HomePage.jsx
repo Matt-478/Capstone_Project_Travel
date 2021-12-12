@@ -134,9 +134,8 @@ const HomePage = ({history}) => {
         {/* <PexelsPhotos query={realState}/> */}
     {/* videos based on location */}
     <div>
-      { query.length > 4 ? (
-        <PexelsVideos query={realState}/>,
-         console.log("real state - ", realState)
+      { realState  ? (
+        <PexelsVideos query={realState}/>
       )
         : "not going further than HOMEPAGE component"
       }
