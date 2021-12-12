@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react'
 import VideoCard from './VideoCard'
 
 function PexelsVideos ( {query} ) {
-  const [pexelsVideos, setPexelsVideos] = useState(["nothing yet", ])
-  const [isLoading, setIsLoading] = useState(false)
+  const [pexelsVideos, setPexelsVideos] = useState(["nothing yet",])
+  // const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    fetchPexelsVideos() 
-    query.length <=  3  ? setIsLoading(!isLoading) : setIsLoading(isLoading)
+    // let arrayOfVideos = await fetchPexelsVideos
+    // displayVideos(arrayOfVideos)
+    // displayVideos would ...?
+    // fetchPexelsVideos() 
+    // query.length <=  3  ? setIsLoading(!isLoading) : setIsLoading(isLoading)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query])
 
@@ -19,12 +22,14 @@ function PexelsVideos ( {query} ) {
         "headers": {          
         "Authorization": "563492ad6f91700001000001d99276bcb4d4402fbf7f8f502c81c2ba"}
       })
-      const data = await response.json()
+      let data = await response.json()
       setPexelsVideos(data.videos)
+      console.log("trying to make this work from under component")
+
+      // return data.videos
 
       console.log(data.videos)
       console.log(pexelsVideos)
-
     } catch (error) {
       console.log(error)
     }
@@ -34,9 +39,16 @@ function PexelsVideos ( {query} ) {
   return (
     <>
       {
-        isLoading ?
-         pexelsVideos.map((data, boop = data.id) => <VideoCard src={data.video_files.map((data) => data.link)} key={boop}/>)
-        : <p>not much to see here for now</p>
+        //  pexelsVideos.map((data, id = data.id) => {
+          // <VideoCard src={data.video_files} key={id}/>
+        // })
+        console.log("just loaded pexels videos")
+
+        // pexelsVideos ?
+        //   pexelsVideos.map((item) => {
+        //     <p>{item.id}</p>
+        //   })
+        // : console.log("something not happening in render of Pexels Videos ",pexelsVideos)
       }
 
         <li></li> {/* do not remove, neccesary for layout */}

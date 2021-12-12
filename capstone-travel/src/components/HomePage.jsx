@@ -3,7 +3,6 @@ import PexelsVideos from './PexelsVideos';
 import SnapMap from './SnapMap'
 
 import { useState, useEffect } from 'react';
-import { Navbar } from 'react-bootstrap';
 
 const HomePage = ({history}) => {
 
@@ -49,7 +48,7 @@ const HomePage = ({history}) => {
     console.log(cityInfo)
 
     // checking if the city typed is the same as in the query
-    console.log(query)
+    // console.log(query)
   }
 
   const handleChange = (e) => {
@@ -118,9 +117,9 @@ const HomePage = ({history}) => {
           <div className="d-flex-space">
           <div className="left-side">
             {/* brief description */}
-            <p>
+            {/* <p>
               {cityInfo.extract}
-            </p>
+            </p> */}
           </div>
           <div className="right-side">
             {/* map based on location */}
@@ -132,9 +131,16 @@ const HomePage = ({history}) => {
     </div>
     </div> {/* padding div */}
 
-        <PexelsPhotos query={realState}/>
+        {/* <PexelsPhotos query={realState}/> */}
     {/* videos based on location */}
-    {/* <PexelsVideos query={realState}/> */}
+    <div>
+      { query.length > 4 ? (
+        <PexelsVideos query={realState}/>,
+         console.log("real state - ", realState)
+      )
+        : "not going further than HOMEPAGE component"
+      }
+    </div>
 
     {/* <div className="d-flex align-center space-between">
       <h3 className="d-inline">Interested? What are you waiting for?</h3> */}
