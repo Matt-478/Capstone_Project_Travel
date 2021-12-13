@@ -204,7 +204,60 @@ const TravelOffers = ({ history }) => {
   return(
     <>
     <div className="p-page">
-    {/* <div className="inline-flex">
+
+  {
+    isLoading ?
+      selectedData ? (
+        "yuh, it's",
+        // GIVES BACK ALL OF THE FUNCTION I JUST NEED THE OBJEXT -DEAL W THAT 
+        selectedData.map((array) => (
+          // <p>yuh</p>
+          <DisplayFLights
+            departureCode={array.departureCode}
+            departureTerminal={array.departureTerminal}
+            departureTime={array.departureTime}
+            arrivalCode={array.arrivalCode}
+            arrivalTerminal={array.arrivalTerminal}
+            arrivalTime={array.arrivalTime}
+            carrierCode={array.carrierCode}
+            aircraftCode={array.aircraftCode}
+            priceCurrency={array.priceCurrency}
+            priceTotal={array.priceTotal}
+            priceBase={array.priceBase}
+            priceFees={array.priceFees}
+            fareOption={array.fareOption}
+            cabin={array.cabin}
+            weightOfIncludedCHeckedBags={array.weightOfIncludedCHeckedBags}
+            key={array.id}
+             />
+      ))
+    ) : "nah, bruh"
+  : "still, none"
+  }
+  </div>
+
+    <div className="circle  c-7"></div>
+    <div className="circle  c-8"></div>
+    <div className="circle  c-8-1"></div>
+    <div className="circle  c-8-2"></div>
+
+      {/* ERROR HANDLING {
+      { error && (
+        // "error"
+        history.push('/404')
+        ) } */
+      }
+    {/* </div> */}
+    {/* </div> */}
+    </>
+  )
+}
+
+export default TravelOffers
+
+// INPUTS FOR MORE SPECIFIC RESULTS
+
+{/* <div className="inline-flex">
         <div className="wrapper" >
           <form className="inline-b">
            <div className="searchBar" >
@@ -254,116 +307,16 @@ const TravelOffers = ({ history }) => {
       {/* CLASS OPTIONS V2 */}
       {/* <div className="display-inline-flex">
         <p>Travel Class</p>
-
-      </div>
       </form>
     </div> */}
 
-{
-  isLoading ?
-    selectedData ? (
-      "yuh, it's",
-      // GIVES BACK ALL OF THE FUNCTION I JUST NEED THE OBJEXT -DEAL W THAT 
-      selectedData.map((array) => (
-        // <p>yuh</p>
-        <DisplayFLights
-          departureCode={array.departureCode}
-          departureTerminal={array.departureTerminal}
-          departureTime={array.departureTime}
-          arrivalCode={array.arrivalCode}
-          arrivalTerminal={array.arrivalTerminal}
-          arrivalTime={array.arrivalTime}
-          carrierCode={array.carrierCode}
-          aircraftCode={array.aircraftCode}
-          priceCurrency={array.priceCurrency}
-          priceTotal={array.priceTotal}
-          priceBase={array.priceBase}
-          priceFees={array.priceFees}
-          fareOption={array.fareOption}
-          cabin={array.cabin}
-          weightOfIncludedCHeckedBags={array.weightOfIncludedCHeckedBags}
-          key={array.id}
-           />
-      ))
-      ) : "nah, bruh"
-  : "still, none"
-  }
-  </div>
-
-  <p>HERE WILL COME THE COLOR COMBOS</p>
-      {/* <span className="circle c-1"></span>
-      <span className="circle c-2"></span>
-      <span className="circle c-2-1"></span>
-      <span className="circle c-2-2"></span>
-
-  <br></br>
-
-    <div className="circle  c-3"></div>
-    <div className="circle  c-4"></div>
-    <div className="circle  c-4-1"></div>
-    <div className="circle  c-4-2"></div>
-
-  <br></br>
-
-    <div className="circle  c-5"></div>
-    <div className="circle  c-6"></div>
-    <div className="circle  c-6-1"></div>
-    <div className="circle  c-6-2"></div>
-
-  <br></br> */}
-
-    <div className="circle  c-7"></div>
-    <div className="circle  c-8"></div>
-    <div className="circle  c-8-1"></div>
-    <div className="circle  c-8-2"></div>
 
 
 
-    {/* { isLoading ? 
-      extractedData.length > 1 && extractedData.map((array) => (
-        <DisplayFLights
-          departureCode={array.departureCode}
-          departureTerminal={array.departureTerminal}
-          departureTime={array.departureTime}
-          arrivalCode={array.arrivalCode}
-          arrivalTerminal={array.arrivalTerminal}
-          arrivalTime={array.arrivalTime}
-          carrierCode={array.carrierCode}
-          aircraftCode={array.aircraftCode}
-          priceCurrency={array.priceCurrency}
-          priceTotal={array.priceTotal}
-          priceBase={array.priceBase}
-          priceFees={array.priceFees}
-          fareOption={array.fareOption}
-          cabin={array.cabin}
-          weightOfIncludedCHeckedBags={array.weightOfIncludedCHeckedBags}
-          key={array.id}
-           />
-      )) :  <div className="loader">Loading...</div> 
-      */}
-    {/* } */}
 
-      {/* ERROR HANDLING {
-      { error && (
-        // "error"
-        history.push('/404')
-        ) } */
-      }
-    {/* </div> */}
-    {/* </div> */}
-    </>
-  )
-}
 
-export default TravelOffers
-
-// AMADEUS
-//  bearer   Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6
-//  secret   BzObmAeMp1ClNDtn
 
 // id Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6
-
-// return the token right into the token thing
 
 // INPUTS
 // departureDate    YYYY-MM-DD    string
@@ -374,11 +327,3 @@ export default TravelOffers
 // nonStop      true/false      boolean
 // maxPrice       1-100000        integer
 // max 1-10000  integer     for me
-
-
-
-// ecxtracted from inside arr => {
-//   try {
-//     let extrudedData = arr.data.map(element => ({
-//       id: element.itineraries[0].segments.map(seg => seg.id),
-//       departureCode: element.itineraries[0].segments.map(segm …
