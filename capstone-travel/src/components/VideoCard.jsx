@@ -1,13 +1,11 @@
 
 const VideoCard = ({id, src}) => {
   return(
-
-    <video autoPlay controls >
-       <source src={src} type="video/mp4">
-         {/* id: {id} */}
-       </source>
-    </video>
-    // <p>Each id: {id}</p>
+    <li>
+      <video autoPlay controls loop muted>
+         <source src={src} type="video/mp4" />
+      </video>
+    </li>
   )
 }
 
