@@ -201,7 +201,7 @@ const TravelOffers = ({ history }) => {
 
   return(
     <>
-    <div className="header-bg-dark" style={{height: "auto"}}>
+    <div className="header-bg-light" style={{height: "auto"}}>
       <div className="p-page">
         {
           isLoading ?

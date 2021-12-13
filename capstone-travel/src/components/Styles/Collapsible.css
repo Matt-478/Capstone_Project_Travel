@@ -2,7 +2,7 @@
   color: #ddd !important;
 } */
 .collapsible .toggle {
-  background: rgb(91 110 91);
+  background: #7b8cde;
   border: unset;
   cursor: pointer;
   width: 100%;
@@ -13,7 +13,7 @@
 }
 
 .collapsible .content {
-  background: rgb(91 110 91);
+  background: #7b8cde;
   border: unset;
   cursor: pointer;
   /* box-sizing: border-box; */
@@ -21,6 +21,7 @@
   color: #ddd !important;
   margin-bottom: 0.5rem;
   border-radius: 0 0 30px 30px;
+  border: 5px dashed #091305;
 }
 
 .collapsible .content-parent {
@@ -124,80 +125,3 @@
 .c-8-4 {
   background-color: var(--corn-grey-dark);
 }
-
-/* 1 - blue, green */
-/* CSV
-c3beb3,6f856f,4062bb,1a181b
-
- Array 
-["c3beb3","6f856f","4062bb","1a181b"]
-
- Object 
-{"Pale Silver":"c3beb3","Xanadu":"6f856f","True Blue":"4062bb","Raisin Black":"1a181b"} */
-
-
-/* 2  - green, blue */
-/* CSS HEX */
-/* --pale-silver: #c3beb3ff;
---royal-blue-light: #5762d5ff;
---smoky-black: #130601ff;
---xanadu: #6f856fff; */
-
-/* CSS HSL */
-/* --pale-silver: hsla(41, 12%, 73%, 1);
---royal-blue-light: hsla(235, 60%, 59%, 1);
---smoky-black: hsla(17, 90%, 4%, 1);
---xanadu: hsla(120, 9%, 48%, 1); */
-
-/* SCSS HEX */
-/* $pale-silver: #c3beb3ff;
-$royal-blue-light: #5762d5ff;
-$smoky-black: #130601ff;
-$xanadu: #6f856fff; */
-
-
-
-/* 3 orange, green */
-/* CSS HEX */
-/* --pale-silver: #c3beb3ff;
---smoky-black: #130601ff;
---safety-orange-blaze-orange: #f96900ff;
---russian-green: #70997dff; */
-
-/* CSS HSL */
-/* --pale-silver: hsla(41, 12%, 73%, 1);
---smoky-black: hsla(17, 90%, 4%, 1);
---safety-orange-blaze-orange: hsla(25, 100%, 49%, 1);
---russian-green: hsla(139, 17%, 52%, 1); */
-
-/* SCSS HEX */
-/* $pale-silver: #c3beb3ff;
-$smoky-black: #130601ff;
-$safety-orange-blaze-orange: #f96900ff;
-$russian-green: #70997dff; */
-
-
-/* 4 -   cornblue, bright-green */
-/* CSS HEX */
-/* --pale-silver: #c3beb3ff;
---cornflower-blue: #7b8cdeff;
---bitter-lime: #baff29ff;
---dark-jungle-green: #091205ff; */
-
-/* SCSS HEX */
-/* $pale-silver: #c3beb3ff;
-$cornflower-blue: #7b8cdeff;
-$bitter-lime: #baff29ff;
-$dark-jungle-green: #091205ff; */
-
-/* SCSS HSL */
-/* $pale-silver: hsla(41, 12%, 73%, 1);
-$cornflower-blue: hsla(230, 60%, 68%, 1);
-$bitter-lime: hsla(79, 100%, 58%, 1);
-$dark-jungle-green: hsla(102, 57%, 5%, 1); */
-
-/* SCSS RGB */
-/* $pale-silver: rgba(195, 190, 179, 1);
-$cornflower-blue: rgba(123, 140, 222, 1);
-$bitter-lime: rgba(186, 255, 41, 1);
-$dark-jungle-green: rgba(9, 18, 5, 1); */

@@ -76,7 +76,7 @@ a { text-decoration: none; }
 
 .navbar-dark h2 {
   font-size: 42px;
-  color: var(--corn-grey-beige);
+  color: var(--corn-green-bright);
   font-family: 'DM Serif Display' !important;
   font-weight: 400;
 }
@@ -99,6 +99,14 @@ a { text-decoration: none; }
   padding-bottom: 35px;
   /* margin-bottom: 30px; */
   /* box-shadow: 0px 1px 20px 20px rgb(9 19 5); */
+}
+
+.header-bg-light {
+  background-color: var(--corn-grey-bg);
+  height: 346px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* HEAD LINE */
@@ -594,8 +602,18 @@ footer .text-space-between {
 }
 
 footer .text-space-between h4 {
-  color: #7e7c7c;
+  color: var(--corn-black);
 }
 .d-inline-flex {
   display: inline-flex;
+}
+
+
+.footer-dark {
+  background-color: var(--corn-black);
+  height: 20vh;
+}
+
+footer .text-space-between h4{
+  color: var(--corn-grey-beige) !important;
 }
