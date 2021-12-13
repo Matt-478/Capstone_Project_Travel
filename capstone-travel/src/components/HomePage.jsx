@@ -145,39 +145,6 @@ const HomePage = ({history}) => {
       <h3 className="d-inline">Interested? What are you waiting for?</h3> */}
       {/* <button className="pill-btn book-a-trip-btn" onClick={handleBookTrip}>Book a trip now!</button>
     </div> */}
-
-
-    <footer className="p-page">
-      {/* <h2 className="text-centre">FOOTER AREA</h2> */}
-      <div className="text-space-between">
-        <div>
-          <h4>FAQ</h4>
-          <h4>FAQ</h4>
-          <h4>FAQ</h4>
-        </div>
-        <div>
-          <h4>FAQ</h4>
-          <h4>FAQ</h4>
-          <h4>FAQ</h4>
-        </div>
-        <div>
-          <h4>FAQ</h4>
-          <h4>FAQ</h4>
-          <h4>FAQ</h4>
-        </div>
-        <div>
-
-        <div className="circle  c-7"></div>
-          <div className="circle  c-8"></div>
-          <div className="circle  c-8-3"></div>
-        </div>
-        <div>
-          <div className="circle  c-8-1"></div>
-          <div className="circle  c-8-4"></div>
-          <div className="circle  c-8-2"></div>
-        </div>
-      </div>
-    </footer>
   </>
   )
 }

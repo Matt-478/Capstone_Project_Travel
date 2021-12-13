@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import DisplayFLights from './DisplayFLights'
 
-import SingleFlightOption from './SingleFlightOption'
-
 
 const TravelOffers = ({ history }) => {
 
@@ -203,43 +201,39 @@ const TravelOffers = ({ history }) => {
 
   return(
     <>
-    <div className="p-page">
-
-  {
-    isLoading ?
-      selectedData ? (
-        "yuh, it's",
-        // GIVES BACK ALL OF THE FUNCTION I JUST NEED THE OBJEXT -DEAL W THAT 
-        selectedData.map((array) => (
-          // <p>yuh</p>
-          <DisplayFLights
-            departureCode={array.departureCode}
-            departureTerminal={array.departureTerminal}
-            departureTime={array.departureTime}
-            arrivalCode={array.arrivalCode}
-            arrivalTerminal={array.arrivalTerminal}
-            arrivalTime={array.arrivalTime}
-            carrierCode={array.carrierCode}
-            aircraftCode={array.aircraftCode}
-            priceCurrency={array.priceCurrency}
-            priceTotal={array.priceTotal}
-            priceBase={array.priceBase}
-            priceFees={array.priceFees}
-            fareOption={array.fareOption}
-            cabin={array.cabin}
-            weightOfIncludedCHeckedBags={array.weightOfIncludedCHeckedBags}
-            key={array.id}
-             />
-      ))
-    ) : "nah, bruh"
-  : "still, none"
-  }
+    <div className="header-bg-dark" style={{height: "auto"}}>
+      <div className="p-page">
+        {
+          isLoading ?
+            selectedData ? (
+              "yuh, it's",
+              // GIVES BACK ALL OF THE FUNCTION I JUST NEED THE OBJEXT -DEAL W THAT 
+              selectedData.map((array) => (
+                // <p>yuh</p>
+                <DisplayFLights
+                  departureCode={array.departureCode}
+                  departureTerminal={array.departureTerminal}
+                  departureTime={array.departureTime}
+                  arrivalCode={array.arrivalCode}
+                  arrivalTerminal={array.arrivalTerminal}
+                  arrivalTime={array.arrivalTime}
+                  carrierCode={array.carrierCode}
+                  aircraftCode={array.aircraftCode}
+                  priceCurrency={array.priceCurrency}
+                  priceTotal={array.priceTotal}
+                  priceBase={array.priceBase}
+                  priceFees={array.priceFees}
+                  fareOption={array.fareOption}
+                  cabin={array.cabin}
+                  weightOfIncludedCHeckedBags={array.weightOfIncludedCHeckedBags}
+                  key={array.id}
+                   />
+            ))
+          ) : "nah, bruh"
+        : "still, none"
+        }
+      </div>
   </div>
-
-    <div className="circle  c-7"></div>
-    <div className="circle  c-8"></div>
-    <div className="circle  c-8-1"></div>
-    <div className="circle  c-8-2"></div>
 
       {/* ERROR HANDLING {
       { error && (
