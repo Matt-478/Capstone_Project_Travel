@@ -10,7 +10,7 @@ function App() {
   return(
     <div className="App">
       <Router>
-        <div className="navbar p-page"> 
+        <div className="navbar-dark p-page"> 
           <h2>RapidPack*</h2>
         </div>
         <Route path="/home" exact render={(props) => <HomePage {...props} />} />

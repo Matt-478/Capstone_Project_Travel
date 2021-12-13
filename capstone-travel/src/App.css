@@ -68,6 +68,19 @@ a { text-decoration: none; }
   font-weight: 400;
 }
 
+.navbar-dark {
+  height: 10%;
+  text-align: left;
+  background-color: var(--corn-black);
+}
+
+.navbar-dark h2 {
+  font-size: 42px;
+  color: var(--corn-grey-beige);
+  font-family: 'DM Serif Display' !important;
+  font-weight: 400;
+}
+
 /* HEADER_BG */
 .header-bg { 
   background-color: var(--corn-blue);
