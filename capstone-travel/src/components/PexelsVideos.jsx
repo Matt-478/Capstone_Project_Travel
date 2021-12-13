@@ -29,19 +29,22 @@ function PexelsVideos ( {query} ) {
       console.log(error)
     }
   }
-  
 
   return (
     <>
       {
-        pexelsVideos.length > 0 ?
-          pexelsVideos.map((item) => {
-            // console.log("yeah, it's been a rough day");
-            return  <VideoCard />
-          })
-          : console.log("something not happening in render of Pexels Videos ",pexelsVideos)
-        }
-
+        pexelsVideos ? (
+          pexelsVideos.length > 0 ?
+            pexelsVideos.map((item) => {
+              // console.log("yeah, it's been a rough day");
+              return <VideoCard
+               id={item.id}
+               src={item.video_files[0].link}/>
+            })
+            : console.log("something not happening in render of Pexels Videos ",pexelsVideos)
+          // }
+        ) : (console.log("nothing in Pexels"))
+      }
         <li></li> {/* do not remove, neccesary for layout */}
     </>
   )

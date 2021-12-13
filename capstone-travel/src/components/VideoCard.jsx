@@ -1,15 +1,20 @@
 
-const VideoCard = ({src}) => {
+const VideoCard = ({id, src}) => {
   return(
-    // <video controls>
-    //    {/* <source src={src.map((item) => {
-    //      item
-    //      return firstVideo
-    //    })} type="video/mp4"></source> */}
-    // </video>
+
+    <video autoPlay controls >
+       <source src={src} type="video/mp4">
+         {/* id: {id} */}
+       </source>
+    </video>
+    // <p>Each id: {id}</p>
+  )
+}
+
+export default VideoCard
 
 
-    <p>yay, we work</p>
+    // console.log("items passed down in Video Card", items),
 
     // <iframe src={src}
     //     frameborder='0'
@@ -21,7 +26,3 @@ const VideoCard = ({src}) => {
     //     frameBorder="0"
     //     className='video-responsive'
     //   />
-  )
-}
-
-export default VideoCard
