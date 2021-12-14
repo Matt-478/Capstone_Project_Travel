@@ -42,18 +42,20 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
           borderRadius: "20px",
           marginTop: "10px"
          }} 
-
-        
          > 
 
         <div className="content"> 
         {/* {props.children} */}
-          <div>from: {departureCode}</div>
-          <div>terminal: {departureTerminal}</div>
-          <div>leaving at: {departureTime}</div>
-          <div>to: {arrivalCode}</div>
-          <div>terminal: {arrivalTerminal}</div>          
-          <div>arriving at: {arrivalTime}</div>          
+          <div className="flight-from">
+            <div>from: {departureCode}</div>
+            <div>terminal: {departureTerminal}</div>
+            <div>leaving at: {departureTime}</div>
+          </div>
+          <div className="flight-to">
+            <div>to: {arrivalCode}</div>
+            <div>terminal: {arrivalTerminal}</div>          
+            <div>arriving at: {arrivalTime}</div>          
+          </div>
           <div>carrierCode: {carrierCode}</div>
           <div>aircraftCode: {aircraftCode}</div>
           <div>priceCurrency: {priceCurrency}</div>

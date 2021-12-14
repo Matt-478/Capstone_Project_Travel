@@ -201,15 +201,14 @@ const TravelOffers = ({ history }) => {
 
   return(
     <>
-    <div className="header-bg-dark" style={{height: "auto"}}>
-      <div className="p-page">
+    <div className="header-bg " style={{height: "auto"}}>
+      <div className="p-page pt-30">
         {
           isLoading ?
             selectedData ? (
               "yuh, it's",
               // GIVES BACK ALL OF THE FUNCTION I JUST NEED THE OBJEXT -DEAL W THAT 
               selectedData.map((array) => (
-                // <p>yuh</p>
                 <DisplayFLights
                   departureCode={array.departureCode}
                   departureTerminal={array.departureTerminal}
@@ -227,7 +226,7 @@ const TravelOffers = ({ history }) => {
                   cabin={array.cabin}
                   weightOfIncludedCHeckedBags={array.weightOfIncludedCHeckedBags}
                   key={array.id}
-                   />
+                  />
             ))
           ) : "nah, bruh"
         : "still, none"

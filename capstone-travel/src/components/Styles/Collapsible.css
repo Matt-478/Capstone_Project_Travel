@@ -2,7 +2,8 @@
   color: #ddd !important;
 } */
 .collapsible .toggle {
-  background: rgb(91 110 91);
+  /* background: rgb(91 110 91); */
+  background: var(--corn-blue);
   border: unset;
   cursor: pointer;
   width: 100%;
@@ -13,7 +14,8 @@
 }
 
 .collapsible .content {
-  background: rgb(91 110 91);
+  /* background: rgb(91 110 91); */
+  background: var(--corn-blue);
   border: unset;
   cursor: pointer;
   /* box-sizing: border-box; */
@@ -21,6 +23,10 @@
   color: #ddd !important;
   margin-bottom: 0.5rem;
   border-radius: 0 0 30px 30px;
+}
+
+.pt-30 {
+  padding-top: 30px;
 }
 
 .collapsible .content-parent {

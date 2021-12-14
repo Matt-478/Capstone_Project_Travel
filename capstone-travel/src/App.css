@@ -58,7 +58,8 @@ a { text-decoration: none; }
 .navbar {
   height: 10%;
   text-align: left;
-  background-color: var(--main-grey);
+  /* background-color: var(--main-grey); */
+  background-color: #d3d1c9;
 }
 
 .navbar h2 {
@@ -70,7 +71,9 @@ a { text-decoration: none; }
 
 /* HEADER_BG */
 .header-bg { 
-  background-color: var(--corn-blue);
+  /* background-color: var(--corn-blue); */
+  /* background-color: #b9b5a7; */
+  background-color: #c7c4bd;
   /* margin-bottom: 30px; */
   /* box-shadow: 0px 20px 0px 20px rgb(123 139 222); */
   height: 346px;
@@ -558,7 +561,8 @@ video{
 
 /* FOOTER */
 footer {
-  background-color: #f1f1f1;
+  /* background-color: #f1f1f1; */
+  background-color: #d3d1c9;
   height: 20vh;
 }
 
