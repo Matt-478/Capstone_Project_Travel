@@ -11,7 +11,7 @@ const TravelOffers = ({ history }) => {
     destinationLocationCode: "",
     departureDate: "2021-12-14",
     returnDate: "0",
-    adults: "1",
+    adults: 1,
     kids: "0",
     travelClass: "ECONOMY",
     nonStop: "true",
@@ -19,8 +19,6 @@ const TravelOffers = ({ history }) => {
     max: "30",
   })
   const[selectedData, setSelectedData] = useState([])
-  // const[flightInfo, setFlightInfo] = useState([])
-  // const[cityQuery, setCityQuery] = useState("")
 
 
   useEffect(() => {
@@ -55,8 +53,6 @@ const TravelOffers = ({ history }) => {
     return city
     // setCityQuery(city)
   }
-
-  // if value === null/0 = skip value(?)
 
   const newTokenRequest = async() => {
     try {
@@ -109,7 +105,7 @@ const TravelOffers = ({ history }) => {
 
   const fetchFlights = async(token = '', location = "LON", adults = 1, travelClass = "economy", nonStop) => {
     try{
-      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=2021-12-14&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=15`, {
+      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=2021-12-17&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=15`, {
         headers: {
             'Authorization': 'Bearer ' + token
           }
@@ -199,10 +195,92 @@ const TravelOffers = ({ history }) => {
     }
   }
 
+
+
+
+  // input and state change 
+  function handleAdultAddition () {
+    const totalAdults = selectedOptions.adults + 1
+    setSelectedOptions({
+      ...selectedOptions,
+      adults: totalAdults
+    })
+  }
+
+  function handleAdultSubtraction () {
+    setSelectedOptions({
+      ...selectedOptions,
+      adults:  -1
+    })
+  }
+
   return(
     <>
     <div className="header-bg " style={{height: "auto"}}>
       <div className="p-page pt-30">
+
+    {/* inputs */}
+     <div className="inline-flex">
+         <div className="wrapper" >
+           <form className="inline-b">
+            <div className="searchBar" >
+             <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="FROM:" />
+            </div>
+           </form>
+
+           <form className="inline-b" style={{paddingRight: "15px"}}>
+            <div className="searchBar" >
+             <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="TO:" />
+            </div>
+           </form>
+         </div>
+     </div>
+     <div className="options-input-box">
+       <p>Non-Stop: </p>
+       <form>
+        <div className="travel-input-form">
+          <div className="d-flex-column">
+            <p>Adults <small>(12+)</small>:</p>
+
+            <div className="d-flex-row">
+              <button onClick={handleAdultAddition}>+</button>
+              <input type="number" min="1" value={selectedOptions.adults}/>
+              <button onClick={handleAdultSubtraction}>-</button>
+            </div>
+          </div>
+
+          <div className="d-flex-column">
+            <p>Kids(2 - 11): </p>
+            <input type="number"/>
+          </div>
+
+          <div className="d-flex-column">
+            <p>Infants(under 2): </p>
+            <input type="number" />
+          </div>
+         </div>
+      </form>
+
+            {/* CLASS OPTIONS V1 */}
+      <div className="display-inline-flex">
+          <p>Travel Class: </p>
+          <select >
+            <option>Economy</option>
+            <option>Premium Economy</option>
+            <option>Business</option>
+            <option>First</option>
+          </select>
+        </div>
+     </div>
+
+
+      {/* CLASS OPTIONS V2 */}
+      {/* <div className="display-inline-flex">
+        <p>Travel Class</p>
+      </form>
+    </div> */}
+
+
         {
           isLoading ?
             selectedData ? (
@@ -247,66 +325,6 @@ const TravelOffers = ({ history }) => {
 }
 
 export default TravelOffers
-
-// INPUTS FOR MORE SPECIFIC RESULTS
-
-{/* <div className="inline-flex">
-        <div className="wrapper" >
-          <form className="inline-b">
-           <div className="searchBar" >
-            <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="FROM:" />
-           </div>
-          </form>
-
-          <form className="inline-b" style={{paddingRight: "15px"}}>
-           <div className="searchBar" >
-            <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="TO:" />
-           </div>
-          </form>
-        </div>
-    </div>
-    <div className="options-input-box">
-      <p>Non-Stop: </p>
-      <form>
-        <div className="human-amount">
-          <div className="d-inline-flex">
-            <p>Adults(12+):</p>
-            <input type="number" min="12"/>
-          </div>
-
-          <div className="d-inline-flex">
-            <p>Kids(2 - 11): </p>
-            <input type="number" min="2" max="11" />
-          </div>
-
-          <div className="d-inline-flex">
-            <p>Infants(under 2): </p>
-            <input type="number" max="2" min="0.1" step="0.1"/>
-          </div>
-        </div>
-      </form> */}
-
-      {/* CLASS OPTIONS V1 */}
-        {/* <div className="display-inline-flex">
-          <p>Travel Class: </p>
-          <select >
-            <option>Economy</option>
-            <option>Premium Economy</option>
-            <option>Business</option>
-            <option>First</option>
-          </select>
-        </div> */}
-
-      {/* CLASS OPTIONS V2 */}
-      {/* <div className="display-inline-flex">
-        <p>Travel Class</p>
-      </form>
-    </div> */}
-
-
-
-
-
 
 
 // id Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6

@@ -25,6 +25,11 @@
   border-radius: 0 0 30px 30px;
 }
 
+.collapsible .content .flight-from, .flight-to {
+  font-size: x-large;
+  font-weight: 600;
+}
+
 .pt-30 {
   padding-top: 30px;
 }
