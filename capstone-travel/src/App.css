@@ -501,9 +501,12 @@ transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
     border-radius: 30px;
     background-color: rgb(206 132 55);
     margin-bottom: 1em;
+
+    display: flex;
+    justify-content: center;
   }
 
-  input[type="number"] {
+  .options-input-box input[type="number"] {
     background-color: #f5f5f5;
     border: unset;
     border-radius: 4px;
@@ -511,25 +514,33 @@ transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
     width: 20px;
   }
 
-  form .travel-input-form p{
+  .options-input-box input[type="checkbox"] {
+    background-color: #f5f5f5;
+    border: unset;
+    border-radius: 4px;
+    height: 25px;
+    width: 20px;
+  }
+
+  form .options-input-box p{
     font-size: 1.6em;
     font-weight: 600;
     color: #ebe5e5;
   }
 
-  form .travel-input-form {
+  form .options-input-box {
     display: flex;
     justify-content: space-around;
 
     margin: 10px 0;
   }
    
-  form .travel-input-form .d-flex-column{
+  form .options-input-box .d-flex-column{
     display: flex;
     flex-direction: column;
   }
   
-  form .travel-input-form .d-flex-row{
+  form .options-input-box .d-flex-row{
     display: flex;
     flex-direction: row;
   }

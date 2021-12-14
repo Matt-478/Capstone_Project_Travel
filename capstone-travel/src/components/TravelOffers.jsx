@@ -12,9 +12,9 @@ const TravelOffers = ({ history }) => {
     departureDate: "2021-12-14",
     returnDate: "0",
     adults: 1,
-    kids: "0",
+    kids: 0,
     travelClass: "ECONOMY",
-    nonStop: "true",
+    nonStop: true,
     maxPrice: "250",
     max: "30",
   })
@@ -199,7 +199,17 @@ const TravelOffers = ({ history }) => {
 
 
   // input and state change 
-  function handleAdultAddition () {
+  function handleCheckbox (e) {
+    e.preventDefault()
+
+    setSelectedOptions({
+       ...selectedOptions,
+      nonStop: e.target.value
+    })
+  }
+
+  function handleAdultAddition (e) {
+    e.preventDefault()
     const totalAdults = selectedOptions.adults + 1
     setSelectedOptions({
       ...selectedOptions,
@@ -207,10 +217,12 @@ const TravelOffers = ({ history }) => {
     })
   }
 
-  function handleAdultSubtraction () {
+  function handleAdultSubtraction (e) {
+    e.preventDefault()
+    const totalAdults = selectedOptions.adults - 1
     setSelectedOptions({
       ...selectedOptions,
-      adults:  -1
+      adults: totalAdults
     })
   }
 
@@ -236,29 +248,33 @@ const TravelOffers = ({ history }) => {
          </div>
      </div>
      <div className="options-input-box">
-       <p>Non-Stop: </p>
        <form>
-        <div className="travel-input-form">
+          <div className="d-flex-column">
+            <p>Non-Stop: </p>
+            <input type="checkbox"
+             onClick={(e) => handleCheckbox(e)}
+             defaultChecked={selectedOptions.nonStop}/>
+          </div>
+        
           <div className="d-flex-column">
             <p>Adults <small>(12+)</small>:</p>
 
             <div className="d-flex-row">
-              <button onClick={handleAdultAddition}>+</button>
+              <button onClick={(e) => handleAdultAddition(e)}>+</button>
               <input type="number" min="1" value={selectedOptions.adults}/>
-              <button onClick={handleAdultSubtraction}>-</button>
+              <button onClick={(e) => handleAdultSubtraction(e)}>-</button>
             </div>
           </div>
 
           <div className="d-flex-column">
-            <p>Kids(2 - 11): </p>
-            <input type="number"/>
-          </div>
+            <p>Kids <small>(2-11)</small>:</p>
 
-          <div className="d-flex-column">
-            <p>Infants(under 2): </p>
-            <input type="number" />
+            <div className="d-flex-row">
+              <button onClick={(e) => handleAdultAddition(e)}>+</button>
+              <input type="number" min="1" value={selectedOptions.kids}/>
+              <button onClick={(e) => handleAdultSubtraction(e)}>-</button>
+            </div>
           </div>
-         </div>
       </form>
 
             {/* CLASS OPTIONS V1 */}
