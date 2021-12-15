@@ -1,9 +1,22 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import './Styles/Collapsible.css'
 
 const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, arrivalCode, arrivalTerminal, arrivalTime, carrierCode, aircraftCode, priceCurrency, priceTotal, priceBase, priceFees, fareOption, cabin, weightOfIncludedCHeckedBags}) => {
   const[isOpen, setIsOpen] = useState(false)
   const parentRef = useRef()
+
+  useEffect(() => {
+    convertTime(departureTime)
+  }, [departureTime])
+
+  const convertTime = (time) => {
+    let preConvertTime = new Date(time)
+    let convertedTime = preConvertTime.toDateString()
+    let convertedTimeTwo = preConvertTime.getHours().toString()
+    let convertedTimeThree = preConvertTime.getMinutes().toString()
+
+    console.log("Converted: ", convertedTime, ", ", convertedTimeTwo, ".", convertedTimeThree)
+  }
 
   return (
     <>
