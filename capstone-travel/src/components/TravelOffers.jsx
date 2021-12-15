@@ -226,13 +226,31 @@ const TravelOffers = ({ history }) => {
     })
   }
 
+  function handleKidsAddition (e) {
+    e.preventDefault()
+    const totalKids = selectedOptions.kids + 1
+    setSelectedOptions({
+      ...selectedOptions,
+      kids: totalKids
+    })
+  }
+
+  function handleKidsSubtraction (e) {
+    e.preventDefault()
+    const totalKids = selectedOptions.kids - 1
+    setSelectedOptions({
+      ...selectedOptions,
+      kids: totalKids
+    })
+  }
+
   return(
     <>
     <div className="header-bg " style={{height: "auto"}}>
       <div className="p-page pt-30">
 
-    {/* inputs */}
-     <div className="inline-flex">
+     {/* inputs */}
+      <div className="inline-flex">
          <div className="wrapper" >
            <form className="inline-b">
             <div className="searchBar" >
@@ -247,19 +265,19 @@ const TravelOffers = ({ history }) => {
            </form>
          </div>
      </div>
-     <div className="options-input-box">
-       <form>
-          <div className="d-flex-column">
-            <p>Non-Stop: </p>
-            <input type="checkbox"
-             onClick={(e) => handleCheckbox(e)}
-             defaultChecked={selectedOptions.nonStop}/>
-          </div>
-        
-          <div className="d-flex-column">
+      <div className="options-input-box">
+        <form>
+           <div className="d-flex-column">
+             <p>Non-Stop: </p>
+             <input type="checkbox"
+              onClick={(e) => handleCheckbox(e)}
+              defaultChecked={selectedOptions.nonStop}/>
+           </div>
+
+           <div className="d-flex-column" > 
             <p>Adults <small>(12+)</small>:</p>
 
-            <div className="d-flex-row">
+            <div className="d-flex-row" style={{height: "2.8em"}}>
               <button onClick={(e) => handleAdultAddition(e)}>+</button>
               <input type="number" min="1" value={selectedOptions.adults}/>
               <button onClick={(e) => handleAdultSubtraction(e)}>-</button>
@@ -267,34 +285,28 @@ const TravelOffers = ({ history }) => {
           </div>
 
           <div className="d-flex-column">
-            <p>Kids <small>(2-11)</small>:</p>
-
-            <div className="d-flex-row">
-              <button onClick={(e) => handleAdultAddition(e)}>+</button>
-              <input type="number" min="1" value={selectedOptions.kids}/>
-              <button onClick={(e) => handleAdultSubtraction(e)}>-</button>
-            </div>
+           <input type="date" />
+           <input type="date" />
           </div>
-      </form>
 
-            {/* CLASS OPTIONS V1 */}
-      <div className="display-inline-flex">
-          <p>Travel Class: </p>
-          <select >
-            <option>Economy</option>
-            <option>Premium Economy</option>
-            <option>Business</option>
-            <option>First</option>
-          </select>
-        </div>
-     </div>
+             {/* CLASS OPTIONS V1 */}
+           <div className="display-inline-flex" >
+            <p>Travel Class: </p>
+            <select >
+              <option>Economy</option>
+              <option>Premium Economy</option>
+              <option>Business</option>
+              <option>First</option>
+            </select>
+            </div>
+        </form> 
+      </div> 
 
-
-      {/* CLASS OPTIONS V2 */}
-      {/* <div className="display-inline-flex">
-        <p>Travel Class</p>
-      </form>
-    </div> */}
+       {/* CLASS OPTIONS V2 */}
+       {/* <div className="display-inline-flex">
+         <p>Travel Class</p>
+       </form>
+     </div> */}
 
 
         {
@@ -327,22 +339,13 @@ const TravelOffers = ({ history }) => {
         }
       </div>
   </div>
-
-      {/* ERROR HANDLING {
-      { error && (
-        // "error"
-        history.push('/404')
-        ) } */
-      }
-    {/* </div> */}
-    {/* </div> */}
-    </>
+  </>
   )
 }
 
 export default TravelOffers
 
-
+{/* 
 // id Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6
 
 // INPUTS
@@ -353,4 +356,12 @@ export default TravelOffers
 // travelClass     economy, premium economy, business or first class     string
 // nonStop      true/false      boolean
 // maxPrice       1-100000        integer
-// max 1-10000  integer     for me
+// max 1-10000  integer     for me */}
+      {/* ERROR HANDLING {
+      { error && (
+        // "error"
+        history.push('/404')
+        ) } */
+      }
+      {/* </div> */}
+      {/* </div> */}
