@@ -246,25 +246,13 @@ const TravelOffers = ({ history }) => {
 
   return(
     <>
+    <div className=" dark-banner">
+      <h2>Hit the road, Jack!</h2>
+    </div>
     <div className="header-bg " style={{height: "auto"}}>
       <div className="p-page pt-30">
 
      {/* inputs */}
-      <div className="inline-flex">
-         <div className="wrapper" >
-           <form className="inline-b">
-            <div className="searchBar" >
-             <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="FROM:" />
-            </div>
-           </form>
-
-           <form className="inline-b" style={{paddingRight: "15px"}}>
-            <div className="searchBar" >
-             <input id="searchQueryInput" type="text" name="searchQueryInput" placeholder="TO:" />
-            </div>
-           </form>
-         </div>
-     </div>
       <div className="options-input-box">
         <form>
           <div className="wokr-already">
@@ -286,9 +274,13 @@ const TravelOffers = ({ history }) => {
           </div>
 
             <div className="d-flex-column">
-           <input type="date" />
-           <input type="date" />
-          </div>
+              <p>Departure: </p>
+              <input type="date" />
+            </div>
+            <div className="d-flex-column">
+              <p>Arrival: </p>
+              <input type="date" />
+            </div>
 
              {/* CLASS OPTIONS V1 */}
             <div className="display-inline-flex" >

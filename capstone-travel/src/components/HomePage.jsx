@@ -117,9 +117,9 @@ const HomePage = ({history}) => {
           <div className="d-flex-space">
           <div className="left-side">
             {/* brief description */}
-            {/* <p>
+            <p>
               {cityInfo.extract}
-            </p> */}
+            </p>
           </div>
           <div className="right-side">
             {/* map based on location */}
@@ -131,15 +131,15 @@ const HomePage = ({history}) => {
     </div>
     </div> {/* padding div */}
 
-        {/* <PexelsPhotos query={realState}/> */}
+        <PexelsPhotos query={realState}/>
     {/* videos based on location */}
-    <div>
+    {/* <div>
       { realState  ? (
         <PexelsVideos query={realState}/>
       )
         : "not going further than HOMEPAGE component"
       }
-    </div>
+    </div> */}
 
     {/* <div className="d-flex align-center space-between">
       <h3 className="d-inline">Interested? What are you waiting for?</h3> */}
