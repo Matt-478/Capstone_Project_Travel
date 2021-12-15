@@ -267,14 +267,15 @@ const TravelOffers = ({ history }) => {
      </div>
       <div className="options-input-box">
         <form>
-           <div className="d-flex-column">
+          <div className="wokr-already">
+            <div className="d-flex-column">
              <p>Non-Stop: </p>
              <input type="checkbox"
               onClick={(e) => handleCheckbox(e)}
               defaultChecked={selectedOptions.nonStop}/>
            </div>
 
-           <div className="d-flex-column" > 
+            <div className="d-flex-column" > 
             <p>Adults <small>(12+)</small>:</p>
 
             <div className="d-flex-row" style={{height: "2.8em"}}>
@@ -284,13 +285,13 @@ const TravelOffers = ({ history }) => {
             </div>
           </div>
 
-          <div className="d-flex-column">
+            <div className="d-flex-column">
            <input type="date" />
            <input type="date" />
           </div>
 
              {/* CLASS OPTIONS V1 */}
-           <div className="display-inline-flex" >
+            <div className="display-inline-flex" >
             <p>Travel Class: </p>
             <select >
               <option>Economy</option>
@@ -299,6 +300,7 @@ const TravelOffers = ({ history }) => {
               <option>First</option>
             </select>
             </div>
+          </div>
         </form> 
       </div> 
 

@@ -501,14 +501,14 @@ transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
     background-color: var(--corn-grey-bg);
     margin-bottom: 2em;
 
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: space-between; */
   }
 
   .options-input-box form {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
+    height: inherit;
   }
 
   .options-input-box input[type="number"] {
@@ -595,6 +595,11 @@ transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
     -moz-appearance: textfield;
 }
 
+.wokr-already {
+  display: flex;
+  justify-content: space-between;
+  /* works only if the other flexes on form and the other are off */
+}
 
 /* IMG_DISPLAY */
   .image-display{
