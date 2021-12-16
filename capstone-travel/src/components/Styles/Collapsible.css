@@ -25,11 +25,14 @@
   border-radius: 30px;
 
   border-radius: 30px;
-  border: 11px dashed #091305;
+  border: 11px solid #091305;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .collapsible .content .flight-from, .flight-to {
-  font-size: x-large;
+  font-size: large;
   font-weight: 600;
 }
 

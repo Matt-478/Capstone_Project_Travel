@@ -153,6 +153,7 @@ const TravelOffers = ({ history }) => {
         arrivalTime:  element.itineraries[0].segments.map((segm) => (
           segm.arrival.at
          )),
+        flightDuration: element.itineraries[0].segments[0].duration,
 
         carrierCode: element.itineraries[0].segments.map((segm) => (
           segm.carrierCode
@@ -316,6 +317,7 @@ const TravelOffers = ({ history }) => {
                   arrivalCode={array.arrivalCode}
                   arrivalTerminal={array.arrivalTerminal}
                   arrivalTime={array.arrivalTime}
+                  duration={array.flightDuration}
                   carrierCode={array.carrierCode}
                   aircraftCode={array.aircraftCode}
                   priceCurrency={array.priceCurrency}
