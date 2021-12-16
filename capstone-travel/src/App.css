@@ -7,7 +7,6 @@ body{
   --corn-grey-light: #d8e4e5;
   --corn-grey-bg: #e5e5e5;
   --corn-grey-beige: #dbd8d1;
-  /* --corn-grey-dark: #d1cbcb; */
   --corn-black: #091205ff;
   --main-grey: #f1f1f1;
 }
@@ -19,17 +18,12 @@ body{
 body {
   padding: 0;
   margin:0; 
-  /* cold grey*/
   background-color: var(--main-grey);
-
-  /* warm grey */
-  /* background-color: #dbd8d1; */
 }
 
 h1, h2, h3, h4, h5, h6, p{
   /* font-family: 'Sarabun', sans-serif; */
   /* font-family: 'Bebas Neue', cursive; */
-  /* font-weight: 700; */
   margin: 0;
 }
 
@@ -216,6 +210,31 @@ input[type="text"]{
 }
 
 
+.change-page-btn {
+  background-color: var(--corn-black);
+  color: var(--corn-green-bright);
+  /* border: 5px solid var(--corn-green-bright); */
+  padding: 50px 10%;
+}
+
+.change-page-btn h3 {
+  font-family: 'Bebas Neue', cursive; 
+}
+
+.change-page-btn button {
+  border: unset;
+  outline: unset;
+
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.change-page-btn button:hover {
+  background-color: rgb(212, 207, 207);
+}
+
+/* /FLIGHT   /FLIGHT    /FLIGHT    /FLIGHT    /FLIGHT    /FLIGHT    /FLIGHT    /FLIGHT   /FLIGHT    /FLIGHT  */
 /* TRAVEL-OPTIONS-BOX */
 .travel-options-box-container {
   width: 100%;
@@ -277,6 +296,43 @@ input[type="text"]{
   color: var(--corn-green-bright);
 }
 
+.flight-duration-flex {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: -webkit-fill-available;
+  margin: 10px;
+  text-align: center;
+  margin-top: 7%;
+}
+
+.flight-line {
+  width: -webkit-fill-available;
+  height: 3px;
+  background: #444442;
+  align-self: center
+}
+
+/* BUY_BTN */
+.buy-btn {
+  text-align: center;
+  display: inline-block;
+  background-color: #081405;
+  width: 3em;
+  padding: 8px 5px;
+  height: fit-content;
+  border-radius: 16px;
+  color: var(--corn-blue);
+  color: var(--corn-grey-bg);
+  font-weight: 700;
+  font-size: 1.2em;
+  align-self: end;
+}
+
+.buy-btn:hover {
+  background-color: var(--corn-black);
+  color: var(--corn-green-bright)
+}
 
 /* LOADER  */
 

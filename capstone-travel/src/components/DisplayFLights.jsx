@@ -72,14 +72,22 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
           <div className="flight-from">
             <div>{newDate}</div>
             <div>{departureTime}</div>
-            <div>{departureCode} (actual airport name)</div>
+            <div>{departureCode}</div>
             <div>terminal: {departureTerminal}</div>
           </div>
+
+         <div className="flight-duration-flex">
           <div>{duration}</div>
+          <span className="flight-line"></span>
+         </div>
+
           <div className="flight-to">         
             <div>{arrivalTime}</div>          
             <div>{arrivalCode}</div>
             <div>terminal: {arrivalTerminal}</div>          
+          </div>
+          <div className="buy-btn">
+            BUY
           </div>
           {/* <div>{carrierCode}</div>
           <div>aircraftCode: {aircraftCode}</div>

@@ -63,7 +63,7 @@ const HomePage = ({history}) => {
   const handleBookTrip = () => {
     history.push({
       pathname: '/flight',
-      search: '?cityQuery=' + realState.toLowerCase()
+      // search: '?cityQuery=' + realState.toLowerCase()
     })
   }
 
@@ -123,7 +123,7 @@ const HomePage = ({history}) => {
           </div>
           <div className="right-side">
             {/* map based on location */}
-            {/* <SnapMap /> */}
+            {/* <SnapMap style={{width: "40%"}}/> */}
           </div>
           </div>
       </div>
@@ -131,7 +131,11 @@ const HomePage = ({history}) => {
     </div>
     </div> {/* padding div */}
 
-        <PexelsPhotos query={realState}/>
+      <PexelsPhotos query={realState}/>
+      <div className="d-flex align-center space-between change-page-btn">
+        <h3 className="d-inline">Interested? What are you waiting for? ---------------------------------------------------------------------------------------------------{'>'}</h3> 
+        <button className="pill-btn book-a-trip-btn" onClick={handleBookTrip}>Book a trip now!</button>
+    </div>
     {/* videos based on location */}
     {/* <div>
       { realState  ? (
@@ -139,11 +143,6 @@ const HomePage = ({history}) => {
       )
         : "not going further than HOMEPAGE component"
       }
-    </div> */}
-
-    {/* <div className="d-flex align-center space-between">
-      <h3 className="d-inline">Interested? What are you waiting for?</h3> */}
-      {/* <button className="pill-btn book-a-trip-btn" onClick={handleBookTrip}>Book a trip now!</button>
     </div> */}
   </>
   )
