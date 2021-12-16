@@ -59,7 +59,7 @@ a { text-decoration: none; }
   height: 10%;
   text-align: left;
   /* background-color: var(--main-grey); */
-  background-color: #d3d1c9;
+  background-color: var(--corn-grey-bg);
 }
 
 .navbar h2 {
@@ -528,7 +528,7 @@ transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
     background-color: #f5f5f5;
     border: unset;
     border-radius: 4px;
-    height: 25px;
+    height: 41px;
     width: 20px;
   }
 
@@ -576,6 +576,7 @@ transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
   .options-input-box form .d-flex-column{
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   
   form .options-input-box .d-flex-row{
@@ -598,6 +599,8 @@ transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
 .wokr-already {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  height: inherit;
   /* works only if the other flexes on form and the other are off */
 }
 
@@ -647,7 +650,7 @@ video{
 /* FOOTER */
 footer {
   /* background-color: #f1f1f1; */
-  background-color: #d3d1c9;
+  background-color: var(--corn-grey-bg);
   height: 20vh;
 }
 
