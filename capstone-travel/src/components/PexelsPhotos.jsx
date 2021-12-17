@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react'
 import ImageCard from './ImageCard'
+import { useDispatch } from 'react-redux'
+import {  addPhotos } from './actions'
+import { counter } from './reducers/counter'
 
 function PexelsPhotos ( {query} ) {
   const [pexelsPhotos, setPexelsPhotos] = useState([])
+  // const hold = useSelector( state => state.hold )
+  // const add = useSelector( state => state.add )
+  const dispatch = useDispatch()
 
   useEffect(() => {
     fetchPexelsData() 
@@ -12,16 +18,21 @@ function PexelsPhotos ( {query} ) {
 
   async function fetchPexelsData () {
     try {
-      const response = await fetch("https://api.pexels.com/v1/search?query=" + query + "&per_page=60", {
+      const response = await fetch("https://api.pexels.com/v1/search?query=" + query + "&per_page=30", {
         // &size=large
         "method":"GET",
         "headers": {          
         "Authorization": "563492ad6f91700001000001d99276bcb4d4402fbf7f8f502c81c2ba"}
       })
       const {photos} = await response.json()
-
-      setPexelsPhotos(photos)
-      console.log(pexelsPhotos)
+      if (photos) {
+        dispatch(addPhotos(photos))
+        dispatch(counter())
+      } else {
+        console.log("no - photos")
+      }
+      // setPexelsPhotos(photos)
+      // console.log(pexelsPhotos)
 
       // push these results up to Homepage array or push these to an array and then use it in homepage
     } catch (error) {
@@ -34,10 +45,9 @@ function PexelsPhotos ( {query} ) {
   return (
     <>
         <div className="image-display"> 
-        {/* how to randomise all the img's and videos? */}
           <ul style={{
             paddingBottom: query.length > 4 ? "39px" : "none"
-          }}>
+            }}>
               { 
                 pexelsPhotos && pexelsPhotos.map((data, boop = data.id) => (
                   <ImageCard

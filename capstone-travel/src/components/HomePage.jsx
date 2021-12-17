@@ -3,12 +3,40 @@ import PexelsVideos from './PexelsVideos';
 import SnapMap from './SnapMap'
 
 import { useState, useEffect } from 'react';
+import {useSelector, useDispatch} from 'react-redux'
+import { addPhotos, addVid } from './actions';
+import ImageCard from './ImageCard';
+import VideoCard from './VideoCard';
 
 const HomePage = ({history}) => {
+
+  const dispatch = useDispatch()
 
   const[cityInfo, setCityInfo] = useState([])
   const[query, setQuery] = useState("")
   const[realState, setRealState] = useState("")
+  const [mediaArray, setMediaArray] = useState([])
+
+  const photos = useSelector(state => state.photos.list)
+  const videos = useSelector(state => state.videos.list)
+
+  useEffect(() => {
+    let bigArray = [...photos, ...videos]
+    console.log("big", bigArray)
+
+    const shuffleArray = (arr) => {
+      for (let i = arr.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          let temp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = temp;
+      }
+  }  
+    shuffleArray(bigArray)
+    console.log("big big ", shuffleArray)
+    // setMediaArray(shuffleArray)
+    setMediaArray(bigArray)
+  }, [photos, videos])
 
   useEffect(()=>{
     if(query.length >= 4) {
@@ -17,9 +45,59 @@ const HomePage = ({history}) => {
   },[query])
 
   useEffect(() => {
-    fetchWikipediaCitySummary(realState)
-    urlFunction(realState)
+    if(realState.length > 0) {
+      fetchWikipediaCitySummary(realState)
+      urlFunction(realState)
+      fetchPexelsData()
+      fetchPexelsVideos()
+    }
   },[realState])
+
+  async function fetchPexelsData () {
+    try {
+      const response = await fetch("https://api.pexels.com/v1/search?query=" + query + "&per_page=30", {
+        // &size=large
+        "method":"GET",
+        "headers": {          
+        "Authorization": "563492ad6f91700001000001d99276bcb4d4402fbf7f8f502c81c2ba"}
+      })
+      const {photos} = await response.json()
+      console.log('!!photos', photos)
+      if (photos) {
+        dispatch(addPhotos(photos))
+      } else {
+        console.log("no - photos")
+      }
+      // setPexelsPhotos(photos)
+      // console.log(pexelsPhotos)
+
+      // push these results up to Homepage array or push these to an array and then use it in homepage
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function fetchPexelsVideos () {
+    try {
+      const response = await fetch("https://api.pexels.com/videos/search?query=" + query + "&per_page=15", {
+         // &size=large
+        "method":"GET",
+        "headers": {          
+        "Authorization": "563492ad6f91700001000001d99276bcb4d4402fbf7f8f502c81c2ba"}
+      })
+      const {videos} = await response.json()
+      console.log('!!videos', videos)
+      if (videos) {
+        dispatch(addVid(videos))
+      } else {
+        console.log("no")
+      }
+      // setPexelsVideos(data.videos) 
+      // return data.videos
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const urlFunction = (realState) => {
     const _myURL = new URL(window.location.href)
@@ -111,19 +189,14 @@ const HomePage = ({history}) => {
       </div>
 
       <div className="left-area-top">
-        {/* <h2>{query && toTitleCase(query)}</h2> */}
         <h3>{query && toTitleCase(query)}</h3>
-        {/* <h4>{query && toTitleCase(query)}</h4> */}
           <div className="d-flex-space">
           <div className="left-side">
-            {/* brief description */}
             <p>
               {cityInfo.extract}
             </p>
           </div>
           <div className="right-side">
-            {/* map based on location */}
-            {/* <SnapMap style={{width: "40%"}}/> */}
           </div>
           </div>
       </div>
@@ -131,18 +204,34 @@ const HomePage = ({history}) => {
     </div>
     </div> {/* padding div */}
 
-      <PexelsPhotos query={realState}/>
+      {/*<PexelsPhotos query={realState}/>*/}
       <div className="d-flex align-center space-between change-page-btn">
         <h3 className="d-inline">Interested? What are you waiting for? ---------------------------------------------------------------------------------------------------{'>'}</h3> 
         <button className="pill-btn book-a-trip-btn" onClick={handleBookTrip}>Book a trip now!</button>
     </div>
     {/* videos based on location */}
     <div>
-      { realState  ? (
-        <PexelsVideos query={realState}/>
+      {/* { realState  ? (
       )
         : "not going further than HOMEPAGE component"
-      }
+      } */}
+      <div className="image-display"> 
+          <ul style={{paddingBottom: query.length > 4 ? "39px" : "none"}}>
+              {
+                mediaArray && mediaArray.map(picOrVideo => picOrVideo.alt ? (
+                  <ImageCard
+                    src={picOrVideo.src.medium}
+                    key={picOrVideo.id}
+                    query={query}
+                  />
+                ):(
+                  <VideoCard
+                    id={picOrVideo.id}
+                    src={picOrVideo.video_files[0].link}/>
+                ))
+              }
+            </ul>
+            </div>
     </div>
   </>
   )

@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react'
 import VideoCard from './VideoCard'
 
+import { useDispatch } from 'react-redux'
+import { addVid } from './actions'
+
 function PexelsVideos ( {query} ) {
   const [pexelsVideos, setPexelsVideos] = useState()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     // query.length <=  3  ? setIsLoading(!isLoading) : setIsLoading(isLoading)
@@ -19,8 +23,12 @@ function PexelsVideos ( {query} ) {
         "Authorization": "563492ad6f91700001000001d99276bcb4d4402fbf7f8f502c81c2ba"}
       })
       let data = await response.json()
-      setPexelsVideos(data.videos)
-
+      if (data) {
+        dispatch(addVid(data.videos))
+      } else {
+        console.log("no")
+      }
+      // setPexelsVideos(data.videos) 
       // return data.videos
 
       console.log(data.videos)
