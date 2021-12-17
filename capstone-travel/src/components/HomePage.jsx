@@ -1,5 +1,4 @@
-import PexelsPhotos from './PexelsPhotos'
-import PexelsVideos from './PexelsVideos';
+
 import SnapMap from './SnapMap'
 
 import { useState, useEffect } from 'react';

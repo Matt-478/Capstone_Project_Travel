@@ -12,9 +12,3 @@ export const addPhotos= (photos) => {
     payload: photos
   }
 }
-
-export const addCount = () => {
-  return {
-    type: "ADD_COUNT"
-  }
-}
