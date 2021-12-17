@@ -137,13 +137,13 @@ const HomePage = ({history}) => {
         <button className="pill-btn book-a-trip-btn" onClick={handleBookTrip}>Book a trip now!</button>
     </div>
     {/* videos based on location */}
-    {/* <div>
+    <div>
       { realState  ? (
         <PexelsVideos query={realState}/>
       )
         : "not going further than HOMEPAGE component"
       }
-    </div> */}
+    </div>
   </>
   )
 }
