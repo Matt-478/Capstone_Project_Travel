@@ -22,6 +22,8 @@ function PexelsPhotos ( {query} ) {
 
       setPexelsPhotos(photos)
       console.log(pexelsPhotos)
+
+      // push these results up to Homepage array or push these to an array and then use it in homepage
     } catch (error) {
       console.log(error)
     }
