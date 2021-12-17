@@ -204,18 +204,8 @@ const HomePage = ({history}) => {
     </div>
     </div> {/* padding div */}
 
-      {/*<PexelsPhotos query={realState}/>*/}
-      <div className="d-flex align-center space-between change-page-btn">
-        <h3 className="d-inline">Interested? What are you waiting for? ---------------------------------------------------------------------------------------------------{'>'}</h3> 
-        <button className="pill-btn book-a-trip-btn" onClick={handleBookTrip}>Book a trip now!</button>
-    </div>
-    {/* videos based on location */}
-    <div>
-      {/* { realState  ? (
-      )
-        : "not going further than HOMEPAGE component"
-      } */}
-      <div className="image-display"> 
+
+    <div className="image-display"> 
           <ul style={{paddingBottom: query.length > 4 ? "39px" : "none"}}>
               {
                 mediaArray && mediaArray.map(picOrVideo => picOrVideo.alt ? (
@@ -227,11 +217,24 @@ const HomePage = ({history}) => {
                 ):(
                   <VideoCard
                     id={picOrVideo.id}
-                    src={picOrVideo.video_files[0].link}/>
+                    src={picOrVideo.video_files[0].link}
+                    query={query}
+                  />
                 ))
               }
-            </ul>
-            </div>
+          </ul>
+        </div>
+      {/*<PexelsPhotos query={realState}/>*/}
+      <div className="d-flex align-center space-between change-page-btn">
+        <h3 className="d-inline">Interested? What are you waiting for? ---------------------------------------------------------------------------------------------------{'>'}</h3> 
+        <button className="pill-btn book-a-trip-btn" onClick={handleBookTrip}>Book a trip now!</button>
+    </div>
+    {/* videos based on location */}
+    <div>
+      {/* { realState  ? (
+      )
+        : "not going further than HOMEPAGE component"
+      } */}
     </div>
   </>
   )
