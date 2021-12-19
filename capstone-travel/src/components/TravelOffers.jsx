@@ -200,12 +200,10 @@ const TravelOffers = ({ history }) => {
 
 
   // input and state change 
-  function handleCheckbox (e) {
-    e.preventDefault()
-
+  function handleCheckbox () {
     setSelectedOptions({
        ...selectedOptions,
-      nonStop: e.target.value
+      nonStop: !selectedOptions.nonStop
     })
   }
 
@@ -242,19 +240,19 @@ const TravelOffers = ({ history }) => {
             <div className="d-flex-column">
              <p>Non-Stop: </p>
              <input type="checkbox"
-              onClick={(e) => handleCheckbox(e)}
-              defaultChecked={selectedOptions.nonStop}/>
+              onClick={handleCheckbox}
+              // defaultChecked={selectedOptions.nonStop}
+              value={selectedOptions.nonStop}/>
            </div>
 
             <div className="d-flex-column" > 
-            <p>Adults <small>(12+)</small>:</p>
-
-            <div className="d-flex-row" style={{height: "2.8em"}}>
-              <button onClick={(e) => handleAdultAddition(e)}>+</button>
-              <input type="number" min="1" value={selectedOptions.adults}/>
-              <button onClick={(e) => handleAdultSubtraction(e)}>-</button>
+              <p>Adults <small>(12+)</small>:</p>
+              <div className="d-flex-row" style={{height: "2.8em"}}>
+                <button onClick={(e) => handleAdultAddition(e)}>+</button>
+                <input type="number" min="1" value={selectedOptions.adults}/>
+                <button onClick={(e) => handleAdultSubtraction(e)}>-</button>
+              </div>
             </div>
-          </div>
 
             <div className="d-flex-column">
               <p>Departure: </p>
@@ -265,7 +263,6 @@ const TravelOffers = ({ history }) => {
               <input type="date" />
             </div>
 
-             {/* CLASS OPTIONS V1 */}
             <div className="display-inline-flex" >
             <p>Travel Class: </p>
             <select >
