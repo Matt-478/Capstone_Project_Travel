@@ -205,7 +205,7 @@ const HomePage = ({history}) => {
 
 
     <div className="image-display"> 
-          <ul style={{paddingBottom: query.length > 4 ? "39px" : "none"}}>
+          <ul style={{paddingBottom: query.length >= 4 ? "39px" : "none"}}>
               {
                 mediaArray && mediaArray.map(picOrVideo => picOrVideo.alt ? (
                   <ImageCard
