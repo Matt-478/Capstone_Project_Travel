@@ -1,6 +1,3 @@
-
-import SnapMap from './SnapMap'
-
 import { useState, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { addPhotos, addVid } from './actions';
@@ -140,7 +137,7 @@ const HomePage = ({history}) => {
   const handleBookTrip = () => {
     history.push({
       pathname: '/flight',
-      // search: '?cityQuery=' + realState.toLowerCase()
+      search: '?cityQuery=' + realState.toLowerCase()
     })
   }
 
@@ -230,10 +227,6 @@ const HomePage = ({history}) => {
     </div>
     {/* videos based on location */}
     <div>
-      {/* { realState  ? (
-      )
-        : "not going further than HOMEPAGE component"
-      } */}
     </div>
   </>
   )

@@ -68,59 +68,6 @@
 
 
 /* BRAND COLORS */
-.circle {
-  width: 10vw;
-  height: 40px;
-}
-
-.c-1 {
-  background-color: #4062bb;
-}
-
-.c-2 {
-  background-color: #6f856f;
-}
-
-.c-2-1 {
-  background-color: #c3beb3;
-}
-
-.c-2-2 {
-  background-color: #1a181b;
-}
-
-.c-3 {
-  background-color: #5762d5ff;
-}
-
-.c-4 {
-  background-color: #6f856fff;
-}
-
-.c-4-1 {
-  background-color: #c3beb3ff;
-}
-
-.c-4-2 {
-  background-color: #130601ff;
-}
-
-.c-5 {
-  background-color: #f96900ff;
-}
-
-.c-6 {
-  background-color: #70997dff;
-}
-
-.c-6-1 {
-  background-color: #c3beb3ff;
-}
-
-.c-6-2 {
-  background-color: #130601ff;
-}
-
 .c-7 {
   background-color: var(--corn-blue);
 }
