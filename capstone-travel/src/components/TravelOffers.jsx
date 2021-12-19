@@ -282,7 +282,6 @@ const TravelOffers = ({ history }) => {
         {
           isLoading ?
             selectedData ? (
-              "yuh, it's",
               // GIVES BACK ALL OF THE FUNCTION I JUST NEED THE OBJEXT -DEAL W THAT 
               selectedData.map((array) => (
                 <DisplayFLights
@@ -306,7 +305,7 @@ const TravelOffers = ({ history }) => {
                   />
             ))
           ) : "nah, bruh"
-        : "still, none"
+        : null //should be loader
         }
       </div>
   </div>
