@@ -241,8 +241,9 @@ const TravelOffers = ({ history }) => {
              <p>Non-Stop: </p>
              <input type="checkbox"
               onClick={handleCheckbox}
-              // defaultChecked={selectedOptions.nonStop}
-              value={selectedOptions.nonStop}/>
+              defaultChecked={selectedOptions.nonStop}
+              // value={selectedOptions.nonStop}
+              />
            </div>
 
             <div className="d-flex-column" > 
