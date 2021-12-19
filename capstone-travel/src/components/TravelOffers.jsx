@@ -225,6 +225,10 @@ const TravelOffers = ({ history }) => {
     })
   }
 
+  function handleSearchClick(e) {
+      e.preventDefault()
+  }
+
   return(
     <>
     <div className=" dark-banner">
@@ -242,7 +246,6 @@ const TravelOffers = ({ history }) => {
              <input type="checkbox"
               onClick={handleCheckbox}
               defaultChecked={selectedOptions.nonStop}
-              // value={selectedOptions.nonStop}
               />
            </div>
 
@@ -273,6 +276,10 @@ const TravelOffers = ({ history }) => {
               <option>First</option>
             </select>
             </div>
+            
+            <button onClick={(e) => handleSearchClick(e)} class="custom-search-btn">
+              Search
+            </button>
           </div>
         </form> 
       </div> 
@@ -305,7 +312,7 @@ const TravelOffers = ({ history }) => {
                   />
             ))
           ) : "nah, bruh"
-        : null //should be loader
+        : <div className="loader"></div> //should be loader
         }
       </div>
   </div>
@@ -314,24 +321,3 @@ const TravelOffers = ({ history }) => {
 }
 
 export default TravelOffers
-
-{/* 
-// id Qib3QfOzZG1a6g8r8zX0Kx9XhtA8XBS6
-
-// INPUTS
-// departureDate    YYYY-MM-DD    string
-// returnDate   YYYY-MM-DD    string
-// adults(12+)    1-100     integer
-// kids           1-100     integer
-// travelClass     economy, premium economy, business or first class     string
-// nonStop      true/false      boolean
-// maxPrice       1-100000        integer
-// max 1-10000  integer     for me */}
-      {/* ERROR HANDLING {
-      { error && (
-        // "error"
-        history.push('/404')
-        ) } */
-      }
-      {/* </div> */}
-      {/* </div> */}

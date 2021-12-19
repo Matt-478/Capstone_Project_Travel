@@ -22,7 +22,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p{
-  /* font-family: 'Sarabun', sans-serif; */
+  font-family: 'Sarabun', sans-serif;
   /* font-family: 'Bebas Neue', cursive; */
   margin: 0;
 }
@@ -52,13 +52,13 @@ a { text-decoration: none; }
 .navbar {
   height: 10%;
   text-align: left;
-  /* background-color: var(--main-grey); */
   background-color: var(--corn-grey-bg);
 }
 
 .navbar h2 {
   font-size: 42px;
   color: var(--corn-black);
+  /* color: var(--corn-green-bright); */
   font-family: 'DM Serif Display' !important;
   font-weight: 400;
 }
@@ -79,7 +79,7 @@ a { text-decoration: none; }
   background-color: #091305;
   height: 60vh;
   padding-top: 35px;
-  padding-bottom: 35px;
+  padding-bottom: 130px;
   /* margin-bottom: 30px; */
   /* box-shadow: 0px 1px 20px 20px rgb(9 19 5); */
 }
@@ -88,7 +88,8 @@ a { text-decoration: none; }
 .head-line h2{
   font-family: 'DM Serif Display', serif;
   font-size: 50px;
-  color: var(--corn-grey-bg);
+  /* color: var(--corn-grey-bg); */
+  color: var(--corn-green-bright);
 }
 
 
@@ -213,12 +214,15 @@ input[type="text"]{
 .change-page-btn {
   background-color: var(--corn-black);
   color: var(--corn-green-bright);
-  /* border: 5px solid var(--corn-green-bright); */
   padding: 50px 10%;
 }
 
 .change-page-btn h3 {
-  font-family: 'Bebas Neue', cursive; 
+  /* font-family: 'Bebas Neue', cursive;  */
+  /* font-family: 'DM Serif Display', serif; */
+  font-family: 'Sarabun', sans-serif;
+  color: var(--corn-blue);
+  font-size: 2.1em;
 }
 
 .change-page-btn button {
@@ -228,10 +232,18 @@ input[type="text"]{
   padding: 10px;
   border-radius: 20px;
   cursor: pointer;
+
+  color: #091305;
+  background: #bbff27;
+  font-weight: 600;
+  font-size: 1.5em;
 }
 
 .change-page-btn button:hover {
-  background-color: rgb(212, 207, 207);
+  box-sizing: border-box;
+  background-color: rgb(9 19 5);
+  color: var(--corn-green-bright);
+  border: 2px solid var(--corn-green-bright);
 }
 
 /* /FLIGHT   /FLIGHT    /FLIGHT    /FLIGHT    /FLIGHT    /FLIGHT    /FLIGHT    /FLIGHT   /FLIGHT    /FLIGHT  */
@@ -394,7 +406,8 @@ input[type="text"]{
 /* LOADER  */
 
 .loader {
-  color: #c5601d;
+  /* color: #c5601d; */
+  color: var(--corn-green-bright);
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;
@@ -715,6 +728,24 @@ transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
   align-items: center;
   height: inherit;
   /* works only if the other flexes on form and the other are off */
+}
+
+.options-input-box .custom-search-btn {
+  align-self: end;
+  height: 2.8rem;
+  background: #f5f5f5;
+  outline: none;
+  border: none;
+  border-radius: 1.625rem;
+  padding: 0 15px;
+  font-size: 1rem;
+  margin-bottom: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.options-input-box .custom-search-btn:hover {
+  background-color: #cecece;
 }
 
 /* IMG_DISPLAY */

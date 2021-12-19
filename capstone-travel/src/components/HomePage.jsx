@@ -131,7 +131,7 @@ const HomePage = ({history}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setRealState(query)
+    // setRealState(query)
   }
 
   const handleBookTrip = () => {
@@ -220,12 +220,10 @@ const HomePage = ({history}) => {
               }
           </ul>
         </div>
-      {/*<PexelsPhotos query={realState}/>*/}
       <div className="d-flex align-center space-between change-page-btn">
-        <h3 className="d-inline">Interested? What are you waiting for? ---------------------------------------------------------------------------------------------------{'>'}</h3> 
+        <h3 className="d-inline">Interested? What are you waiting for?</h3> 
         <button className="pill-btn book-a-trip-btn" onClick={handleBookTrip}>Book a trip now!</button>
-    </div>
-    {/* videos based on location */}
+      </div>
     <div>
     </div>
   </>
