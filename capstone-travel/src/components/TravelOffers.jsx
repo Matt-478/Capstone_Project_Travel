@@ -105,7 +105,7 @@ const TravelOffers = ({ history }) => {
 
   const fetchFlights = async(token = '', location = "LON", adults = 1, travelClass = "economy", nonStop) => {
     try{
-      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=2021-12-17&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=15`, {
+      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=2021-12-21&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=25`, {
         headers: {
             'Authorization': 'Bearer ' + token
           }
