@@ -70,19 +70,21 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
         <div className="content"> 
         {/* {props.children} */}
           <div className="flight-from">
-            <div>{newDate}</div>
-            <div>{departureTime}</div>
+            {/* <div>{newDate}</div> */}
+            <div>{newTime}</div>
             <div>{departureCode}</div>
             <div>terminal: {departureTerminal}</div>
           </div>
 
          <div className="flight-duration-flex">
+         <div>{newDate}</div>
           <div>{duration}</div>
           <span className="flight-line"></span>
          </div>
 
           <div className="flight-to">         
-            <div>{arrivalTime}</div>          
+            {/* <div>{newDate}</div>           */}
+            <div>{newTime}</div>          
             <div>{arrivalCode}</div>
             <div>terminal: {arrivalTerminal}</div>          
           </div>
