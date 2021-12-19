@@ -9,7 +9,7 @@ const TravelOffers = ({ history }) => {
   const[error, setError] = useState(false)
   const[selectedOptions, setSelectedOptions] = useState({
     destinationLocationCode: "",
-    departureDate: "2021-12-14",
+    departureDate: "2021-12-21",
     returnDate: "0",
     adults: 1,
     kids: 0,
@@ -258,7 +258,7 @@ const TravelOffers = ({ history }) => {
 
             <div className="d-flex-column">
               <p>Departure: </p>
-              <input type="date" />
+              <input type="date" value={selectedOptions.departureDate}/>
             </div>
             <div className="d-flex-column">
               <p>Arrival: </p>

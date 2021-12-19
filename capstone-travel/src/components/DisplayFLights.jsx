@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from 'react'
 import './Styles/Collapsible.css'
 import {useSelector, useDispatch} from 'react-redux'
-import { addPhotos, addVid } from './actions';
 
 const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, arrivalCode, arrivalTerminal, arrivalTime, duration, carrierCode, aircraftCode, priceCurrency, priceTotal, priceBase, priceFees, fareOption, cabin, weightOfIncludedCHeckedBags}) => {
   const[isOpen, setIsOpen] = useState(false)
   const [newDate, setNewDate] = useState()
   const [newTime, setNewTime] = useState()
-  const[buyBtnIsOpen, setBuyBtnIsOpen] = useState(false)
+  const [buyBtnIsOpen, setBuyBtnIsOpen] = useState(false)
+  const [submit, setSubmit] = useState(false)
   const parentRef = useRef()
 
   useEffect(() => {
@@ -33,7 +33,11 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
 
   const handleBuy = () => {
     setBuyBtnIsOpen(!buyBtnIsOpen)
+  }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setSubmit(!submit)
   }
 
   return (
@@ -106,7 +110,21 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
               <h2>Ready to go?</h2>
               <p>Your email is the only thing keeping you and that ticket away from each other. Let's make this happen!</p>
 
-              <input type="text" placeholder="myEmail@gmail.com" id="email-input"/>
+              <form onSubmit={(e) => handleSubmit(e)}>
+                <input type="text" placeholder="myEmail@gmail.com" id="email-input"/>
+                {submit ? 
+                  <input type="submit" disabled/> : 
+                  <input type="submit" />
+                }
+              </form>
+
+              {submit ? 
+              <p style={{
+                marginTop: "30px",
+                fontWeight: "800",
+              }}>Your journey just begun!</p>
+              : null}
+
               <span onClick={handleBuy}>X</span>
             </div>
          ): null}
