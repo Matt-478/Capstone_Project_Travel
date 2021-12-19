@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import { combineReducers } from 'redux'
 import {photoReducer} from '../reducers/photoReducer'
 import {videoReducer} from '../reducers/videoReducer'
+import {buyBtnIsOpen} from '../reducers/buyBtnIsOpenReducer'
 
 export const initialState = {
   photos: {
@@ -11,6 +12,9 @@ export const initialState = {
   },
   videos: {
     list: []
+  },
+  buyBtnIsOpen: {
+    buyBtnIsOpen: false
   }
 }
 
@@ -18,6 +22,7 @@ export const initialState = {
 const allReducer = combineReducers({
   photos: photoReducer,
   videos: videoReducer,
+  buyBtnIsOpen: buyBtnIsOpen,
 })
 
 

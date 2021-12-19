@@ -334,6 +334,40 @@ input[type="text"]{
   color: var(--corn-green-bright)
 }
 
+/* BUY_BTN_MODAL */
+.buy-btn-modal {
+  box-sizing: border-box;
+  position: absolute;
+  width: 80%;
+  height: 50%;
+  background-color: var(--corn-grey-bg);
+  color: var(--corn-black);
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  padding: 0px 25px;
+  margin-left: -30px;
+}
+
+.buy-btn-modal h2 {
+  font-size: 2.8em;
+}
+
+.buy-btn-modal h2 {
+  font-size: 2.8em;
+}
+
+.buy-btn-modal span {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+}
+
+.buy-btn-modal #email-input {
+  width: unset;
+}
+
+
 /* LOADER  */
 
 .loader {

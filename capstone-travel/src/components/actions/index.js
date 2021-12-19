@@ -12,3 +12,9 @@ export const addPhotos= (photos) => {
     payload: photos
   }
 }
+
+export const buyBtnIsOpen = () => {
+  return {
+    type: "CHANGE_IS_OPEN",
+  }
+}

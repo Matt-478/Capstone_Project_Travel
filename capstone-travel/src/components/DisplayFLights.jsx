@@ -1,10 +1,13 @@
 import { useState, useRef, useEffect } from 'react'
 import './Styles/Collapsible.css'
+import {useSelector, useDispatch} from 'react-redux'
+import { addPhotos, addVid } from './actions';
 
 const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, arrivalCode, arrivalTerminal, arrivalTime, duration, carrierCode, aircraftCode, priceCurrency, priceTotal, priceBase, priceFees, fareOption, cabin, weightOfIncludedCHeckedBags}) => {
   const[isOpen, setIsOpen] = useState(false)
   const [newDate, setNewDate] = useState()
   const [newTime, setNewTime] = useState()
+  const[buyBtnIsOpen, setBuyBtnIsOpen] = useState(false)
   const parentRef = useRef()
 
   useEffect(() => {
@@ -26,6 +29,11 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
     let combinedNewTime = convertedTimeTwo + "." + convertedTimeThree
     setNewDate(combinedNewDate) 
     setNewTime(combinedNewTime)
+  }
+
+  const handleBuy = () => {
+    setBuyBtnIsOpen(!buyBtnIsOpen)
+
   }
 
   return (
@@ -88,9 +96,20 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
             <div>{arrivalCode}</div>
             <div>terminal: {arrivalTerminal}</div>          
           </div>
-          <div className="buy-btn">
+          <div className="buy-btn" onClick={handleBuy}>
             BUY
           </div>
+
+
+         {buyBtnIsOpen ? (
+            <div className="buy-btn-modal">
+              <h2>Ready to go?</h2>
+              <p>Your email is the only thing keeping you and that ticket away from each other. Let's make this happen!</p>
+
+              <input type="text" placeholder="myEmail@gmail.com" id="email-input"/>
+              <span onClick={handleBuy}>X</span>
+            </div>
+         ): null}
           {/* <div>{carrierCode}</div>
           <div>aircraftCode: {aircraftCode}</div>
           <div>priceCurrency: {priceCurrency}</div>

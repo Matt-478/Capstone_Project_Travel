@@ -227,30 +227,12 @@ const TravelOffers = ({ history }) => {
     })
   }
 
-  function handleKidsAddition (e) {
-    e.preventDefault()
-    const totalKids = selectedOptions.kids + 1
-    setSelectedOptions({
-      ...selectedOptions,
-      kids: totalKids
-    })
-  }
-
-  function handleKidsSubtraction (e) {
-    e.preventDefault()
-    const totalKids = selectedOptions.kids - 1
-    setSelectedOptions({
-      ...selectedOptions,
-      kids: totalKids
-    })
-  }
-
   return(
     <>
     <div className=" dark-banner">
       <h2>Hit the road, Jack!</h2>
     </div>
-    <div className="header-bg " style={{height: "auto"}}>
+    <div className="header-bg" style={{height: "auto"}}>
       <div className="p-page pt-30">
 
      {/* inputs */}
@@ -297,11 +279,6 @@ const TravelOffers = ({ history }) => {
         </form> 
       </div> 
 
-       {/* CLASS OPTIONS V2 */}
-       {/* <div className="display-inline-flex">
-         <p>Travel Class</p>
-       </form>
-     </div> */}
 
 
         {
