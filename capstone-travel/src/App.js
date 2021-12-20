@@ -15,7 +15,6 @@ function App() {
         </div>
         <Route path="/home" exact render={(props) => <HomePage {...props} />} />
         <Route path="/flight" exact render={(props) => <TravelOffers {...props} />} />
-        {/* <Route path="/" exact render={(props) => <Home title="Strive" {...props} />} /> */}
         <Route path="/404" exact component={<ErrorPage />} /> 
         <footer className="p-page">
           {/* <div className="text-space-between">
