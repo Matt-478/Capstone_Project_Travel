@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/RapidPack/static/css/main.553ecc52.chunk.css",
+    "main.js": "/RapidPack/static/js/main.ef70b5bd.chunk.js",
+    "main.js.map": "/RapidPack/static/js/main.ef70b5bd.chunk.js.map",
+    "runtime-main.js": "/RapidPack/static/js/runtime-main.261410e7.js",
+    "runtime-main.js.map": "/RapidPack/static/js/runtime-main.261410e7.js.map",
+    "static/js/2.4b267559.chunk.js": "/RapidPack/static/js/2.4b267559.chunk.js",
+    "static/js/2.4b267559.chunk.js.map": "/RapidPack/static/js/2.4b267559.chunk.js.map",
+    "static/js/3.73d7848c.chunk.js": "/RapidPack/static/js/3.73d7848c.chunk.js",
+    "static/js/3.73d7848c.chunk.js.map": "/RapidPack/static/js/3.73d7848c.chunk.js.map",
+    "index.html": "/RapidPack/index.html",
+    "static/css/main.553ecc52.chunk.css.map": "/RapidPack/static/css/main.553ecc52.chunk.css.map",
+    "static/js/2.4b267559.chunk.js.LICENSE.txt": "/RapidPack/static/js/2.4b267559.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.261410e7.js",
+    "static/js/2.4b267559.chunk.js",
+    "static/css/main.553ecc52.chunk.css",
+    "static/js/main.ef70b5bd.chunk.js"
+  ]
+}
