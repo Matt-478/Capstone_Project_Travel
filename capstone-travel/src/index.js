@@ -9,11 +9,11 @@ import { HashRouter } from 'react-router-dom';
 
 
 ReactDOM.render(
+  <HashRouter>
   <Provider store={myStore}>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </Provider>,
+    <App />
+  </Provider>
+  </HashRouter>,
  document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
