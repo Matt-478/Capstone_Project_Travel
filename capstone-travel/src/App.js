@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { HashRouter, Route } from 'react-router-dom'
 
 import TravelOffers from './components/TravelOffers'
 import HomePage from './components/HomePage'
@@ -9,7 +9,7 @@ import ErrorPage from './components/ErrorPage'
 function App() {
   return(
     <div className="App">
-      <Router>
+      <HashRouter>
         <div className="navbar p-page"> 
           <h2>RapidPack*</h2>
         </div>
@@ -36,7 +36,7 @@ function App() {
             </div>
           </div> */}
         </footer>
-      </Router>
+      </HashRouter>
     </div>
   )
 }
