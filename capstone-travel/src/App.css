@@ -88,8 +88,8 @@ a { text-decoration: none; }
 .head-line h2{
   font-family: 'DM Serif Display', serif;
   font-size: 50px;
-  /* color: var(--corn-grey-bg); */
-  color: var(--corn-green-bright);
+  color: var(--corn-grey-bg);
+  /* color: var(--corn-green-bright); */
 }
 
 
