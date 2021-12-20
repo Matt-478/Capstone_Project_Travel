@@ -1,7 +1,7 @@
 {
   "name": "capstone-travel",
   "version": "0.1.0",
-  "homepage": "https://matt-478.github.io/RapidPack/home",
+  "homepage": "https://matt-478.github.io/RapidPack/#/home",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.0",
@@ -17,9 +17,9 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -b master -d build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
