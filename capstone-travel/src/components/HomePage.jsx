@@ -137,7 +137,7 @@ const HomePage = ({history}) => {
   const handleBookTrip = () => {
     history.push({
       pathname: '/flight',
-      // search: '?cityQuery=' + realState.toLowerCase()
+      search: '?cityQuery=' + realState.toLowerCase()
     })
   }
 
