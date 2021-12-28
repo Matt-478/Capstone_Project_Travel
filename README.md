@@ -13,5 +13,5 @@ We will start our journey on the home page. There are four boxes that let us dec
 This page displays flight options based on price (ascending order). For now the base location is Paris, but in time we'll be able to change that as well. At the top of the page we have multiple inputs that let us customise our flight details. This is a feature that I'm currently working on and predict to be done before Jan 3rd, 2022. When clicking on individual flight cards we'll see a bit of information and a button "buy" - when clicked it will give us a modal that asks for our email. When we put in our info, it'll say that the information will be in our email, however that's all it does, there is no information sent to our email, because this is just a mock buy button and there are no more feature plans for the button as the focus of the application is based on giving us visual info on the place.
 
 
-###Contact for issues & suggestions
+### Contact for issues & suggestions
 If you have any feature suggestions or problems you've noticed let me know on (LinkedIn)[https://www.linkedin.com/in/matīss-komļevs-20343020b/]
