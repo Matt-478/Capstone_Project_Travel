@@ -14,4 +14,4 @@ This page displays flight options based on price (ascending order). For now the 
 
 
 ### Contact for issues & suggestions
-If you have any feature suggestions or problems you've noticed let me know on (LinkedIn)[https://www.linkedin.com/in/matīss-komļevs-20343020b/]
+If you have any feature suggestions or problems you've noticed let me know on [LinkedIn](https://www.linkedin.com/in/matīss-komļevs-20343020b/)
