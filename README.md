@@ -1,10 +1,10 @@
 **RapidPack**
 
-###Description###
+###Description
 RapidPack is a platform that inspires you to go on spontaneous adventures by showing you the world through others eyes.
 It is the Capstone Project to finish my Front-End course at Strive School.
 
-####Walkthrough####
+####Walkthrough
 **Home page**
 We will start our journey on the home page. There are four boxes that let us decide the city right away, but they're still a work in progress. The search bar at the top of the page shopuld receive a name of a country, region or ideally a city. The query name then fetches some information from Wikipedia that will be displayed right away under the search bar along with the name of the region we just typed. Under this information we will find a mix of media - both photos and videos of the query we wrote. The videos sometimes need a bit longer to load, nevertheless the visual experience will accompany us through it all. Once we go through the list of photos and videos fetched from the Pexels API, we have a button at the end of the page, when pressed it'll take us to the flight page.
 
