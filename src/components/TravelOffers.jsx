@@ -23,7 +23,7 @@ const TravelOffers = ({ history }) => {
 
   useEffect(() => {
     getData()
-  },[])
+  },[selectedOptions])
 
   const getData = async () => {
     let ci = urlFunction() // getting the query string parameter
@@ -201,7 +201,7 @@ const TravelOffers = ({ history }) => {
   }
 
   function handleAdultAddition (e) {
-    e.preventDefault()
+    // e.preventDefault()
     const totalAdults = selectedOptions.adults + 1
     setSelectedOptions({
       ...selectedOptions,
@@ -210,7 +210,7 @@ const TravelOffers = ({ history }) => {
   }
 
   function handleAdultSubtraction (e) {
-    e.preventDefault()
+    // e.preventDefault()
     const totalAdults = selectedOptions.adults - 1
     setSelectedOptions({
       ...selectedOptions,
@@ -270,9 +270,9 @@ const TravelOffers = ({ history }) => {
             </select>
             </div>
             
-            <button onClick={(e) => handleSearchClick(e)} class="custom-search-btn">
+            {/* <button onClick={(e) => handleSearchClick(e)} class="custom-search-btn">
               Search
-            </button>
+            </button> */}
           </div>
         </form> 
       </div> 
@@ -282,7 +282,7 @@ const TravelOffers = ({ history }) => {
         {
           isLoading ?
             selectedData ? (
-              // GIVES BACK ALL OF THE FUNCTION I JUST NEED THE OBJEXT -DEAL W THAT 
+              // GIVES BACK ALL OF THE FUNCTION I JUST NEED THE OBJECT -DEAL W THAT 
               selectedData.map((array) => (
                 <DisplayFLights
                   departureCode={array.departureCode}
@@ -304,7 +304,7 @@ const TravelOffers = ({ history }) => {
                   key={array.id}
                   />
             ))
-          ) : "nah, bruh"
+          ) : "oops, I think we're lost" // should direct to 404 page
         : <div className="loader"></div> //should be loader
         }
       </div>
