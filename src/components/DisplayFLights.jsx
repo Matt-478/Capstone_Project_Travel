@@ -21,10 +21,10 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
     let convertedTimeTwo = preConvertTime.getHours().toString()
     let convertedTimeThree = preConvertTime.getMinutes().toString()
     let GMTTime = preConvertTime.getTimezoneOffset()
-    console.log(preConvertTime.toUTCString(), preConvertTime.toTimeString)
+    // console.log(preConvertTime.toUTCString(), preConvertTime.toTimeString)
     // let convertedTime = preConvertTime.getDay().toString()
 
-    console.log("Converted: ", convertedTime, ", ", convertedTimeTwo, ".", convertedTimeThree + GMTTime)
+    // console.log("Converted: ", convertedTime, ", ", convertedTimeTwo, ".", convertedTimeThree + GMTTime)
     let combinedNewDate = convertedTime
     let combinedNewTime = convertedTimeTwo + "." + convertedTimeThree
     setNewDate(combinedNewDate) 

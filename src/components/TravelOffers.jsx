@@ -9,7 +9,7 @@ const TravelOffers = ({ history }) => {
   const[error, setError] = useState(false)
   const[selectedOptions, setSelectedOptions] = useState({
     destinationLocationCode: "",
-    departureDate: "2021-12-21",
+    departureDate: "2022-01-21",
     returnDate: "0",
     adults: 1,
     kids: 0,
@@ -27,7 +27,7 @@ const TravelOffers = ({ history }) => {
 
   const getData = async () => {
     let ci = urlFunction() // getting the query string parameter
-    console.log("!!!!", ci)
+    // console.log("!!!!", ci)
     let t = await newTokenRequest() // we're getting a token and not saving it anymore in the state, but just in a local variable because this is sync
     // console.log('!!!', t)
     let iataCi = await cityCode(t, ci)
@@ -37,6 +37,7 @@ const TravelOffers = ({ history }) => {
       selectedOptions.adults,
       selectedOptions.travelClass,
       selectedOptions.nonStop,
+      selectedOptions.departureDate
       )
       console.log('bam here: ',flightInfoToExtract)
     await extractedData(flightInfoToExtract)
@@ -99,16 +100,16 @@ const TravelOffers = ({ history }) => {
   //  after each reload I need to remove all the values from the array
   }
 
-  const fetchFlights = async(token = '', location = "LON", adults = 1, travelClass = "economy", nonStop) => {
+  const fetchFlights = async(token = '', location = "LON", adults = 1, travelClass = "economy", nonStop, departureDate) => {
     try{
-      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=2022-01-24&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=25`, {
+      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=${departureDate}&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=25`, {
         // 2030-12-31
         headers: {
             'Authorization': 'Bearer ' + token
           }
         });
       const data = await response.json()
-        console.log("here's the token", token)
+        // console.log("here's the data", data)
 
       if(!response.ok) {
         setError(true)
@@ -173,13 +174,13 @@ const TravelOffers = ({ history }) => {
       }
       ))
 
-      console.log("extruded", extrudedData)
+      // console.log("extruded", extrudedData)
       // setSelectedData(extrudedData)
       // return extrudedData
 
       if(extrudedData)  {
         setSelectedData(extrudedData)
-        console.log("selected data should be set =>   ", selectedData)
+        // console.log("selected data should be set =>   ", selectedData)
       } else {
         console.log("no data in the new arr")
       }
@@ -218,6 +219,15 @@ const TravelOffers = ({ history }) => {
     })
   }
 
+  const handleDepartDate = (e) => {
+    console.log("current depart date value:  ", e.target.value)
+    setSelectedOptions({
+      ...selectedOptions,
+      departureDate: e.target.value
+    })
+    console.log("updated, chosen date value:  ", selectedOptions.departureDate)
+  }
+
   function handleSearchClick(e) {
       e.preventDefault()
   }
@@ -236,7 +246,8 @@ const TravelOffers = ({ history }) => {
           <div className="wokr-already">
             <div className="d-flex-column">
              <p>Non-Stop: </p>
-             <input type="checkbox"
+             <input
+              type="checkbox"
               onClick={handleCheckbox}
               defaultChecked={selectedOptions.nonStop}
               />
@@ -253,7 +264,10 @@ const TravelOffers = ({ history }) => {
 
             <div className="d-flex-column">
               <p>Departure: </p>
-              <input type="date" value={selectedOptions.departureDate}/>
+              <input
+               type="date"
+               onClick={(e) => handleDepartDate(e)}
+              />
             </div>
             <div className="d-flex-column">
               <p>Arrival: </p>
