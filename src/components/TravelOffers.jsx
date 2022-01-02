@@ -81,15 +81,11 @@ const TravelOffers = ({ history }) => {
           }
         })
       const { data }  = await response.json()
-      console.log('!!!', data)
+      console.log('!!! city stuff', data)
       const firstItem = await data[0].iataCode
       console.log(firstItem)
       let iataCity = firstItem
       return iataCity
-      // setSelectedOptions({
-      //   ...selectedOptions,
-      //   destinationLocationCode: "" + firstItem + ""
-      // })
       } else {
       console.log("oops")
       }
@@ -105,17 +101,14 @@ const TravelOffers = ({ history }) => {
 
   const fetchFlights = async(token = '', location = "LON", adults = 1, travelClass = "economy", nonStop) => {
     try{
-      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=2021-31-12&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=25`, {
+      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=2022-01-24&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=25`, {
+        // 2030-12-31
         headers: {
             'Authorization': 'Bearer ' + token
           }
         });
       const data = await response.json()
-        console.log("here's the data", data)
-      // return data
-      // setFlightInfo(data)
-      // console.log("here's the data")
-      // console.log(data)
+        console.log("here's the token", token)
 
       if(!response.ok) {
         setError(true)
