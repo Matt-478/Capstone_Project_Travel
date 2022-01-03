@@ -9,8 +9,8 @@ const TravelOffers = ({ history }) => {
   const[error, setError] = useState(false)
   const[selectedOptions, setSelectedOptions] = useState({
     destinationLocationCode: "",
-    departureDate: "2022-01-21",
-    returnDate: "0",
+    departureDate: "2022-01-15",
+    returnDate: "",
     adults: 1,
     kids: 0,
     travelClass: "ECONOMY",
@@ -37,7 +37,8 @@ const TravelOffers = ({ history }) => {
       selectedOptions.adults,
       selectedOptions.travelClass,
       selectedOptions.nonStop,
-      selectedOptions.departureDate
+      selectedOptions.departureDate,
+      selectedOptions.returnDate
       )
       console.log('bam here: ',flightInfoToExtract)
     await extractedData(flightInfoToExtract)
@@ -100,9 +101,10 @@ const TravelOffers = ({ history }) => {
   //  after each reload I need to remove all the values from the array
   }
 
-  const fetchFlights = async(token = '', location = "LON", adults = 1, travelClass = "economy", nonStop, departureDate) => {
+  const fetchFlights = async(token = '', location = "LON", adults = 1, travelClass = "economy", nonStop, departureDate, returnDate) => {
     try{
-      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=${departureDate}&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=25`, {
+      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=${departureDate}&${returnDate.length > 2 ? ("returnDate=" + returnDate) : ""}&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=25`, {
+        // return Date is OPTIONAL - how to make it work? &returnDate=${returnDate}
         // 2030-12-31
         headers: {
             'Authorization': 'Bearer ' + token
@@ -220,12 +222,17 @@ const TravelOffers = ({ history }) => {
   }
 
   const handleDepartDate = (e) => {
-    console.log("current depart date value:  ", e.target.value)
     setSelectedOptions({
       ...selectedOptions,
       departureDate: e.target.value
     })
-    console.log("updated, chosen date value:  ", selectedOptions.departureDate)
+  }
+
+  const handleReturnDate = (e) => {
+    setSelectedOptions({
+      ...selectedOptions,
+      returnDate: e.target.value
+    })
   }
 
   function handleSearchClick(e) {
@@ -270,8 +277,11 @@ const TravelOffers = ({ history }) => {
               />
             </div>
             <div className="d-flex-column">
-              <p>Arrival: </p>
-              <input type="date" />
+              <p>Return: </p>
+              <input
+               type="date"
+               onClick={(e) => handleReturnDate(e)}
+              />
             </div>
 
             <div className="display-inline-flex" >
