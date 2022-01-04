@@ -103,7 +103,8 @@ const TravelOffers = ({ history }) => {
 
   const fetchFlights = async(token = '', location = "LON", adults = 1, travelClass = "economy", nonStop, departureDate, returnDate) => {
     try{
-      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=${departureDate}&${returnDate.length > 2 ? ("returnDate=" + returnDate) : ""}&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=25`, {
+      const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=${departureDate}${returnDate.length ? "&returnDate=" + returnDate : returnDate}&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=25`, {
+        // ${returnDate.length > 2 ? ("returnDate=" + returnDate) : ""}
         // return Date is OPTIONAL - how to make it work? &returnDate=${returnDate}
         // 2030-12-31
         headers: {
