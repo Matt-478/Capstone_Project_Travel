@@ -63,7 +63,8 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
         <div className="flex-align-center">
           <h2>FROM: {departureCode}</h2>
           <h2>TO: {arrivalCode}</h2>
-          <h2>PRICE: {priceTotal}{priceCurrency}</h2> 
+          <h2>PRICE: {priceTotal} &#8364;</h2> 
+          {/* {priceCurrency} */}
         </div>
       </button>
       <div 
