@@ -265,9 +265,9 @@ const TravelOffers = ({ history }) => {
             <div className="d-flex-column" > 
               <p>Adults <small>(12+)</small>:</p>
               <div className="d-flex-row" style={{height: "2.8em"}}>
-                <button onClick={(e) => handleAdultSubtraction(e)}>-</button>
+                <button onClick={() => handleAdultSubtraction()}>-</button>
                 <input type="number" min="1" value={selectedOptions.adults}/>
-                <button onClick={(e) => handleAdultAddition(e)}>+</button>
+                <button onClick={() => handleAdultAddition()}>+</button>
               </div>
             </div>
 
