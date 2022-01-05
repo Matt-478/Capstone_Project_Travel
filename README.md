@@ -1,8 +1,5 @@
 # RapidPack
 
-## ⚠️Disclaimer⚠️
-Flight page currently not working, planned to be done by Jan 3rd, 2022
-
 ### Description
 RapidPack is a platform that inspires you to go on spontaneous adventures by showing you the world through others eyes.
 It is the Capstone Project to finish my Front-End course at Strive School.
