@@ -731,6 +731,30 @@ transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
   /* works only if the other flexes on form and the other are off */
 }
 
+@media only screen and (max-width: 1024px) {
+  /* wraps input options */
+  .wokr-already {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* adjusts bg height for md size */
+  .options-input-box {
+    height: -webkit-fit-content;
+    padding: 10px;
+  }
+
+  /* for input spacing */
+  .options-input-box form .d-flex-column {
+    width: 30%;
+  }
+
+   /* for input spacing */
+  .wokr-already .d-inline-flex {
+    width: 30%;
+  }
+}
+
 .options-input-box .custom-search-btn {
   align-self: flex-end;
   height: 2.8rem;
