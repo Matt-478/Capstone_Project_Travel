@@ -101,7 +101,7 @@ const TravelOffers = ({ history }) => {
   //  after each reload I need to remove all the values from the array
   }
 
-  const fetchFlights = async(token = '', location = "LON", adults = 1, travelClass = "economy", nonStop, departureDate, returnDate) => {
+  const fetchFlights = async(token = '', location = "LON", adults = 1, travelClass = "ECONOMY", nonStop, departureDate, returnDate) => {
     try{
       const response = await fetch(`https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=PAR&destinationLocationCode=${location}&departureDate=${departureDate}${returnDate.length ? "&returnDate=" + returnDate : returnDate}&adults=${adults}&travelClass=${travelClass}&nonStop=${nonStop}&max=25`, {
         // ${returnDate.length > 2 ? ("returnDate=" + returnDate) : ""}
@@ -204,8 +204,7 @@ const TravelOffers = ({ history }) => {
     })
   }
 
-  function handleAdultAddition (e) {
-    // e.preventDefault()
+  function handleAdultAddition () {
     const totalAdults = selectedOptions.adults + 1
     setSelectedOptions({
       ...selectedOptions,
@@ -213,8 +212,7 @@ const TravelOffers = ({ history }) => {
     })
   }
 
-  function handleAdultSubtraction (e) {
-    // e.preventDefault()
+  function handleAdultSubtraction () {
     const totalAdults = selectedOptions.adults - 1
     setSelectedOptions({
       ...selectedOptions,
@@ -236,8 +234,11 @@ const TravelOffers = ({ history }) => {
     })
   }
 
-  function handleSearchClick(e) {
-      e.preventDefault()
+  const handleTravelClassChange = (e) => {
+    setSelectedOptions({
+      ...selectedOptions,
+      travelClass: e.target.value
+    })
   }
 
   return(
@@ -287,11 +288,11 @@ const TravelOffers = ({ history }) => {
 
             <div className="display-inline-flex" >
             <p>Travel Class: </p>
-            <select >
-              <option>Economy</option>
-              <option>Premium Economy</option>
-              <option>Business</option>
-              <option>First</option>
+            <select onChange={(e) => handleTravelClassChange(e)}>
+              <option value="ECONOMY">Economy</option>
+              <option value="PREMIUM_ECONOMY">Premium Economy</option>
+              <option value="BUSINESS">Business</option>
+              <option value="FIRST">First</option>
             </select>
             </div>
             
