@@ -189,7 +189,7 @@ const HomePage = ({history}) => {
       </div>
 
       <div className="left-area-top">
-        <h3>{query && toTitleCase(query)}</h3>
+        <h3>{query && toTitleCase(query) || realState && toTitleCase(realState)}</h3>
           <div className="d-flex-space">
           <div className="left-side">
             <p>
