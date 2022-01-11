@@ -44,12 +44,12 @@ const HomePage = ({history}) => {
     if(realState.length > 0) {
       fetchWikipediaCitySummary(realState)
       urlFunction(realState)
-      fetchPexelsData()
+      fetchPexelsData(realState)
       fetchPexelsVideos()
     }
   },[realState])
 
-  async function fetchPexelsData () {
+  async function fetchPexelsData (query) {
     try {
       const response = await fetch("https://api.pexels.com/v1/search?query=" + query + "&per_page=30", {
         // &size=large
