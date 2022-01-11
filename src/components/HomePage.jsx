@@ -58,7 +58,7 @@ const HomePage = ({history}) => {
         "Authorization": "563492ad6f91700001000001d99276bcb4d4402fbf7f8f502c81c2ba"}
       })
       const {photos} = await response.json()
-      console.log('!!photos', photos)
+      // console.log('!!photos', photos)
       if (photos) {
         dispatch(addPhotos(photos))
       } else {
