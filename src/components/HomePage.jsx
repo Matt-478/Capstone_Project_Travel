@@ -196,7 +196,7 @@ const HomePage = ({history}) => {
               {cityInfo.extract}
             </p>
           </div>
-          <div className="right-side">
+          <div className="right-side"> 
           </div>
           </div>
       </div>
