@@ -142,7 +142,7 @@ const HomePage = ({history}) => {
   }
 
   const handleTravelCity = (city) => {
-    fetchPexelsData(city)
+    setRealState(city)
   }
 
   return (
