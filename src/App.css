@@ -212,7 +212,7 @@ input[type="text"]{
 
 
 .change-page-btn {
-  background-color: var(--corn-black);
+  background-color: var(--corn-grey-bg);
   color: var(--corn-green-bright);
   padding: 50px 10%;
 }
