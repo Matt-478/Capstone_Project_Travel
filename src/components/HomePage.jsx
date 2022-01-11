@@ -183,9 +183,9 @@ const HomePage = ({history}) => {
 
       <div className="travel-options-box-container" style={{display: realState.length >4 ? "none" : ""}}>
           <div className="travel-options-box relative" onClick={() => handleTravelCity("Dublin")}><h2>Dublin</h2></div>
-          <div className="travel-options-box relative"><h2>Paris</h2></div>
-          <div className="travel-options-box relative"><h2>Tokyo</h2></div>
-          <div className="travel-options-box relative"><h2>Berlin</h2></div>
+          <div className="travel-options-box relative" onClick={() => handleTravelCity("Paris")}><h2>Paris</h2></div>
+          <div className="travel-options-box relative" onClick={() => handleTravelCity("Tokyo")}><h2>Tokyo</h2></div>
+          <div className="travel-options-box relative" onClick={() => handleTravelCity("Berlin")}><h2>Berlin</h2></div>
       </div>
 
       <div className="left-area-top">
