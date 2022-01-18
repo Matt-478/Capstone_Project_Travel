@@ -84,13 +84,24 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
         <div className="content"> 
         {/* {props.children} */}
           <div className="flight-from" style={{width: "20%"}}>
-            <div style={{marginRight: "10px"}}>{newTime}</div>
-            <div>{departureCode}</div>
-            <div>terminal: {departureTerminal}</div>
+            <div>
+              <p>Departure time:</p>
+              <p className="ml-10">{newTime}</p>
+            </div>
+            <div>
+              <p>Departure code:</p>
+              <p className="ml-10">{departureCode}</p>
+            </div>
+            <div>
+              <p>
+                Departure terminal: 
+              </p>
+              <p className="ml-10">{departureTerminal}</p>
+            </div>
           </div>
 
          <div className="flight-duration-flex">
-           <div className="d-flex" style={{ display: "flex", justifyContent: "center", fontWeight: "500"}}>
+           <div className="d-flex" style={{ display: "flex", justifyContent: "center", fontWeight: "500", fontSize: "1.5em"}}>
             <div style={{marginRight: "10px"}}>{newDate}</div>
             <div>{duration}</div>
            </div>
@@ -98,10 +109,18 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
          </div>
 
           <div className="flight-to">         
-            {/* <div>{newDate}</div>           */}
-            <div>{newTime}</div>          
-            <div>{arrivalCode}</div>
-            <div>terminal: {arrivalTerminal}</div>          
+            <div>
+              <p>Arrival time:</p>
+              <p className="ml-10">{newTime}</p>
+            </div>          
+            <div>
+              <p>Arrival code:</p>
+              <p className="ml-10">{arrivalCode}</p>
+            </div>
+            <div>
+              <p>Arrical terminal:</p>
+              <p className="ml-10">{arrivalTerminal}</p>
+            </div>          
           </div>
           <div className="buy-btn" onClick={handleBuy}>
             BUY

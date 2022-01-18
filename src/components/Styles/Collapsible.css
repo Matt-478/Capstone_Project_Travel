@@ -14,23 +14,19 @@
 }
 
 .collapsible .content {
-  /* background: rgb(91 110 91); */
   background: var(--corn-blue);
   border: unset;
   cursor: pointer;
-  /* box-sizing: border-box; */
   padding: 10px 20px;
   color: #ddd !important;
   margin-bottom: 2em;
   border-radius: 30px;
-
-  border-radius: 30px;
   border: 8px solid #091305;
 
+
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
 }
 
 .collapsible .content .flight-from, .flight-to {
@@ -38,6 +34,19 @@
   font-weight: 600;
   width: 40%;
   height: fit-content;
+}
+
+.flight-from > div, .flight-to > div {
+  display: flex;
+  align-items: baseline;
+}
+
+.flight-from > div p,  .flight-to > div p {
+  font-size: unset;
+}
+
+.ml-10 {
+  margin-left: 10px;
 }
 
 .pt-30 {
