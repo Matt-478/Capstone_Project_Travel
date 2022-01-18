@@ -111,7 +111,7 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
          {buyBtnIsOpen ? (
             <div className="buy-btn-modal">
               <h2>Ready to go?</h2>
-              <p>Your email is the only thing keeping you and that ticket away from each other. Let's make this happen!</p>
+              <p>Your email is the only thing keeping you and your ticket away from each other. Let's go!</p>
 
               <form onSubmit={(e) => handleSubmit(e)}>
                 <input type="text" placeholder="myEmail@gmail.com" id="email-input"/>
