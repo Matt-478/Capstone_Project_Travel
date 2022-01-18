@@ -101,9 +101,10 @@ const DisplayFLights = ({ id, departureCode, departureTerminal, departureTime, a
           </div>
 
          <div className="flight-duration-flex">
-           <div className="d-flex" style={{ display: "flex", justifyContent: "center", fontWeight: "500", fontSize: "1.5em"}}>
+           <div className="d-flex"
+                style={{ display: "flex", justifyContent: "center", alignItems: "baseline" , fontWeight: "500", fontSize: "1.5em"}}>
             <div style={{marginRight: "10px"}}>{newDate}</div>
-            <div>{duration}</div>
+            <div style={{fontSize: "1em"}}>({duration})</div>
            </div>
           <span className="flight-line"></span>
          </div>
