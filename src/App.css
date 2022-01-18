@@ -818,7 +818,6 @@ video{
 
 /* FOOTER */
 footer {
-  /* background-color: #f1f1f1; */
   background-color: var(--corn-grey-bg);
   height: 20vh;
 }
@@ -828,6 +827,24 @@ footer h2 {
   font-weight: 500;
   font-family: 'Readex Pro', sans-serif;
   color: #c9c7c1;
+}
+
+
+/* Footer on home page */
+.main-footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.main-footer a{
+  text-decoration: none;
+  color: var(--corn-black);
+  margin: 10px;
+}
+
+.main-footer a:hover {
+  color: var(--corn-blue);
 }
 
 footer .text-centre {

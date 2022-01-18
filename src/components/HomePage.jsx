@@ -228,8 +228,6 @@ const HomePage = ({history}) => {
         <h3 className="d-inline">Interested? What are you waiting for?</h3> 
         <button className="pill-btn book-a-trip-btn" onClick={handleBookTrip}>Book a trip now!</button>
       </div>
-    <div>
-    </div>
   </>
   )
 }
