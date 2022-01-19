@@ -194,9 +194,6 @@ const TravelOffers = ({ history }) => {
     }
   }
 
-
-
-
   // input and state change 
   function handleCheckbox () {
     setSelectedOptions({
@@ -249,7 +246,35 @@ const TravelOffers = ({ history }) => {
     </div>
     <div className="header-bg" style={{height: "auto"}}>
       <div className="p-page pt-30">
-    <ExtraInfo />
+      {
+      isLoading ? <ExtraInfo />
+      : null
+      }
+
+      {/* use this for the Extra Info code - maybe create a component for the both of them */}
+      {/* {buyBtnIsOpen ? (
+            <div className="buy-btn-modal">
+              <h2>Ready to go?</h2>
+              <p>Your email is the only thing keeping you and your ticket away from each other. Let's go!</p>
+
+              <form onSubmit={(e) => handleSubmit(e)}>
+                <input type="text" placeholder="myEmail@gmail.com" id="email-input"/>
+                {submit ? 
+                  <input type="submit" disabled/> : 
+                  <input type="submit" />
+                }
+              </form>
+
+              {submit ? 
+              <p style={{
+                marginTop: "30px",
+                fontWeight: "800",
+              }}>Your journey just begun!</p>
+              : null}
+
+              <span onClick={handleBuy}>X</span>
+            </div>
+         ): null} */}
 
      {/* inputs */}
       <div className="options-input-box">
@@ -297,10 +322,6 @@ const TravelOffers = ({ history }) => {
               <option value="FIRST">First</option>
             </select>
             </div>
-            
-            {/* <button onClick={(e) => handleSearchClick(e)} class="custom-search-btn">
-              Search
-            </button> */}
           </div>
         </form> 
       </div> 
