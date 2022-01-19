@@ -490,6 +490,10 @@ input[type="text"]{
 }
 
 
+.extra-info-module {
+  background-color: violet;
+}
+
 /* FLIGHT DEMO BOX */
 .flight-demo {
   height: 10vh;

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import DisplayFLights from './DisplayFLights'
+import ExtraInfo from './ExtraInfo'
 
 
 const TravelOffers = ({ history }) => {
@@ -248,6 +249,7 @@ const TravelOffers = ({ history }) => {
     </div>
     <div className="header-bg" style={{height: "auto"}}>
       <div className="p-page pt-30">
+    <ExtraInfo />
 
      {/* inputs */}
       <div className="options-input-box">
