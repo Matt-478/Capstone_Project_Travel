@@ -354,7 +354,7 @@ input[type="text"]{
   position: absolute;
   width: 80%;
   height: 40%;
-  background-color: #fbb3b1;
+  background-color: #c3c3c3;;
   color: var(--corn-black);
   display: flex;
   flex-direction: column;
