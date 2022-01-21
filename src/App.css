@@ -354,7 +354,8 @@ input[type="text"]{
   position: absolute;
   width: 80%;
   height: 40%;
-  background-color: #c3c3c3;
+  /* background-color: #c3c3c3; */
+  background-color: violet;
   color: var(--corn-black);
   color: var(--corn-blue);
   display: flex;
