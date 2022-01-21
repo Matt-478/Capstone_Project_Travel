@@ -354,7 +354,7 @@ input[type="text"]{
   position: absolute;
   width: 80%;
   height: 40%;
-  background-color: violet;
+  background-color: #fbb3b1;
   color: var(--corn-black);
   display: flex;
   flex-direction: column;
@@ -490,8 +490,7 @@ input[type="text"]{
 
 
 .extra-info-module {
-  background-color: violet;
-  padding: 1.6em 1.2em;
+  background-color: #fbb3b1;
   border-radius: 1em;
   margin-bottom: 30px;
   justify-content: center;
@@ -499,6 +498,7 @@ input[type="text"]{
   font-weight: 500;
   margin-left: unset;
   height: 20%;
+  padding: 10rem 1.8em;
 }
 
 .extra-info-module span {
