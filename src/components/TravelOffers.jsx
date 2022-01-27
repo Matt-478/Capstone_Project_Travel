@@ -10,7 +10,7 @@ const TravelOffers = ({ history }) => {
   const[error, setError] = useState(false)
   const[selectedOptions, setSelectedOptions] = useState({
     destinationLocationCode: "",
-    departureDate: "2022-01-25",
+    departureDate: "2022-02-14",
     returnDate: "",
     adults: 1,
     kids: 0,
