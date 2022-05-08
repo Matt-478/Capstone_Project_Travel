@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-// import {useSelector, useDispatch} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import { addPhotos, addVid } from './actions';
 import ImageCard from './ImageCard';
 import VideoCard from './VideoCard';
