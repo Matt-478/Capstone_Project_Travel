@@ -13,6 +13,8 @@ function App() {
         <div className="navbar p-page"> 
           <h2>RapidPack*</h2>
         </div>
+
+        {/*   WORK IN NO FLIGHTS COMPONENT BRANCH, UNTIL IT WORKS AND THEN PULL REQUEST */}
         <Route path="/" exact render={(props) => <HomePage {...props} />} />
         <Route path="/flight" exact render={(props) => <TravelOffers {...props} />} />
         <Route path="/404" exact component={<ErrorPage />} /> 
